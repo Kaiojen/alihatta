@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALINHATTA - Consultoria em Licitações | Vença Editais Públicos</title>
+    <meta name="description" content="Consultoria especializada em licitações. Transformamos empresas comuns em competidoras vitoriosas em editais públicos. +4 anos de experiência.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a7b60;
+            --primary-dark: #155a45;
+            --secondary: #12a37a;
+            --accent: #f4d298;
+            --accent-hover: #efd3a2;
+            --accent-dark: #d9c37a;
+            --neutral-dark: #221b1b;
+            --neutral-text: #8d7168;
+            --neutral-light: #f4f3f0;
+            --white: #FFFFFF;
+            --success: #12a37a;
+            --warning: #f4d298;
+            --error: #EF4444;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', 'Inter', sans-serif;
+            
+            --size-h1: clamp(2.8rem, 5.5vw, 3.5rem);
+            --size-h2: clamp(2rem, 4.5vw, 2.5rem);
+            --size-h3: clamp(1.5rem, 3.5vw, 2rem);
+            --size-body: clamp(1rem, 1.5vw, 1.125rem);
+            
+            --section-padding: clamp(3.75rem, 10vw, 6.25rem);
+            --card-padding: 2rem;
+            --gap: 1.5rem;
+            
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--neutral-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+            transition: all var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 0.75rem 0;
+        }
+
+        nav.container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        nav.links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav.links a {
+            color: var(--neutral-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        nav.links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width var(--transition);
+        }
+
+        nav.links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-ctas {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 0.75rem 1.75rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: var(--font-body);
+            min-height: 44px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(26, 123, 96, 0.3);
+            padding: 1rem 2.25rem;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            min-height: 56px;
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(26, 123, 96, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 123, 96, 0.3);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: var(--neutral-dark);
+            box-shadow: 0 8px 20px rgba(244, 210, 152, 0.3);
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-accent:hover {
+            background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-dark) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(244, 210, 152, 0.4);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            min-height: 40px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.04) 0%, rgba(18, 163, 122, 0.03) 100%);
+            display: flex;
+            align-items: center;
+            padding: var(--section-padding) 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 123, 96, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(244, 210, 152, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: var(--size-h1);
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.15;
+            font-family: var(--font-heading);
+            letter-spacing: -1.5px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.55rem;
+            color: var(--neutral-text);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            line-height: 1.35;
+            font-family: var(--font-body);
+            max-width: 650px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--neutral-text);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .social-proof {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 16px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 8px 20px rgba(26, 123, 96, 0.1);
+            margin-top: 2.5rem;
+        }
+
+        .social-proof strong {
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: block;
+            font-weight: 800;
+        }
+
+        .social-proof p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--neutral-text);
+        }
+
+        /* ===== CONTAINER & GRID ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: var(--section-padding) 0;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, var(--neutral-light) 0%, #faf8f5 100%);
+        }
+
+        .section-title {
+            font-size: var(--size-h2);
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3.5rem;
+            font-family: var(--font-heading);
+            letter-spacing: -0.8px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            gap: var(--gap);
+            grid-auto-flow: row;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ===== DIAGNOSIS SECTION ===== */
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .diagnosis-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--neutral-light) 100%);
+            padding: 2.75rem;
+            border-radius: 18px;
+            border: 2px solid var(--accent);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.08);
+            text-align: center;
+        }
+
+        .diagnosis-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(26, 123, 96, 0.15);
+            background: linear-gradient(135deg, var(--accent) 5%, var(--white) 95%);
+        }
+
+        .diagnosis-card h3 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+        }
+
+        .diagnosis-card .level {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--neutral-text);
+            text-align: left;
+        }
+
+        .diagnosis-card .level-item {
+            padding: 0.75rem;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            color: var(--neutral-dark);
+        }
+
+        /* ===== SERVICE CARDS ===== */
+        .service-card {
+            background: var(--white);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 2.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease-out;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 40px rgba(26, 123, 96, 0.15);
+            border-color: var(--primary);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            box-shadow: 0 6px 16px rgba(26, 123, 96, 0.15);
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--neutral-text);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .service-ideal {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-card .btn {
+            align-self: flex-start;
+        }
+
+        /* ===== METHODOLOGY TIMELINE ===== */
+        .methodology-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: calc(100% + 1rem);
+            width: calc(100% - 2rem);
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-heading);
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: var(--neutral-text);
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item::after {
+                left: 50%;
+                top: 80px;
+                width: 2px;
+                height: calc(100% + 1.5rem);
+                background: linear-gradient(180deg, var(--primary) 0%, transparent 100%);
+            }
+
+            .methodology-timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== DIFFERENTIALS ===== */
+        .differentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .differential-block {
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.05) 0%, rgba(244, 210, 152, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 18px;
+            border: 2px solid var(--primary);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.1);
+        }
+
+        .differential-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 40px rgba(26, 123, 96, 0.18);
+            border-color: var(--secondary);
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.08) 0%, rgba(244, 210, 152, 0.08) 100%);
+        }
+
+        .differential-block h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+        }
+
+        .differential-block p {
+            font-size: 0.95rem;
+            color: var(--neutral-text);
+            margin: 0.5rem 0;
+            line-height: 1.7;
+        }
+
+        .differential-block strong {
+            color: var(--secondary);
+            display: block;
+            margin-top: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* ===== FINAL CTA SECTION ===== */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: var(--section-padding) 2rem;
+            border-radius: 24px;
+            margin-bottom: var(--section-padding);
+            box-shadow: 0 20px 40px rgba(26, 123, 96, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(244, 210, 152, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .final-cta h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta .subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2.5rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+        }
+
+        .final-cta-form {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            min-height: 44px;
+            transition: all var(--transition);
+        }
+
+        .form-group textarea {
+            grid-column: 1 / -1;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9CA3AF;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* ===== FLOATING WHATSAPP BUTTON ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #20BA5C 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            z-index: 999;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--neutral-dark);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--neutral-light);
+            color: var(--primary);
+        }
+
+        .modal-content h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .modal-content p {
+            color: var(--neutral-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--neutral-text);
+        }
+
+        .modal-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--neutral-dark);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            font-family: var(--font-heading);
+        }
+
+        .footer-section a,
+        .footer-section p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color var(--transition);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav.links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav.links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                display: none;
+                box-shadow: var(--shadow-md);
+            }
+
+            nav.links.active {
+                display: flex;
+            }
+
+            nav.links a {
+                font-size: 1rem;
+            }
+
+            .nav-ctas {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .hero-ctas .btn {
+                width: 100%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+
+            .social-proof {
+                flex-direction: column;
+                text-align: center;
+                border-left: none;
+                border-top: 4px solid var(--secondary);
+            }
+
+            .diagnosis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .differentials {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --card-padding: 1.5rem;
+                --gap: 1rem;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.25rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header id="header">
+        <nav class="container">
+            <a href="#home" class="logo">
+                <svg class="logo-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Círculo externo -->
+                    <circle cx="50" cy="50" r="46" stroke="#0F2347" stroke-width="2.5" stroke-dasharray="5,3"/>
+                    
+                    <!-- Bússola com estrela de 8 pontas -->
+                    <g id="compass">
+                        <!-- Pontas externas (8)-->
+                        <path d="M50 12 L52 22 L50 20 L48 22 Z" fill="#C5A572"/>
+                        <path d="M71 29 L68 37 L70 33 L74 31 Z" fill="#C5A572"/>
+                        <path d="M88 50 L78 50 L82 50 L80 48 Z" fill="#C5A572"/>
+                        <path d="M71 71 L74 63 L72 67 L68 69 Z" fill="#C5A572"/>
+                        <path d="M50 88 L48 78 L50 80 L52 78 Z" fill="#C5A572"/>
+                        <path d="M29 71 L32 63 L30 67 L26 69 Z" fill="#C5A572"/>
+                        <path d="M12 50 L22 50 L18 50 L20 48 Z" fill="#C5A572"/>
+                        <path d="M29 29 L26 37 L28 33 L32 31 Z" fill="#C5A572"/>
+                        
+                        <!-- Agulha principal (norte-sul) -->
+                        <path d="M50 25 L45 48 L50 75 L55 48 Z" fill="#0F2347" opacity="0.9"/>
+                        <circle cx="50" cy="50" r="4" fill="#C5A572"/>
+                    </g>
+                </svg>
+                ALINHATTA
+            </a>
+            
+            <div class="nav-wrapper">
+                <nav class="links" id="navLinks">
+                    <a href="#diagnostico">Diagnóstico</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#metodologia">Metodologia</a>
+                    <a href="#diferenciais">Diferenciais</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+                
+                <div class="nav-ctas">
+                    <button class="btn btn-primary btn-sm" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Agendar</button>
+                </div>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transforme Editais em Contratos Milionários</h1>
+                <p class="subtitle">Consultoria especializada em licitações públicas</p>
+                <p>Sua empresa está perdendo milhões por ano em oportunidades governamentais. Nós sabemos como mudar isso com estratégia, segurança e método comprovado.</p>
+                
+                <div class="hero-ctas">
+                    <button class="btn btn-primary" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Quero Meu Primeiro Contrato</button>
+                    <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank">💬 Conversar Agora</a>
+                </div>
+
+                <div class="social-proof">
+                    <div>
+                        <strong>+4 anos atuando</strong>
+                        <p>Dezenas de contratos conquistados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIAGNOSIS SECTION -->
+    <section class="section section-alt" id="diagnostico">
+        <div class="container">
+            <h2 class="section-title">Por Que Você Ainda Não Vence Licitações</h2>
+            
+            <div class="diagnosis-grid">
+                <div class="diagnosis-card fade-in">
+                    <h3>❌ Problema #1: Falta de Estrutura</h3>
+                    <div class="level">
+                        <div class="level-item">Sem processo formal de participação</div>
+                        <div class="level-item">Documentação incompleta ou desatualizada</div>
+                        <div class="level-item">Equipe despreparada para licitações</div>
+                    </div>
+                </div>
+
+                <div class="diagnosis-card fade-in">
+                    <h3>❌ Problema #2: Invisibilidade</h3>
+                    <div class="level">
+                        <div class="level-item">Não monitora editais compatíveis</div>
+                        <div class="level-item">Perde oportunidades antes de saber</div>
+                        <div class="level-item">Seus concorrentes já estão lá</div>
+                    </div>
+                </div>
+
+                <div class="diagnosis-card fade-in">
+                    <h3>💰 Seu Potencial Oculto</h3>
+                    <p style="margin-bottom: 1rem; color: var(--primary); font-weight: 800; font-size: 1.3rem;">R$ Milhões/ano</p>
+                    <p style="color: var(--neutral-text); font-weight: 600;">em contratos que VOCÊ deveria estar disputando AGORA</p>
+                </div>
+
+                <div class="diagnosis-card fade-in">
+                    <h3>⚠️ Urgência: MÁXIMA</h3>
+                    <div class="level">
+                        <div class="level-item"><strong style="color: var(--primary);">CADA DIA</strong> seu concorrente vence um edital que poderia ser seu</div>
+                        <div class="level-item"><strong style="color: var(--primary);">CADA SEMANA</strong> é dinheiro deixado sobre a mesa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" id="servicos">
+        <div class="container">
+            <h2 class="section-title">Como a Alinhatta Resolve Tudo Isso</h2>
+            
+            <div class="grid grid-3" style="gap: 2rem;">
+                <!-- Card 1 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔍</div>
+                    <h3>Mapeamento Estratégico</h3>
+                    <p>Identificamos diariamente os editais certos para seu perfil, com maior chance de vitória e rentabilidade</p>
+                    <div class="service-ideal">✓ Ideal para: Empresas que querem crescer em vendas</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal1')">Saiba mais</button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
+                    <h3>Consultoria Rápida</h3>
+                    <p>Análise completa de um edital em 2 horas: viabilidade, riscos, oportunidades e plano de ação</p>
+                    <div class="service-ideal">✓ Ideal para: Decisões urgentes e imediatas</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal2')">Saiba mais</button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">📚</div>
+                    <h3>Capacitação Profunda</h3>
+                    <p>Transforme sua equipe em especialista em licitações com acompanhamento mensal e autonomia total</p>
+                    <div class="service-ideal">✓ Ideal para: Quem quer aprender e vencer sozinho depois</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal3')">Saiba mais</button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>Solução Completa</h3>
+                    <p>A Alinhatta gerencia 100% das suas licitações: desde a busca até a vitória e assinatura do contrato</p>
+                    <div class="service-ideal">✓ Ideal para: Quem quer focar em outras áreas do negócio</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal4')">Saiba mais</button>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">✅</div>
+                    <h3>Conformidade Garantida</h3>
+                    <p>Mantemos toda documentação sempre pronta e atualizada: NUNCA mais perca um edital por papel fora do prazo</p>
+                    <div class="service-ideal">✓ Ideal para: Empresas que querem segurança total</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal5')">Saiba mais</button>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎓</div>
+                    <h3>Treinamento in-Company</h3>
+                    <p>Capacite seu time com conhecimento real: Lei 14.133, pregões, estratégias que funcionam na prática</p>
+                    <div class="service-ideal">✓ Ideal para: Equipes comerciais que precisam de upgrade</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal6')">Saiba mais</button>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Automação Inteligente</h3>
+                    <p>Sistema inteligente que busca, filtra e alerta sobre editais compatíveis com seu perfil em tempo real</p>
+                    <div class="service-ideal">✓ Ideal para: Empresas em rápido crescimento</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal7')">Saiba mais</button>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">💰</div>
+                    <h3>Precificação Estratégica</h3>
+                    <p>Precificar para vencer SEM perder margem: análise de custos que garante lucratividade máxima</p>
+                    <div class="service-ideal">✓ Ideal para: Vencer com responsabilidade financeira</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal8')">Saiba mais</button>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏆</div>
+                    <h3>Propostas Vencedoras</h3>
+                    <p>Documentos técnicos e comerciais impecáveis: 100% alinhados ao edital e com poder de vencer</p>
+                    <div class="service-ideal">✓ Ideal para: Aprovação garantida e vitória</div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal9')">Saiba mais</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY SECTION -->
+    <section class="section section-alt" id="metodologia">
+        <div class="container">
+            <h2 class="section-title">Como trabalhamos: 5 etapas para sua vitória</h2>
+            
+            <div class="methodology-timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-number">1</div>
+                    <h4>Diagnóstico</h4>
+                    <p>Avaliamos sua situação atual, maturidade e potencial nas licitações</p>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-number">2</div>
+                    <h4>Mapeamento</h4>
+                    <p>Identificamos editais alinhados com seu perfil e capacidade técnica</p>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-number">3</div>
+                    <h4>Capacitação</h4>
+                    <p>Preparamos você e sua equipe para competir com segurança e conhecimento</p>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-number">4</div>
+                    <h4>Proposta</h4>
+                    <p>Montamos propostas técnicas e comerciais vencedoras</p>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-number">5</div>
+                    <h4>Acompanhamento</h4>
+                    <p>Seguimos com você nas disputas, ajustes e conquista de resultados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFFERENTIALS SECTION -->
+    <section class="section" id="diferenciais">
+        <div class="container">
+            <h2 class="section-title">Por Que Escolher a Alinhatta?</h2>
+            
+            <div class="differentials">
+                <div class="differential-block fade-in">
+                    <h3>🎯 Conformidade Garantida</h3>
+                    <p>✅ 100% alinhada com Lei 14.133/2021</p>
+                    <p>✅ Documentação sempre atualizada</p>
+                    <p>✅ Zero risco de desclassificação por burocracia</p>
+                </div>
+
+                <div class="differential-block fade-in">
+                    <h3>📊 Metodologia Proprietária</h3>
+                    <p>✅ Sistema de análise de editais testado</p>
+                    <p>✅ Identificação precisa de oportunidades reais</p>
+                    <p>✅ Maximiza chances de vitória com dados</p>
+                </div>
+
+                <div class="differential-block fade-in">
+                    <h3>👥 Acompanhamento Próximo</h3>
+                    <p>✅ Equipe dedicada apenas ao seu negócio</p>
+                    <p>✅ Suporte direto, sem espera ou transferências</p>
+                    <p>✅ Parceria real, não apenas transação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="section" id="contato">
+        <div class="container">
+            <div class="final-cta">
+                <h2>Pronto para começar a vencer licitações?</h2>
+                <p class="subtitle">Agende um diagnóstico gratuito ou fale conosco agora</p>
+
+                <form id="contactForm" class="final-cta-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Seu nome completo" required>
+                        <input type="email" placeholder="Seu melhor e-mail" required>
+                        <input type="tel" placeholder="Seu telefone (WhatsApp)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Conte-nos um pouco sobre sua empresa e objetivo..." required></textarea>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <button type="submit" class="btn btn-accent" style="flex-grow: 1; min-width: 180px;">Agendar Diagnóstico</button>
+                        <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank" style="flex-grow: 1; min-width: 180px; text-align: center;">📱 WhatsApp</a>
+                    </div>
+
+                    <p style="text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
+                        Email: <strong>consultoria@alinhatta.com</strong><br>
+                        Telefone: <strong>(21) 98650-5733</strong><br>
+                        Site: <strong>www.alinhatta.com</strong>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal1')">×</button>
+            <h2>Mapeamento de Oportunidades</h2>
+            <p>Este serviço especializado identifica e filtra os editais mais alinhados ao seu perfil de negócio, maximizando suas chances de vitória.</p>
+            <ul>
+                <li>Análise diária de portais governamentais</li>
+                <li>Filtro inteligente por segmento e região</li>
+                <li>Monitoramento contínuo de novas oportunidades</li>
+                <li>Alertas personalizados em tempo real</li>
+                <li>Relatório mensal de oportunidades</li>
+            </ul>
+            <p><strong>Investimento:</strong> A partir de R$ 2.000/mês</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal2')">×</button>
+            <h2>Consultoria Express</h2>
+            <p>Para decisões urgentes e análises rápidas de editais específicos com recomendações estratégicas imediatas.</p>
+            <ul>
+                <li>Sessão presencial ou remota de até 2 horas</li>
+                <li>Análise detalhada do edital</li>
+                <li>Avaliação de viabilidade técnica e financeira</li>
+                <li>Plano de ação prático e executável</li>
+                <li>Suporte pós-sessão de 30 dias</li>
+            </ul>
+            <p><strong>Investimento:</strong> R$ 1.500 a R$ 3.000 por sessão</p>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal3')">×</button>
+            <h2>Mentoria Individual</h2>
+            <p>Acompanhamento estratégico e contínuo para que você e sua equipe desenvolvam autonomia total em licitações.</p>
+            <ul>
+                <li>Sessões mensais de 4 horas</li>
+                <li>Capacitação em legislação de licitações</li>
+                <li>Análise de editais em tempo real</li>
+                <li>Desenvolvimento de processos internos</li>
+                <li>Acesso a templates e modelos prontos</li>
+                <li>Suporte via WhatsApp</li>
+            </ul>
+            <p><strong>Investimento:</strong> A partir de R$ 3.000/mês</p>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal4')">×</button>
+            <h2>Assessoria Completa</h2>
+            <p>Solução integral onde a Alinhatta assume a gestão total do seu setor de licitações, do mapeamento à vitória.</p>
+            <ul>
+                <li>Gestão completa de licitações</li>
+                <li>Mapeamento contínuo de oportunidades</li>
+                <li>Preparação de toda documentação</li>
+                <li>Elaboração de propostas técnicas e comerciais</li>
+                <li>Gestão de recursos e reclamações</li>
+                <li>Relatórios mensais de resultados</li>
+                <li>Equipe dedicada exclusiva</li>
+            </ul>
+            <p><strong>Investimento:</strong> Customizado conforme volume (a partir de R$ 8.000/mês)</p>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal5')">×</button>
+            <h2>Gestão Documental</h2>
+            <p>Mantém toda sua documentação de habilitação organizada, atualizada e pronta para qualquer edital.</p>
+            <ul>
+                <li>Organização de acervo documental</li>
+                <li>Atualização contínua de certificações</li>
+                <li>Regularização fiscal e jurídica</li>
+                <li>Monitoramento de validades</li>
+                <li>Alertas de renovação</li>
+                <li>Relatórios de conformidade</li>
+            </ul>
+            <p><strong>Investimento:</strong> A partir de R$ 1.500/mês</p>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal6')">×</button>
+            <h2>Treinamentos Empresariais</h2>
+            <p>Capacitação prática e direcionada para suas equipes comerciais e administrativas.</p>
+            <ul>
+                <li>Fundamentos de licitações públicas</li>
+                <li>Lei 14.133/2021 em detalhes</li>
+                <li>Estratégias de pregão eletrônico</li>
+                <li>Elaboração de propostas vencedoras</li>
+                <li>Melhores práticas do mercado</li>
+                <li>Módulo customizado por segmento</li>
+            </ul>
+            <p><strong>Investimento:</strong> R$ 2.000 a R$ 5.000 (in-company)</p>
+        </div>
+    </div>
+
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal7')">×</button>
+            <h2>Automação & Tech-as-a-Service</h2>
+            <p>Tecnologia de ponta para automatizar sua gestão de licitações e ganhar escalabilidade.</p>
+            <ul>
+                <li>Monitoramento automatizado de editais</li>
+                <li>Sistema de alertas inteligentes</li>
+                <li>CRM integrado para licitações</li>
+                <li>Dashboard com KPIs em tempo real</li>
+                <li>Integração com portais governamentais</li>
+                <li>Relatórios automáticos semanais</li>
+            </ul>
+            <p><strong>Investimento:</strong> A partir de R$ 2.000/mês</p>
+        </div>
+    </div>
+
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal8')">×</button>
+            <h2>Precificação e Análise de Custos</h2>
+            <p>Estratégia de precificação competitiva que preserva sua margem de lucro nas licitações.</p>
+            <ul>
+                <li>Análise detalhada de custos</li>
+                <li>Benchmarking com concorrentes</li>
+                <li>Margem de lucro otimizada</li>
+                <li>Simulação de cenários</li>
+                <li>Consultoria em formação de preço</li>
+                <li>Documentação para habilitação</li>
+            </ul>
+            <p><strong>Investimento:</strong> A partir de R$ 2.500</p>
+        </div>
+    </div>
+
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal9')">×</button>
+            <h2>Elaboração de Propostas</h2>
+            <p>Propostas técnicas e comerciais impecáveis que se destacam e vencem editais.</p>
+            <ul>
+                <li>Análise minuciosa do edital</li>
+                <li>Redação técnica profissional</li>
+                <li>Documentação comercial assertiva</li>
+                <li>Revisão jurídica completa</li>
+                <li>Formatação conforme exigências</li>
+                <li>Acompanhamento até submissão</li>
+            </ul>
+            <p><strong>Investimento:</strong> A partir de R$ 3.000 por edital</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-section">
+                <h4>ALINHATTA</h4>
+                <p>Sua bússola no mercado governamental</p>
+                <p>Consultoria especializada em licitações públicas</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <a href="#diagnostico">Diagnóstico</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#metodologia">Metodologia</a>
+                <a href="#diferenciais">Diferenciais</a>
+                <a href="#contato">Contato</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>📧 consultoria@alinhatta.com</p>
+                <p>📱 (21) 98650-5733</p>
+                <p>🌐 www.alinhatta.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024/2025 Alinhatta - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="whatsapp-float" target="_blank" title="Falar com Alinhatta no WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.99 1.513 9.866 9.866 0 001.477 19.05 9.867 9.867 0 009.49-7.56 9.87 9.87 0 00-5.973-13.003z" fill="white"/>
+        </svg>
+    </a>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerHeight = 70;
+                        const targetPosition = target.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = Array.from(entry.target.parentElement.children).indexOf(entry.target) * 100;
+                    entry.target.style.animationDelay = delay + 'ms';
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on background click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const name = form.querySelector('input[type="text"]').value;
+            const email = form.querySelector('input[type="email"]').value;
+            const phone = form.querySelector('input[type="tel"]').value;
+            const message = form.querySelector('textarea').value;
+
+            // Create WhatsApp message with form data
+            const whatsappMessage = `Olá Alinhatta!%0A%0AFiz uma solicitação de diagnóstico:%0A%0ANome: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ATelefone: ${encodeURIComponent(phone)}%0A%0AMensagem:%0A${encodeURIComponent(message)}`;
+
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/5521986505733?text=${whatsappMessage}`, '_blank');
+
+            // Reset form
+            form.reset();
+        }
+
+        // Prevent form submission reload
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleSubmit(e);
+        });
+    </script>
+</body>
+</html>
