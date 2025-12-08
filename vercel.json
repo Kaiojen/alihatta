@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": "alinhatta-site",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ]
+}
+
