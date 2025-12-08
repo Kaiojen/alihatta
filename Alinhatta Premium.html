@@ -1,8 +1,28 @@
 <!DOCTYPE html>
+<!--
+    ========================================
+    ALINHATTA - CONSULTORIA EM LICITAÇÕES
+    Site One-Page Profissional
+    
+    ESTRUTURA DO ARQUIVO:
+    1. HEAD - Meta tags, fonts, CSS
+    2. BODY - HTML semântico organizado por seções
+    3. SCRIPT - JavaScript organizado por funcionalidades
+    
+    ORGANIZAÇÃO:
+    - CSS: Variáveis → Reset → Componentes → Responsive
+    - HTML: Header → Hero → Sections → Modals → Footer
+    - JS: Navegação → Menu → Animações → WhatsApp → Forms
+    
+    ========================================
+-->
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>ALINHATTA - Consultoria em Licitações | Vença Editais Públicos</title>
     <meta name="description" content="Consultoria especializada em licitações. Transformamos empresas comuns em competidoras vitoriosas em editais públicos. +4 anos de experiência.">
     
@@ -11,6 +31,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* ========================================
+           VARIÁVEIS CSS - DESIGN SYSTEM
+           ======================================== */
         :root {
             --primary: #1a7b60;
             --primary-dark: #155a45;
@@ -48,6 +71,9 @@
             --transition: 0.3s ease-in-out;
         }
 
+        /* ========================================
+           RESET & BASE STYLES
+           ======================================== */
         * {
             margin: 0;
             padding: 0;
@@ -66,23 +92,24 @@
             overflow-x: hidden;
         }
 
-        /* ===== HEADER & NAVIGATION ===== */
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            position: relative;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(26, 123, 96, 0.3);
             padding: 1rem 0;
             transition: all var(--transition);
+            z-index: 1000;
         }
-
-        header.scrolled {
-            box-shadow: var(--shadow-md);
-            padding: 0.75rem 0;
+        
+        @media (max-width: 768px) {
+            header {
+                position: relative;
+                z-index: 9999;
+            }
         }
 
         nav.container {
@@ -119,7 +146,7 @@
         }
 
         nav.links a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
@@ -159,18 +186,20 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            z-index: 10000;
+            position: relative;
         }
 
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: var(--primary);
+            background: var(--white);
             border-radius: 2px;
             transition: all var(--transition);
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+            transform: rotate(45deg) translate(5px, 5px);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -178,10 +207,21 @@
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger.active {
+                position: fixed;
+                top: 1.25rem;
+                right: 1.25rem;
+                z-index: 10001;
+            }
         }
 
-        /* ===== BUTTONS ===== */
+        /* ========================================
+           BUTTONS & CTAs
+           ======================================== */
         .btn {
             padding: 0.75rem 1.75rem;
             border: none;
@@ -196,7 +236,8 @@
             justify-content: center;
             gap: 0.5rem;
             font-family: var(--font-body);
-            min-height: 44px;
+            min-height: 50px;
+            min-width: 120px;
         }
 
         .btn-primary {
@@ -256,9 +297,10 @@
             min-height: 40px;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ========================================
+           HERO SECTION
+           ======================================== */
         .hero {
-            margin-top: 70px;
             min-height: 100vh;
             background: linear-gradient(135deg, rgba(26, 123, 96, 0.15) 0%, rgba(18, 163, 122, 0.12) 50%, rgba(10, 10, 10, 0.95) 100%);
             display: flex;
@@ -268,28 +310,36 @@
             overflow: hidden;
         }
 
+        .hero {
+            --scroll-y: 0px;
+        }
+
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
+            top: calc(-50% + var(--scroll-y) * 0.3);
             right: -20%;
             width: 700px;
             height: 700px;
             background: radial-gradient(circle, rgba(26, 123, 96, 0.12) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            will-change: transform;
+            transition: transform 0.1s ease-out;
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -30%;
+            bottom: calc(-30% - var(--scroll-y) * 0.2);
             left: -10%;
             width: 600px;
             height: 600px;
             background: radial-gradient(circle, rgba(244, 210, 152, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            will-change: transform;
+            transition: transform 0.1s ease-out;
         }
 
         .hero-content {
@@ -304,9 +354,13 @@
             font-weight: 900;
             color: var(--white);
             margin-bottom: 1.75rem;
-            line-height: 1.2;
+            line-height: 1.3;
             font-family: var(--font-heading);
             letter-spacing: -1.5px;
+            word-break: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
         }
 
         .hero .subtitle {
@@ -314,9 +368,12 @@
             color: var(--accent);
             margin-bottom: 1.75rem;
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.5;
             font-family: var(--font-body);
             max-width: 900px;
+            word-break: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         .hero p {
@@ -325,6 +382,7 @@
             margin-bottom: 3.5rem;
             line-height: 1.8;
             max-width: 900px;
+            word-break: break-word;
         }
 
         .hero-ctas {
@@ -366,7 +424,9 @@
             color: var(--text-light);
         }
 
-        /* ===== CONTAINER & GRID ===== */
+        /* ========================================
+           CONTAINER & GRID SYSTEM
+           ======================================== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -390,6 +450,20 @@
             font-family: var(--font-heading);
             letter-spacing: -0.8px;
             position: relative;
+            word-break: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            line-height: 1.3;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                margin-bottom: 3rem;
+            }
+            
+            #diagnostico .section-title {
+                margin-bottom: 3rem;
+            }
         }
 
         .section-title::after {
@@ -408,6 +482,12 @@
             display: grid;
             gap: var(--gap);
             grid-auto-flow: row;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                gap: 1.75rem;
+            }
         }
 
         .grid-2 {
@@ -436,7 +516,9 @@
             }
         }
 
-        /* ===== DIAGNOSIS SECTION ===== */
+        /* ========================================
+           DIAGNOSIS SECTION
+           ======================================== */
         .diagnosis-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -453,6 +535,14 @@
             box-shadow: 0 6px 20px rgba(26, 123, 96, 0.2);
             text-align: center;
             position: relative;
+            padding-bottom: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .diagnosis-card {
+                padding: 1.75rem;
+                padding-bottom: 90px;
+            }
         }
 
         .diagnosis-card::before {
@@ -484,7 +574,19 @@
             color: var(--accent);
             margin-bottom: 1.5rem;
             font-family: var(--font-heading);
-            font-weight: 900;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .diagnosis-card h3 {
+                margin-top: 0.5rem;
+            }
+            
+            .diagnosis-card > div:first-child {
+                margin-bottom: 1.25rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid rgba(244, 210, 152, 0.2);
+            }
         }
 
         .diagnosis-card .level {
@@ -502,20 +604,36 @@
             border-radius: 6px;
             border-left: 3px solid var(--primary);
             color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        
+        .diagnosis-card .level-item:last-child {
+            margin-bottom: 0;
         }
 
-        /* ===== SERVICE CARDS ===== */
+        /* ========================================
+           SERVICE CARDS
+           ======================================== */
         .service-card {
             background: var(--bg-secondary);
             border: 2px solid var(--accent);
             border-radius: 20px;
             padding: 2.75rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             box-shadow: 0 4px 12px rgba(26, 123, 96, 0.2);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            min-width: 0;
+            min-height: 320px;
+        }
+
+        .service-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .service-card::before {
@@ -531,8 +649,8 @@
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 40px rgba(26, 123, 96, 0.3);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(26, 123, 96, 0.35);
             border-color: var(--secondary);
         }
 
@@ -566,6 +684,10 @@
             margin-bottom: 0.75rem;
             font-family: var(--font-heading);
             font-weight: 900;
+            word-break: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            line-height: 1.3;
         }
 
         .service-card p {
@@ -573,6 +695,15 @@
             color: var(--text-light);
             margin-bottom: 1rem;
             flex-grow: 1;
+            line-height: 1.7;
+            word-break: break-word;
+            max-width: 95%;
+        }
+        
+        @media (max-width: 768px) {
+            .service-card p {
+                line-height: 1.8;
+            }
         }
 
         .service-ideal {
@@ -589,7 +720,9 @@
             align-self: flex-start;
         }
 
-        /* ===== METHODOLOGY TIMELINE ===== */
+        /* ========================================
+           METHODOLOGY TIMELINE
+           ======================================== */
         .methodology-timeline {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -674,6 +807,21 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 6px 20px rgba(26, 123, 96, 0.25);
         }
+        
+        @media (max-width: 768px) {
+            .differential-block {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            
+            .differential-block > div:first-child {
+                margin-bottom: 1.25rem;
+            }
+            
+            .differential-block h3 {
+                margin-top: 0.5rem;
+            }
+        }
 
         .differential-block:hover {
             transform: translateY(-12px);
@@ -704,7 +852,9 @@
             font-weight: 700;
         }
 
-        /* ===== FINAL CTA SECTION ===== */
+        /* ========================================
+           FINAL CTA SECTION & FORM
+           ======================================== */
         .final-cta {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
@@ -717,6 +867,12 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .final-cta {
+                padding: 2.5rem 1.5rem;
+            }
         }
 
         .final-cta::before {
@@ -805,7 +961,9 @@
             min-width: 200px;
         }
 
-        /* ===== FLOATING WHATSAPP BUTTON ===== */
+        /* ========================================
+           FLOATING WHATSAPP BUTTON
+           ======================================== */
         .whatsapp-float {
             position: fixed;
             bottom: 2rem;
@@ -823,6 +981,22 @@
             z-index: 999;
             text-decoration: none;
             font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 48px;
+                height: 48px;
+                bottom: 16px;
+                right: 14px;
+                font-size: 1.25rem;
+                transform: scale(0.85);
+            }
+            
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
         }
 
         .whatsapp-float:hover {
@@ -852,6 +1026,7 @@
             align-items: center;
             justify-content: center;
             animation: fadeIn 0.3s ease-in-out;
+            padding: 1rem;
         }
 
         .modal-content {
@@ -865,6 +1040,9 @@
             position: relative;
             animation: slideUp 0.3s ease-out;
             border: 2px solid var(--primary);
+            margin: auto;
+            align-self: center;
+            justify-self: center;
         }
 
         .modal-close {
@@ -876,13 +1054,26 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-light);
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             transition: all var(--transition);
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-close {
+                top: 1.75rem;
+            }
+            
+            .modal-content h2 {
+                margin-top: 0.75rem;
+            }
         }
 
         .modal-close:hover {
@@ -902,6 +1093,23 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            word-break: break-word;
+        }
+
+        .modal-content ul {
+            line-height: 1.8;
+        }
+
+        .modal-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content li {
+                margin-bottom: 0.875rem;
+                padding-left: 1.75rem;
+            }
         }
 
         .modal-content ul {
@@ -924,7 +1132,9 @@
             font-weight: 700;
         }
 
-        /* ===== FOOTER ===== */
+        /* ========================================
+           FOOTER
+           ======================================== */
         footer {
             background: var(--bg-dark);
             color: var(--white);
@@ -1015,34 +1225,81 @@
             opacity: 0;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ========================================
+           RESPONSIVE DESIGN - MOBILE FIRST
+           ======================================== */
         @media (max-width: 768px) {
-            nav.links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+            :root {
+                --section-padding: clamp(2.5rem, 8vw, 4rem);
+                --card-padding: 1.75rem;
+                --gap: 1.25rem;
+            }
+
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            /* HEADER MOBILE */
+            header {
+                padding: 0.65rem 0;
+            }
+
+            nav.container {
+                padding: 0 1.25rem;
+                position: relative;
+                z-index: 10001;
+            }
+
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            nav.container > div:first-child span {
+                font-size: 1.25rem !important;
+            }
+
+            .nav-wrapper {
+                display: none;
             }
 
             .hamburger {
                 display: flex;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
+                align-items: center;
+                z-index: 10001;
+                position: relative;
             }
 
             nav.links {
-                position: absolute;
-                top: 70px;
+                position: fixed;
+                top: 0;
                 left: 0;
                 right: 0;
-                background: var(--bg-dark);
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
+                padding: 5rem 2rem 2rem;
+                gap: 0;
                 display: none;
-                box-shadow: var(--shadow-md);
-                border-bottom: 2px solid rgba(26, 123, 96, 0.3);
+                z-index: 10000;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
-            nav.links .btn {
-                width: 100%;
-                margin-top: 0.5rem;
+            nav.links::before {
+                content: 'Menu';
+                position: absolute;
+                top: 1.5rem;
+                left: 2rem;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--white);
+                font-family: var(--font-heading);
+                z-index: 10001;
             }
 
             nav.links.active {
@@ -1050,89 +1307,345 @@
             }
 
             nav.links a {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                position: relative;
+                z-index: 1;
             }
 
-            .nav-ctas {
-                flex-direction: column;
-                gap: 0.75rem;
+            nav.links .btn {
+                width: 100%;
+                margin-top: 1.5rem;
+                min-height: 50px;
+                font-size: 1rem;
+                padding: 1rem 2rem;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* HERO MOBILE */
+            .hero {
+                min-height: auto;
+                padding: 3rem 0 4rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+                margin-bottom: 1.25rem;
+                line-height: 1.3;
+            }
+
+            .hero .subtitle {
+                font-size: clamp(1.15rem, 4vw, 1.5rem);
+                margin-bottom: 1rem;
+                line-height: 1.4;
+            }
+
+            .hero p {
+                font-size: clamp(1rem, 3.5vw, 1.15rem);
+                margin-bottom: 2rem;
+                line-height: 1.7;
             }
 
             .hero-ctas {
                 flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 2rem;
             }
 
             .hero-ctas .btn {
                 width: 100%;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .cta-buttons .btn {
-                width: 100%;
-            }
-
-            .form-group {
-                grid-template-columns: 1fr;
+                min-height: 50px;
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
             }
 
             .social-proof {
                 flex-direction: column;
-                text-align: center;
+                text-align: left;
                 border-left: none;
                 border-top: 4px solid var(--secondary);
+                padding: 1.5rem;
+            }
+            
+            .social-proof strong {
+                padding-top: 0.5rem;
+                border-top: 1px solid rgba(18, 163, 122, 0.3);
+                margin-top: 0.5rem;
+            }
+
+            /* CARDS MOBILE */
+            .service-card {
+                padding: 1.75rem;
+                min-height: 280px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .service-card h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+                word-break: break-word;
+                line-height: 1.3;
+            }
+
+            .service-card p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+                margin-bottom: 1rem;
+                word-break: break-word;
+            }
+
+            .service-ideal {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-card .btn {
+                min-height: 50px;
+                width: 95%;
+                margin-top: 1rem;
+                font-size: 1rem;
+            }
+
+            .diagnosis-card {
+                padding: 1.75rem;
+            }
+
+            .diagnosis-card h3 {
+                font-size: 1.25rem;
             }
 
             .diagnosis-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .differentials {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
+
+            .differential-block {
+                padding: 1.75rem;
+            }
+
+            /* TIMELINE MOBILE */
+            .methodology-timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .timeline-item {
+                text-align: left;
+                padding-left: 4rem;
+                position: relative;
+            }
+            
+            .timeline-number {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin: 0;
+            }
+            
+            .timeline-item h4 {
+                margin-left: 0;
+                margin-top: 0;
+            }
+            
+            .timeline-item p {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            /* FORMULÁRIO MOBILE */
+            .form-group {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                min-height: 50px;
+                font-size: 16px; /* Previne zoom no iOS */
+                padding: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                min-height: 50px;
+                font-size: 1rem;
+            }
+
+            /* MODAL MOBILE */
+            .modal.active {
+                padding: 1rem;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-width: 95%;
+                max-height: 90vh;
+                padding: 1.5rem;
+                margin: 0 auto;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                align-self: center;
+                justify-self: center;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .modal-content ul {
+                padding-left: 1.25rem;
+            }
+
+            .modal-content li {
+                margin-bottom: 0.75rem;
+                font-size: 0.95rem;
+            }
+
+            /* WHATSAPP FLOAT MOBILE - Already handled above */
         }
 
         @media (max-width: 480px) {
             :root {
+                --section-padding: clamp(2rem, 6vw, 3rem);
                 --card-padding: 1.5rem;
                 --gap: 1rem;
             }
 
-            .whatsapp-float {
+            .container {
+                padding: 0 1rem;
+            }
+
+            nav.container {
+                padding: 0 1rem;
+            }
+
+            .logo-img {
                 width: 50px;
                 height: 50px;
-                bottom: 1.5rem;
-                right: 1.5rem;
-                font-size: 1.25rem;
+            }
+
+            nav.container > div:first-child span {
+                font-size: 1.1rem !important;
+            }
+
+            .hero {
+                padding: 2.5rem 0 3rem;
             }
 
             .hero h1 {
                 font-size: 1.75rem;
+                margin-bottom: 1rem;
             }
 
             .hero .subtitle {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
 
             .section-title {
                 font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+                padding-bottom: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .diagnosis-card,
+            .differential-block {
+                padding: 1.5rem;
+                padding-bottom: 1.75rem;
             }
 
             .btn {
-                padding: 0.65rem 1.25rem;
-                font-size: 0.9rem;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+                min-height: 44px;
             }
 
             .modal-content {
-                padding: 1.5rem;
+                padding: 1.25rem;
+                width: 98%;
+                max-width: 98%;
+            }
+
+            .whatsapp-float {
+                width: 44px;
+                height: 44px;
+                bottom: 16px;
+                right: 14px;
+                font-size: 1.1rem;
+                transform: scale(0.85);
+            }
+            
+            .whatsapp-float svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .social-proof {
+                padding: 1.25rem;
+            }
+        }
+
+        /* ========================================
+           TOUCH OPTIMIZATIONS
+           ======================================== */
+        @media (hover: none) and (pointer: coarse) {
+            .btn,
+            .service-card,
+            nav.links a {
+                -webkit-tap-highlight-color: rgba(26, 123, 96, 0.2);
+            }
+
+            .service-card:hover {
+                transform: none;
+            }
+
+            .service-card:active {
+                transform: scale(0.98);
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER & NAVIGATION -->
+    <!-- ========================================
+         HEADER & NAVIGATION
+         ======================================== -->
     <header id="header">
         <nav class="container">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -1161,7 +1674,9 @@
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
@@ -1176,7 +1691,7 @@
 
                 <div class="social-proof">
                     <div style="width: 100%;">
-                        <strong style="font-size: 1.4rem; margin-bottom: 0.75rem; display: block; color: var(--secondary);">+4 anos de experiência em licitações</strong>
+                        <strong style="font-size: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.75rem; display: block; color: var(--secondary); padding-top: 0.5rem; border-top: 1px solid rgba(18, 163, 122, 0.3);">+4 anos de experiência em licitações</strong>
                         <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-light);">Resultados consistentes: dezenas de contratos firmados e centenas de processos conduzidos com sucesso.</p>
                         <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                             <div style="flex: 1; min-width: 200px;">
@@ -1192,7 +1707,9 @@
         </div>
     </section>
 
-    <!-- DIAGNOSIS SECTION -->
+    <!-- ========================================
+         DIAGNOSIS SECTION
+         ======================================== -->
     <section class="section section-alt" id="diagnostico">
         <div class="container">
             <h2 class="section-title">O que identificamos na sua empresa</h2>
@@ -1203,7 +1720,7 @@
                         <span style="font-size: 1.5rem;">🟩</span>
                         <h3 style="margin: 0;">Nível de Maturidade</h3>
                     </div>
-                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6;">Avaliação do estágio atual da sua empresa no universo das licitações:</p>
+                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.7; max-width: 90%; margin-left: auto; margin-right: auto;">Avaliação do estágio atual da sua empresa no universo das licitações:</p>
                     <div class="level">
                         <div class="level-item"><strong>Nível 0:</strong> Não conhece licitações</div>
                         <div class="level-item"><strong>Nível 1:</strong> Conhece, mas nunca participou</div>
@@ -1211,7 +1728,7 @@
                         <div class="level-item"><strong>Nível 3:</strong> Ganha, mas sem consistência</div>
                         <div class="level-item"><strong>Nível 4:</strong> Operação madura, precisa otimizar</div>
                     </div>
-                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6;">(Podemos posicionar sua empresa com precisão e definir o caminho mais rápido para evolução.)</p>
+                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6; padding-bottom: 0.5rem;">(Podemos posicionar sua empresa com precisão e definir o caminho mais rápido para evolução.)</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
@@ -1219,7 +1736,7 @@
                         <span style="font-size: 1.5rem;">🟩</span>
                         <h3 style="margin: 0;">Principais Lacunas</h3>
                     </div>
-                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6;">Pontos críticos que frequentemente limitam o desempenho:</p>
+                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.7; max-width: 90%; margin-left: auto; margin-right: auto;">Pontos críticos que frequentemente limitam o desempenho:</p>
                     <div class="level">
                         <div class="level-item">Documentação incompleta ou desatualizada</div>
                         <div class="level-item">Falta de monitoramento qualificado de editais</div>
@@ -1228,7 +1745,7 @@
                         <div class="level-item">Equipe despreparada</div>
                         <div class="level-item">Ausência de processos internos estruturados</div>
                     </div>
-                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6;">(Identificar essas lacunas é o primeiro passo para transformar desempenho em resultado real.)</p>
+                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6; padding-bottom: 0.5rem;">(Identificar essas lacunas é o primeiro passo para transformar desempenho em resultado real.)</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
@@ -1236,9 +1753,9 @@
                         <span style="font-size: 1.5rem;">🟩</span>
                         <h3 style="margin: 0;">Potencial Financeiro</h3>
                     </div>
-                    <p style="margin-bottom: 1rem; color: var(--secondary); font-weight: 900; font-size: 1.5rem; text-align: center;">Oportunidades Perdidas</p>
+                    <p style="margin-bottom: 1.5rem; color: var(--accent); font-weight: 900; font-size: 1.5rem; text-align: center;">Oportunidades Perdidas</p>
                     <p style="color: var(--text-light); font-weight: 600; text-align: center; line-height: 1.7; margin-bottom: 1.25rem;">Estimamos que sua empresa pode estar deixando de disputar R$ XXX mil/ano em editais totalmente aderentes ao seu segmento.</p>
-                    <p style="color: var(--accent); font-size: 0.9rem; font-style: italic; line-height: 1.6; text-align: center;">(Mapeamos onde está o dinheiro e como sua empresa pode alcançá-lo.)</p>
+                    <p style="color: var(--accent); font-size: 0.9rem; font-style: italic; line-height: 1.6; text-align: center; padding-bottom: 0.5rem;">(Mapeamos onde está o dinheiro e como sua empresa pode alcançá-lo.)</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
@@ -1246,7 +1763,7 @@
                         <span style="font-size: 1.5rem;">🟩</span>
                         <h3 style="margin: 0;">Nível de Urgência</h3>
                     </div>
-                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6;">Determinação da prioridade estratégica:</p>
+                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.7; max-width: 90%; margin-left: auto; margin-right: auto;">Determinação da prioridade estratégica:</p>
                     <div class="level">
                         <div class="level-item" style="background: linear-gradient(90deg, rgba(18, 163, 122, 0.25) 0%, transparent 100%); border-left-color: var(--success);">
                             <strong style="color: var(--success);">Baixa:</strong> Cenário estável — planejamento estratégico recomendado
@@ -1258,13 +1775,15 @@
                             <strong style="color: var(--error);">Alta:</strong> Ações imediatas necessárias para evitar perdas
                         </div>
                     </div>
-                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6;">(Essa classificação orienta o tipo de intervenção mais eficiente.)</p>
+                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6; padding-bottom: 0.5rem;">(Essa classificação orienta o tipo de intervenção mais eficiente.)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- ========================================
+         SERVICES SECTION
+         ======================================== -->
     <section class="section" id="servicos">
         <div class="container">
             <h2 class="section-title">Como podemos ajudar você a vencer</h2>
@@ -1278,9 +1797,12 @@
                         </svg>
                     </div>
                     <h3>Mapeamento de Oportunidades</h3>
-                    <p>Buscamos diariamente os editais certos para seu perfil, filtrando por segmento, região e potencial de vitória</p>
-                    <div class="service-ideal">✓ Ideal para: Empresas iniciantes em licitações</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal1')">Saiba mais</button>
+                    <p>Descobrimos diariamente os editais ideais para o seu perfil, filtrando por segmento, região, requisitos técnicos e potencial real de vitória.</p>
+                    <div class="service-ideal">✓ Ideal para: Empresas iniciantes ou pouco estruturadas em licitações</div>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.500/mês</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal1')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 2: Consultoria Express -->
@@ -1291,9 +1813,12 @@
                         </svg>
                     </div>
                     <h3>Consultoria Express</h3>
-                    <p>Sessão rápida e estratégica (até 2h) para analisar edital específico, avaliar viabilidade e definir plano de ação</p>
-                    <div class="service-ideal">✓ Ideal para: Decisões urgentes</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal2')">Saiba mais</button>
+                    <p>Análise rápida e estratégica (até 2h) para avaliar um edital específico, identificar riscos, definir estratégia e orientar próximos passos.</p>
+                    <div class="service-ideal">✓ Ideal para: Decisões urgentes e oportunidades pontuais</div>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: R$ 1.500 a R$ 2.500 por sessão</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal2')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 3: Mentoria Individual -->
@@ -1304,9 +1829,12 @@
                         </svg>
                     </div>
                     <h3>Mentoria Individual</h3>
-                    <p>Acompanhamento contínuo para capacitar você e seu analista a dominar licitações com autonomia</p>
+                    <p>Acompanhamento contínuo para capacitar você ou seu analista a dominar licitações com autonomia total.</p>
                     <div class="service-ideal">✓ Ideal para: Empresários e analistas em desenvolvimento</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal3')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.500/mês + 2% de comissão</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal3')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 4: Assessoria Completa -->
@@ -1317,9 +1845,12 @@
                         </svg>
                     </div>
                     <h3>Assessoria Completa</h3>
-                    <p>A Alinhatta assume todo o setor de licitações: mapeamento, documentação, propostas, disputa e recursos</p>
+                    <p>Solução integral onde a Alinhatta assume todo o seu setor de licitações, do mapeamento à vitória.</p>
                     <div class="service-ideal">✓ Ideal para: Empresas sem equipe dedicada</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal4')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: Planos a partir de R$ 3.000/mês + performance</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal4')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 5: Gestão Documental -->
@@ -1330,9 +1861,12 @@
                         </svg>
                     </div>
                     <h3>Gestão Documental</h3>
-                    <p>Mantemos toda documentação de habilitação organizada, atualizada e monitorada</p>
+                    <p>Mantemos toda sua documentação de habilitação organizada, atualizada e pronta para qualquer edital.</p>
                     <div class="service-ideal">✓ Ideal para: Quem perde oportunidades por burocracia</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal5')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 1.500/mês</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal5')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 6: Treinamentos Empresariais -->
@@ -1343,9 +1877,12 @@
                         </svg>
                     </div>
                     <h3>Treinamentos Empresariais</h3>
-                    <p>Treinamento in-company em licitações, Lei 14.133/2021, estratégias de pregão e melhores práticas</p>
+                    <p>Capacitação prática e direcionada para equipes comerciais e administrativas.</p>
                     <div class="service-ideal">✓ Ideal para: Capacitação de equipes comerciais</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal6')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: R$ 3.000 a R$ 5.000 (in-company)</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal6')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 7: Automação / Tech-as-a-Service -->
@@ -1355,10 +1892,13 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
                         </svg>
                     </div>
-                    <h3>Automação / Tech-as-a-Service</h3>
-                    <p>Implementamos ferramentas para automatizar monitoramento de editais, prazos e processos internos</p>
+                    <h3>Automação & Tech-as-a-Service</h3>
+                    <p>Tecnologia para escalar sua operação e eliminar tarefas manuais.</p>
                     <div class="service-ideal">✓ Ideal para: Alto volume de participações</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal7')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.000/mês</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal7')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 8: Precificação e Análise de Custos -->
@@ -1369,9 +1909,12 @@
                         </svg>
                     </div>
                     <h3>Precificação e Análise de Custos</h3>
-                    <p>Garantimos que seu preço seja competitivo sem destruir sua margem de lucro</p>
+                    <p>Garantimos uma formação de preço competitiva sem comprometer sua margem.</p>
                     <div class="service-ideal">✓ Ideal para: Garantir lucratividade nos contratos</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal8')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.500</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal8')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
 
                 <!-- Card 9: Elaboração de Propostas -->
@@ -1382,15 +1925,20 @@
                         </svg>
                     </div>
                     <h3>Elaboração de Propostas</h3>
-                    <p>Criamos propostas técnicas e comerciais claras, completas e alinhadas 100% ao edital</p>
+                    <p>Propostas técnicas e comerciais impecáveis, claras, completas e vencedoras.</p>
                     <div class="service-ideal">✓ Ideal para: Padrão de excelência em documentação</div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal9')">Saiba mais</button>
+                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 3.000 por edital</strong>
+                    </div>
+                    <button class="btn btn-sm btn-accent" onclick="openModal('modal9')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- METHODOLOGY SECTION -->
+    <!-- ========================================
+         METHODOLOGY SECTION
+         ======================================== -->
     <section class="section section-alt" id="metodologia">
         <div class="container">
             <h2 class="section-title">Como trabalhamos: 5 etapas para sua vitória</h2>
@@ -1429,7 +1977,9 @@
         </div>
     </section>
 
-    <!-- DIFFERENTIALS SECTION -->
+    <!-- ========================================
+         DIFFERENTIALS SECTION
+         ======================================== -->
     <section class="section" id="diferenciais">
         <div class="container">
             <h2 class="section-title">Por que escolher a Alinhatta?</h2>
@@ -1472,7 +2022,7 @@
                     <h3>Desburocratização Total</h3>
                     <p><strong style="color: var(--primary); font-size: 1.1rem;">Simplificamos cada etapa</strong></p>
                     <p>Você foca em vender, nós cuidamos do resto</p>
-                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary);">
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary); text-align: center;">
                         <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Maximizamos sua chance de vitória com dados e estratégia</p>
                     </div>
                 </div>
@@ -1480,7 +2030,9 @@
         </div>
     </section>
 
-    <!-- FINAL CTA SECTION -->
+    <!-- ========================================
+         FINAL CTA SECTION & CONTACT FORM
+         ======================================== -->
     <section class="section" id="contato">
         <div class="container">
             <div class="final-cta">
@@ -1512,22 +2064,25 @@
         </div>
     </section>
 
-    <!-- MODALS -->
+    <!-- ========================================
+         MODALS - SERVICE DETAILS
+         ======================================== -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal1')">×</button>
-            <h2>Mapeamento de Oportunidades</h2>
-            <p>Buscamos diariamente os editais certos para seu perfil, filtrando por segmento, região e potencial de vitória.</p>
+            <h2>📍 Mapeamento de Oportunidades</h2>
+            <p>Descobrimos diariamente os editais ideais para o seu perfil, filtrando por segmento, região, requisitos técnicos e potencial real de vitória.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Análise diária de portais governamentais</li>
-                <li>Filtro inteligente por segmento e região</li>
-                <li>Monitoramento contínuo de novas oportunidades</li>
-                <li>Alertas personalizados em tempo real</li>
-                <li>Relatório mensal de oportunidades</li>
-                <li>Análise de viabilidade e potencial de vitória</li>
+                <li>✔ Análise diária dos principais portais governamentais</li>
+                <li>✔ Filtro inteligente por segmento e região</li>
+                <li>✔ Monitoramento contínuo de novas oportunidades</li>
+                <li>✔ Alertas personalizados em tempo real</li>
+                <li>✔ Relatório mensal de oportunidades mapeadas</li>
+                <li>✔ Análise de viabilidade e potencial competitivo</li>
             </ul>
-            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Empresas iniciantes em licitações</p>
-            <p><strong>Investimento:</strong> A partir de R$ 2.000/mês</p>
+            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Empresas iniciantes ou pouco estruturadas em licitações</p>
+            <p><strong>Investimento:</strong> A partir de R$ 2.500/mês</p>
             <div style="margin-top: 1.5rem;">
                 <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Mapeamento%20de%20Oportunidades." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
             </div>
@@ -1537,18 +2092,20 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal2')">×</button>
-            <h2>Consultoria Express</h2>
-            <p>Sessão rápida e estratégica (até 2h) para analisar edital específico, avaliar viabilidade e definir plano de ação.</p>
+            <h2>▶ Consultoria Express</h2>
+            <p>Análise rápida e estratégica (até 2h) para avaliar um edital específico, identificar riscos, definir estratégia e orientar próximos passos.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Sessão presencial ou remota de até 2 horas</li>
-                <li>Análise detalhada do edital</li>
-                <li>Avaliação de viabilidade técnica e financeira</li>
-                <li>Plano de ação prático e executável</li>
-                <li>Suporte pós-sessão de 30 dias</li>
-                <li>Recomendações estratégicas imediatas</li>
+                <li>✔ Sessão presencial ou remota de até 2 horas</li>
+                <li>✔ Leitura e análise detalhada do edital</li>
+                <li>✔ Avaliação de viabilidade técnica, documental e financeira</li>
+                <li>✔ Plano de ação prático e executável</li>
+                <li>✔ Suporte pós-sessão por 30 dias</li>
+                <li>✔ Recomendações estratégicas imediatas</li>
             </ul>
-            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Decisões urgentes</p>
-            <p><strong>Investimento:</strong> R$ 1.500 a R$ 3.000 por sessão</p>
+            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Decisões urgentes e oportunidades pontuais</p>
+            <p><strong>Investimento:</strong> R$ 1.500 a R$ 2.500 por sessão</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Simples: R$ 1.500 | Moderado: R$ 2.000 | Complexo: R$ 2.500</p>
             <div style="margin-top: 1.5rem;">
                 <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Consultoria%20Express." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
             </div>
@@ -1558,19 +2115,21 @@
     <div id="modal3" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal3')">×</button>
-            <h2>Mentoria Individual</h2>
-            <p>Acompanhamento contínuo para capacitar você e seu analista a dominar licitações com autonomia.</p>
+            <h2>👤 Mentoria Individual</h2>
+            <p>Acompanhamento contínuo para capacitar você ou seu analista a dominar licitações com autonomia total.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Sessões mensais de 4 horas</li>
-                <li>Capacitação em legislação de licitações</li>
-                <li>Análise de editais em tempo real</li>
-                <li>Desenvolvimento de processos internos</li>
-                <li>Acesso a templates e modelos prontos</li>
-                <li>Suporte via WhatsApp</li>
-                <li>Desenvolvimento de autonomia total</li>
+                <li>✔ Sessões mensais de 4 horas</li>
+                <li>✔ Capacitação em legislação e estratégia de licitações</li>
+                <li>✔ Análise de editais em tempo real</li>
+                <li>✔ Desenvolvimento de processos internos</li>
+                <li>✔ Acesso a templates e modelos profissionais</li>
+                <li>✔ Suporte via WhatsApp</li>
+                <li>✔ Construção de autonomia estratégica</li>
             </ul>
             <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Empresários e analistas em desenvolvimento</p>
-            <p><strong>Investimento:</strong> A partir de R$ 3.000/mês</p>
+            <p><strong>Investimento:</strong> A partir de R$ 2.500/mês</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">+ 2% de comissão sobre contratos homologados</p>
             <div style="margin-top: 1.5rem;">
                 <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Mentoria%20Individual." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
             </div>
@@ -1580,107 +2139,121 @@
     <div id="modal4" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal4')">×</button>
-            <h2>Assessoria Completa</h2>
-            <p>Solução integral onde a Alinhatta assume a gestão total do seu setor de licitações, do mapeamento à vitória.</p>
+            <h2>🏛 Assessoria Completa</h2>
+            <p>Solução integral onde a Alinhatta assume todo o seu setor de licitações, do mapeamento à vitória.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Gestão completa de licitações</li>
-                <li>Mapeamento contínuo de oportunidades</li>
-                <li>Preparação de toda documentação</li>
-                <li>Elaboração de propostas técnicas e comerciais</li>
-                <li>Gestão de recursos e reclamações</li>
-                <li>Relatórios mensais de resultados</li>
-                <li>Equipe dedicada exclusiva</li>
+                <li>✔ Gestão completa das licitações</li>
+                <li>✔ Mapeamento contínuo de oportunidades</li>
+                <li>✔ Preparação de toda documentação de habilitação</li>
+                <li>✔ Elaboração de propostas técnicas e comerciais</li>
+                <li>✔ Gestão de recursos, manifestações e esclarecimentos</li>
+                <li>✔ Relatórios mensais de resultados</li>
+                <li>✔ Equipe dedicada exclusiva</li>
             </ul>
-            <p><strong>Investimento:</strong> Customizado conforme volume (a partir de R$ 8.000/mês)</p>
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> Planos a partir de R$ 3.000/mês + performance</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Plano Essencial: R$ 3.000/mês + 2% (até 5 licitações/mês)<br>
+            Plano Profissional: R$ 5.000/mês + 1,5% (até 15 licitações/mês)<br>
+            Plano Elite: R$ 7.000/mês + 1% (alto volume)</p>
         </div>
     </div>
 
     <div id="modal5" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal5')">×</button>
-            <h2>Gestão Documental</h2>
-            <p>Mantém toda sua documentação de habilitação organizada, atualizada e pronta para qualquer edital.</p>
+            <h2>📂 Gestão Documental</h2>
+            <p>Mantemos toda sua documentação de habilitação organizada, atualizada e pronta para qualquer edital.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Organização de acervo documental</li>
-                <li>Atualização contínua de certificações</li>
-                <li>Regularização fiscal e jurídica</li>
-                <li>Monitoramento de validades</li>
-                <li>Alertas de renovação</li>
-                <li>Relatórios de conformidade</li>
+                <li>✔ Organização completa do acervo documental</li>
+                <li>✔ Atualização contínua de certidões e registros</li>
+                <li>✔ Regularização fiscal e jurídica</li>
+                <li>✔ Monitoramento de validades</li>
+                <li>✔ Alertas automáticos de renovação</li>
+                <li>✔ Relatórios de conformidade</li>
             </ul>
-            <p><strong>Investimento:</strong> A partir de R$ 1.500/mês</p>
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> A partir de R$ 1.500/mês</p>
         </div>
     </div>
 
     <div id="modal6" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal6')">×</button>
-            <h2>Treinamentos Empresariais</h2>
-            <p>Capacitação prática e direcionada para suas equipes comerciais e administrativas.</p>
+            <h2>🎓 Treinamentos Empresariais</h2>
+            <p>Capacitação prática e direcionada para equipes comerciais e administrativas.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Fundamentos de licitações públicas</li>
-                <li>Lei 14.133/2021 em detalhes</li>
-                <li>Estratégias de pregão eletrônico</li>
-                <li>Elaboração de propostas vencedoras</li>
-                <li>Melhores práticas do mercado</li>
-                <li>Módulo customizado por segmento</li>
+                <li>✔ Fundamentos de licitações públicas</li>
+                <li>✔ Lei 14.133/2021 em profundidade</li>
+                <li>✔ Estratégias de pregão eletrônico</li>
+                <li>✔ Elaboração de propostas vencedoras</li>
+                <li>✔ Melhores práticas do mercado</li>
+                <li>✔ Módulo customizado por segmento</li>
             </ul>
-            <p><strong>Investimento:</strong> R$ 2.000 a R$ 5.000 (in-company)</p>
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> R$ 3.000 a R$ 5.000 por turma de até 15 pessoas (in-company)</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Para treinamentos individuais ou avançados, preços sob consulta.</p>
         </div>
     </div>
 
     <div id="modal7" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal7')">×</button>
-            <h2>Automação & Tech-as-a-Service</h2>
-            <p>Tecnologia de ponta para automatizar sua gestão de licitações e ganhar escalabilidade.</p>
+            <h2>⚙ Automação & Tech-as-a-Service</h2>
+            <p>Tecnologia para escalar sua operação e eliminar tarefas manuais.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Monitoramento automatizado de editais</li>
-                <li>Sistema de alertas inteligentes</li>
-                <li>CRM integrado para licitações</li>
-                <li>Dashboard com KPIs em tempo real</li>
-                <li>Integração com portais governamentais</li>
-                <li>Relatórios automáticos semanais</li>
+                <li>✔ Monitoramento automatizado de editais</li>
+                <li>✔ Sistema de alertas inteligentes</li>
+                <li>✔ CRM integrado para gestão de licitações</li>
+                <li>✔ Dashboard de KPIs em tempo real</li>
+                <li>✔ Integração com portais governamentais</li>
+                <li>✔ Relatórios automáticos semanais</li>
             </ul>
-            <p><strong>Investimento:</strong> A partir de R$ 2.000/mês</p>
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> A partir de R$ 2.000/mês</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Pacote Básico: R$ 2.000 | Intermediário: R$ 3.500 | Premium: R$ 5.000</p>
         </div>
     </div>
 
     <div id="modal8" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal8')">×</button>
-            <h2>Precificação e Análise de Custos</h2>
-            <p>Estratégia de precificação competitiva que preserva sua margem de lucro nas licitações.</p>
+            <h2>💰 Precificação e Análise de Custos</h2>
+            <p>Garantimos uma formação de preço competitiva sem comprometer sua margem.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Análise detalhada de custos</li>
-                <li>Benchmarking com concorrentes</li>
-                <li>Margem de lucro otimizada</li>
-                <li>Simulação de cenários</li>
-                <li>Consultoria em formação de preço</li>
-                <li>Documentação para habilitação</li>
+                <li>✔ Análise detalhada de custos diretos e indiretos</li>
+                <li>✔ Benchmarking com concorrentes</li>
+                <li>✔ Otimização da margem de lucro</li>
+                <li>✔ Simulação de cenários e riscos</li>
+                <li>✔ Consultoria completa em formação de preço</li>
+                <li>✔ Apoio documental conforme edital</li>
             </ul>
-            <p><strong>Investimento:</strong> A partir de R$ 2.500</p>
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> A partir de R$ 2.500 por análise</p>
         </div>
     </div>
 
     <div id="modal9" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal9')">×</button>
-            <h2>Elaboração de Propostas</h2>
-            <p>Propostas técnicas e comerciais impecáveis que se destacam e vencem editais.</p>
+            <h2>📝 Elaboração de Propostas</h2>
+            <p>Propostas técnicas e comerciais impecáveis, claras, completas e vencedoras.</p>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
-                <li>Análise minuciosa do edital</li>
-                <li>Redação técnica profissional</li>
-                <li>Documentação comercial assertiva</li>
-                <li>Revisão jurídica completa</li>
-                <li>Formatação conforme exigências</li>
-                <li>Acompanhamento até submissão</li>
+                <li>✔ Análise minuciosa do edital</li>
+                <li>✔ Redação técnica profissional</li>
+                <li>✔ Documentação comercial assertiva</li>
+                <li>✔ Revisão jurídica completa</li>
+                <li>✔ Formatação conforme exigências</li>
+                <li>✔ Acompanhamento até a submissão final</li>
             </ul>
-            <p><strong>Investimento:</strong> A partir de R$ 3.000 por edital</p>
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> A partir de R$ 3.000 por edital</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Simples: R$ 3.000 | Moderado: R$ 3.500 | Complexo: R$ 4.000–5.000</p>
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
     <footer>
         <div class="container">
             <div class="footer-section">
@@ -1711,7 +2284,9 @@
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
+    <!-- ========================================
+         FLOATING WHATSAPP BUTTON
+         ======================================== -->
     <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="whatsapp-float" target="_blank" title="Falar com Alinhatta no WhatsApp">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.99 1.513 9.866 9.866 0 001.477 19.05 9.867 9.867 0 009.49-7.56 9.87 9.87 0 00-5.973-13.003z" fill="white"/>
@@ -1719,16 +2294,33 @@
     </a>
 
     <script>
-        // Smooth scroll behavior
+        /* ========================================
+           MENU MOBILE - Declare variables first
+           ======================================== */
+        
+        // Mobile menu toggle - declare variables first
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        // Smooth scroll behavior with mobile optimization
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href !== '#') {
+                if (href !== '#' && href !== '') {
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
-                        const headerHeight = 70;
-                        const targetPosition = target.offsetTop - headerHeight;
+                        // Close mobile menu if open
+                        if (navLinks && navLinks.classList.contains('active')) {
+                            hamburger.classList.remove('active');
+                            navLinks.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                        
+                        // Calculate scroll position
+                        const targetPosition = target.offsetTop;
+                        
+                        // Smooth scroll
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
@@ -1738,51 +2330,108 @@
             });
         });
 
-        // Header scroll effect
-        const header = document.getElementById('header');
+        if (hamburger && navLinks) {
+            // Toggle menu on hamburger click
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                const isActive = navLinks.classList.contains('active');
+                
+                if (isActive) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else {
+                    hamburger.classList.add('active');
+                    navLinks.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            // Close menu when link clicked
+            navLinks.querySelectorAll('a, button').forEach(item => {
+                item.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Close menu when clicking outside (mobile only) - delayed to avoid conflicts
+            setTimeout(function() {
+                document.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        if (navLinks.classList.contains('active')) {
+                            const isClickInsideMenu = navLinks.contains(e.target);
+                            const isClickOnHamburger = hamburger.contains(e.target);
+                            
+                            if (!isClickInsideMenu && !isClickOnHamburger) {
+                                hamburger.classList.remove('active');
+                                navLinks.classList.remove('active');
+                                document.body.style.overflow = '';
+                            }
+                        }
+                    }
+                });
+            }, 100);
+
+            // Close menu on window resize if desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        /* ========================================
+           ANIMAÇÕES E EFEITOS
+           ======================================== */
+        
+        // Parallax effect for hero background elements
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero');
+                    if (hero && scrolled < window.innerHeight) {
+                        const speed = 0.3;
+                        const heroBefore = window.getComputedStyle(hero, '::before');
+                        hero.style.setProperty('--scroll-y', scrolled * speed + 'px');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
 
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when link clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Intersection Observer for fade-in animations
+        // Enhanced Intersection Observer for fade-in animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const delay = Array.from(entry.target.parentElement.children).indexOf(entry.target) * 100;
+                    const delay = Array.from(entry.target.parentElement.children).indexOf(entry.target) * 80;
                     entry.target.style.animationDelay = delay + 'ms';
+                    entry.target.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                     entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        document.querySelectorAll('.fade-in, .service-card, .diagnosis-card, .timeline-item, .differential-block').forEach(el => {
+            if (!el.classList.contains('fade-in')) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+            }
             observer.observe(el);
         });
 
@@ -1815,26 +2464,77 @@
             }
         });
 
+        /* ========================================
+           WHATSAPP INTEGRATION
+           ======================================== */
+        
+        // Function to open WhatsApp in native app
+        function openWhatsApp(message) {
+            const phone = '5521986505733';
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Detect if mobile device
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            
+            let whatsappUrl;
+            
+            if (isAndroid) {
+                // Android: Try intent first, fallback to web
+                whatsappUrl = `intent://send?phone=${phone}&text=${encodedMessage}#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end`;
+                // Fallback after 2 seconds
+                setTimeout(() => {
+                    window.location.href = `https://wa.me/${phone}?text=${encodedMessage}`;
+                }, 2000);
+            } else if (isIOS) {
+                // iOS: Use wa.me (opens in app if installed)
+                whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+            } else {
+                // Desktop: Use web version
+                whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+            }
+            
+            window.location.href = whatsappUrl;
+        }
+
+        /* ========================================
+           FORM HANDLING
+           ======================================== */
+        
         // Form submission handler
         function handleSubmit(event) {
             event.preventDefault();
 
             const form = event.target;
-            const formData = new FormData(form);
             const name = form.querySelector('input[type="text"]').value;
             const email = form.querySelector('input[type="email"]').value;
             const phone = form.querySelector('input[type="tel"]').value;
             const message = form.querySelector('textarea').value;
 
             // Create WhatsApp message with form data
-            const whatsappMessage = `Olá Alinhatta!%0A%0AFiz uma solicitação de diagnóstico:%0A%0ANome: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ATelefone: ${encodeURIComponent(phone)}%0A%0AMensagem:%0A${encodeURIComponent(message)}`;
+            const whatsappMessage = `Olá Alinhatta!\n\nFiz uma solicitação de diagnóstico:\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${phone}\n\nMensagem:\n${message}`;
 
             // Open WhatsApp with pre-filled message
-            window.open(`https://wa.me/5521986505733?text=${whatsappMessage}`, '_blank');
+            openWhatsApp(whatsappMessage);
 
             // Reset form
             form.reset();
         }
+
+        // Update all WhatsApp links to use native app
+        document.addEventListener('DOMContentLoaded', () => {
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+            whatsappLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const url = new URL(href);
+                    const message = url.searchParams.get('text') || '';
+                    openWhatsApp(decodeURIComponent(message));
+                });
+            });
+        });
 
         // Prevent form submission reload
         document.getElementById('contactForm').addEventListener('submit', function(e) {
