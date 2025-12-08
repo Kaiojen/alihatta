@@ -8,7 +8,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -25,6 +25,9 @@
             --success: #12a37a;
             --warning: #f4d298;
             --error: #EF4444;
+            --bg-dark: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-light: #e0e0e0;
             
             --font-heading: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', 'Inter', sans-serif;
@@ -57,8 +60,8 @@
 
         body {
             font-family: var(--font-body);
-            color: var(--neutral-dark);
-            background-color: var(--white);
+            color: var(--text-light);
+            background-color: var(--bg-dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -70,9 +73,9 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(26, 123, 96, 0.3);
             padding: 1rem 0;
             transition: all var(--transition);
         }
@@ -94,28 +97,29 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
             text-decoration: none;
-            font-family: var(--font-heading);
-            letter-spacing: -0.5px;
         }
 
         .logo-img {
-            width: 40px;
-            height: 40px;
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
         }
 
         nav.links {
             display: flex;
             gap: 3rem;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav.links .btn {
+            margin: 0;
+            padding: 0.5rem 1.5rem;
         }
 
         nav.links a {
-            color: var(--neutral-dark);
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
@@ -142,6 +146,12 @@
             display: flex;
             gap: 1rem;
             align-items: center;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .hamburger {
@@ -190,19 +200,20 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             color: var(--white);
-            box-shadow: 0 8px 20px rgba(26, 123, 96, 0.3);
+            box-shadow: 0 8px 20px rgba(18, 163, 122, 0.4);
             padding: 1rem 2.25rem;
             font-size: 1rem;
             letter-spacing: 0.3px;
             min-height: 56px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(26, 123, 96, 0.4);
+            box-shadow: 0 12px 28px rgba(18, 163, 122, 0.5);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
 
         .btn-primary:active {
@@ -225,16 +236,18 @@
 
         .btn-accent {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-            color: var(--neutral-dark);
-            box-shadow: 0 8px 20px rgba(244, 210, 152, 0.3);
-            font-weight: 800;
+            color: var(--bg-dark);
+            box-shadow: 0 8px 20px rgba(244, 210, 152, 0.4);
+            font-weight: 900;
             letter-spacing: 0.3px;
+            border: 2px solid transparent;
         }
 
         .btn-accent:hover {
             background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-dark) 100%);
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(244, 210, 152, 0.4);
+            box-shadow: 0 12px 28px rgba(244, 210, 152, 0.5);
+            border-color: var(--primary);
         }
 
         .btn-sm {
@@ -247,7 +260,7 @@
         .hero {
             margin-top: 70px;
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(26, 123, 96, 0.04) 0%, rgba(18, 163, 122, 0.03) 100%);
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.15) 0%, rgba(18, 163, 122, 0.12) 50%, rgba(10, 10, 10, 0.95) 100%);
             display: flex;
             align-items: center;
             padding: var(--section-padding) 2rem;
@@ -260,9 +273,9 @@
             position: absolute;
             top: -50%;
             right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(26, 123, 96, 0.08) 0%, transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(26, 123, 96, 0.12) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -272,15 +285,15 @@
             position: absolute;
             bottom: -30%;
             left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(244, 210, 152, 0.05) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(244, 210, 152, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 950px;
             position: relative;
             z-index: 1;
             animation: fadeInUp 0.8s ease-out;
@@ -288,30 +301,30 @@
 
         .hero h1 {
             font-size: var(--size-h1);
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            line-height: 1.15;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1.75rem;
+            line-height: 1.2;
             font-family: var(--font-heading);
             letter-spacing: -1.5px;
         }
 
         .hero .subtitle {
-            font-size: 1.55rem;
-            color: var(--neutral-text);
-            margin-bottom: 2rem;
-            font-weight: 600;
-            line-height: 1.35;
+            font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+            color: var(--accent);
+            margin-bottom: 1.75rem;
+            font-weight: 700;
+            line-height: 1.4;
             font-family: var(--font-body);
-            max-width: 650px;
+            max-width: 900px;
         }
 
         .hero p {
-            font-size: 1.15rem;
-            color: var(--neutral-text);
-            margin-bottom: 2.5rem;
+            font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+            color: var(--text-light);
+            margin-bottom: 3.5rem;
             line-height: 1.8;
-            max-width: 600px;
+            max-width: 900px;
         }
 
         .hero-ctas {
@@ -319,22 +332,29 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 3rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-ctas .btn {
+            min-width: 250px;
         }
 
         .social-proof {
             display: flex;
             align-items: center;
             gap: 1.25rem;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 16px;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 8px 20px rgba(26, 123, 96, 0.1);
-            margin-top: 2.5rem;
+            padding: 2.5rem;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            border-left: 6px solid var(--secondary);
+            box-shadow: 0 12px 30px rgba(26, 123, 96, 0.25);
+            margin-top: 3rem;
+            border: 2px solid rgba(18, 163, 122, 0.3);
         }
 
         .social-proof strong {
-            color: var(--primary);
+            color: var(--secondary);
             font-size: 1.2rem;
             display: block;
             font-weight: 800;
@@ -343,7 +363,7 @@
         .social-proof p {
             margin: 0;
             font-size: 0.95rem;
-            color: var(--neutral-text);
+            color: var(--text-light);
         }
 
         /* ===== CONTAINER & GRID ===== */
@@ -358,13 +378,13 @@
         }
 
         .section-alt {
-            background: linear-gradient(135deg, var(--neutral-light) 0%, #faf8f5 100%);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #151515 100%);
         }
 
         .section-title {
             font-size: var(--size-h2);
-            font-weight: 800;
-            color: var(--primary);
+            font-weight: 900;
+            color: var(--white);
             text-align: center;
             margin-bottom: 3.5rem;
             font-family: var(--font-heading);
@@ -425,28 +445,46 @@
         }
 
         .diagnosis-card {
-            background: linear-gradient(135deg, var(--white) 0%, var(--neutral-light) 100%);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #1f1f1f 100%);
             padding: 2.75rem;
-            border-radius: 18px;
+            border-radius: 20px;
             border: 2px solid var(--accent);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.08);
+            box-shadow: 0 6px 20px rgba(26, 123, 96, 0.2);
             text-align: center;
+            position: relative;
+        }
+
+        .diagnosis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .diagnosis-card:hover::before {
+            opacity: 1;
         }
 
         .diagnosis-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 16px 32px rgba(26, 123, 96, 0.15);
-            background: linear-gradient(135deg, var(--accent) 5%, var(--white) 95%);
+            border-color: var(--secondary);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(26, 123, 96, 0.3);
+            background: linear-gradient(135deg, rgba(244, 210, 152, 0.2) 0%, var(--bg-secondary) 100%);
         }
 
         .diagnosis-card h3 {
             font-size: 1.35rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1.5rem;
             font-family: var(--font-heading);
-            font-weight: 800;
+            font-weight: 900;
         }
 
         .diagnosis-card .level {
@@ -460,22 +498,22 @@
 
         .diagnosis-card .level-item {
             padding: 0.75rem;
-            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(244, 210, 152, 0.2) 0%, transparent 100%);
             border-radius: 6px;
             border-left: 3px solid var(--primary);
-            color: var(--neutral-dark);
+            color: var(--text-light);
         }
 
         /* ===== SERVICE CARDS ===== */
         .service-card {
-            background: var(--white);
+            background: var(--bg-secondary);
             border: 2px solid var(--accent);
             border-radius: 20px;
             padding: 2.75rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.08);
+            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -494,8 +532,8 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 16px 40px rgba(26, 123, 96, 0.15);
-            border-color: var(--primary);
+            box-shadow: 0 16px 40px rgba(26, 123, 96, 0.3);
+            border-color: var(--secondary);
         }
 
         .service-card:hover::before {
@@ -503,37 +541,43 @@
         }
 
         .service-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 14px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
             margin-bottom: 1.5rem;
             color: var(--white);
             box-shadow: 0 6px 16px rgba(26, 123, 96, 0.15);
+            flex-shrink: 0;
+        }
+
+        .service-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: currentColor;
         }
 
         .service-card h3 {
             font-size: 1.35rem;
-            color: var(--primary);
+            color: var(--white);
             margin-bottom: 0.75rem;
             font-family: var(--font-heading);
-            font-weight: 800;
+            font-weight: 900;
         }
 
         .service-card p {
             font-size: 0.95rem;
-            color: var(--neutral-text);
+            color: var(--text-light);
             margin-bottom: 1rem;
             flex-grow: 1;
         }
 
         .service-ideal {
             font-size: 0.85rem;
-            color: var(--primary);
+            color: var(--accent);
             font-weight: 700;
             margin-bottom: 1.5rem;
             display: flex;
@@ -589,14 +633,14 @@
 
         .timeline-item h4 {
             font-size: 1.15rem;
-            color: var(--primary);
+            color: var(--white);
             margin-bottom: 0.75rem;
             font-family: var(--font-heading);
         }
 
         .timeline-item p {
             font-size: 0.95rem;
-            color: var(--neutral-text);
+            color: var(--text-light);
             margin: 0;
         }
 
@@ -622,33 +666,33 @@
         }
 
         .differential-block {
-            background: linear-gradient(135deg, rgba(26, 123, 96, 0.05) 0%, rgba(244, 210, 152, 0.05) 100%);
-            padding: 3rem;
-            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.15) 0%, rgba(244, 210, 152, 0.1) 100%);
+            padding: 3.5rem 3rem;
+            border-radius: 20px;
             border: 2px solid var(--primary);
             text-align: center;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.1);
+            box-shadow: 0 6px 20px rgba(26, 123, 96, 0.25);
         }
 
         .differential-block:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 40px rgba(26, 123, 96, 0.18);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(26, 123, 96, 0.25);
             border-color: var(--secondary);
-            background: linear-gradient(135deg, rgba(26, 123, 96, 0.08) 0%, rgba(244, 210, 152, 0.08) 100%);
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.1) 0%, rgba(244, 210, 152, 0.1) 100%);
         }
 
         .differential-block h3 {
             font-size: 1.5rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1.25rem;
             font-family: var(--font-heading);
-            font-weight: 800;
+            font-weight: 900;
         }
 
         .differential-block p {
             font-size: 0.95rem;
-            color: var(--neutral-text);
+            color: var(--text-light);
             margin: 0.5rem 0;
             line-height: 1.7;
         }
@@ -667,9 +711,12 @@
             padding: var(--section-padding) 2rem;
             border-radius: 24px;
             margin-bottom: var(--section-padding);
-            box-shadow: 0 20px 40px rgba(26, 123, 96, 0.3);
+            box-shadow: 0 20px 40px rgba(26, 123, 96, 0.4);
             position: relative;
             overflow: hidden;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .final-cta::before {
@@ -688,17 +735,20 @@
             color: var(--white);
             margin-bottom: 1rem;
             font-family: var(--font-heading);
-            font-weight: 800;
+            font-weight: 900;
             font-size: clamp(1.75rem, 4vw, 2.5rem);
             position: relative;
             z-index: 1;
+            text-align: center;
         }
 
         .final-cta .subtitle {
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 2.5rem;
             font-family: var(--font-body);
-            font-weight: 500;
+            font-weight: 600;
+            text-align: center;
+            font-size: clamp(1rem, 2vw, 1.25rem);
         }
 
         .final-cta-form {
@@ -722,6 +772,8 @@
             font-size: 0.95rem;
             min-height: 44px;
             transition: all var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
         }
 
         .form-group textarea {
@@ -733,12 +785,13 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 0 0 3px rgba(244, 210, 152, 0.4);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: #9CA3AF;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .cta-buttons {
@@ -802,7 +855,7 @@
         }
 
         .modal-content {
-            background: var(--white);
+            background: var(--bg-secondary);
             padding: 2.5rem;
             border-radius: var(--radius);
             max-width: 600px;
@@ -811,6 +864,7 @@
             overflow-y: auto;
             position: relative;
             animation: slideUp 0.3s ease-out;
+            border: 2px solid var(--primary);
         }
 
         .modal-close {
@@ -821,7 +875,7 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--neutral-dark);
+            color: var(--text-light);
             width: 40px;
             height: 40px;
             display: flex;
@@ -832,18 +886,20 @@
         }
 
         .modal-close:hover {
-            background: var(--neutral-light);
-            color: var(--primary);
+            background: var(--bg-dark);
+            color: var(--accent);
         }
 
         .modal-content h2 {
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
             font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.75rem;
         }
 
         .modal-content p {
-            color: var(--neutral-text);
+            color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
@@ -857,7 +913,7 @@
             padding: 0.75rem 0;
             padding-left: 1.5rem;
             position: relative;
-            color: var(--neutral-text);
+            color: var(--text-light);
         }
 
         .modal-content li::before {
@@ -870,9 +926,10 @@
 
         /* ===== FOOTER ===== */
         footer {
-            background: var(--neutral-dark);
+            background: var(--bg-dark);
             color: var(--white);
             padding: 3rem 2rem 1.5rem;
+            border-top: 2px solid rgba(26, 123, 96, 0.3);
         }
 
         footer .container {
@@ -974,12 +1031,18 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: var(--white);
+                background: var(--bg-dark);
                 flex-direction: column;
                 padding: 2rem;
                 gap: 1rem;
                 display: none;
                 box-shadow: var(--shadow-md);
+                border-bottom: 2px solid rgba(26, 123, 96, 0.3);
+            }
+
+            nav.links .btn {
+                width: 100%;
+                margin-top: 0.5rem;
             }
 
             nav.links.active {
@@ -1072,30 +1135,12 @@
     <!-- HEADER & NAVIGATION -->
     <header id="header">
         <nav class="container">
-            <a href="#home" class="logo">
-                <svg class="logo-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Círculo externo -->
-                    <circle cx="50" cy="50" r="46" stroke="#0F2347" stroke-width="2.5" stroke-dasharray="5,3"/>
-                    
-                    <!-- Bússola com estrela de 8 pontas -->
-                    <g id="compass">
-                        <!-- Pontas externas (8)-->
-                        <path d="M50 12 L52 22 L50 20 L48 22 Z" fill="#C5A572"/>
-                        <path d="M71 29 L68 37 L70 33 L74 31 Z" fill="#C5A572"/>
-                        <path d="M88 50 L78 50 L82 50 L80 48 Z" fill="#C5A572"/>
-                        <path d="M71 71 L74 63 L72 67 L68 69 Z" fill="#C5A572"/>
-                        <path d="M50 88 L48 78 L50 80 L52 78 Z" fill="#C5A572"/>
-                        <path d="M29 71 L32 63 L30 67 L26 69 Z" fill="#C5A572"/>
-                        <path d="M12 50 L22 50 L18 50 L20 48 Z" fill="#C5A572"/>
-                        <path d="M29 29 L26 37 L28 33 L32 31 Z" fill="#C5A572"/>
-                        
-                        <!-- Agulha principal (norte-sul) -->
-                        <path d="M50 25 L45 48 L50 75 L55 48 Z" fill="#0F2347" opacity="0.9"/>
-                        <circle cx="50" cy="50" r="4" fill="#C5A572"/>
-                    </g>
-                </svg>
-                ALINHATTA
-            </a>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <a href="#home" class="logo" style="display: flex; align-items: center;">
+                    <img src="logo.svg" alt="Alinhatta Logo" class="logo-img" />
+                </a>
+                <span style="font-weight: 700; font-size: 1.5rem; color: var(--white); font-family: var(--font-heading); letter-spacing: -0.5px;">ALINHATTA</span>
+            </div>
             
             <div class="nav-wrapper">
                 <nav class="links" id="navLinks">
@@ -1104,11 +1149,8 @@
                     <a href="#metodologia">Metodologia</a>
                     <a href="#diferenciais">Diferenciais</a>
                     <a href="#contato">Contato</a>
+                    <button class="btn btn-primary btn-sm" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})" style="margin-left: 0;">Agendar</button>
                 </nav>
-                
-                <div class="nav-ctas">
-                    <button class="btn btn-primary btn-sm" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Agendar</button>
-                </div>
             </div>
             
             <div class="hamburger" id="hamburger">
@@ -1123,19 +1165,27 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Transforme Editais em Contratos Milionários</h1>
-                <p class="subtitle">Consultoria especializada em licitações públicas</p>
-                <p>Sua empresa está perdendo milhões por ano em oportunidades governamentais. Nós sabemos como mudar isso com estratégia, segurança e método comprovado.</p>
+                <h1>ALINHATTA – Consultoria em Licitações</h1>
+                <p class="subtitle">Alinhamos sua empresa para vender ao governo com segurança e resultado</p>
+                <p>Especialistas em transformar empresas comuns em competidoras vitoriosas em licitações públicas</p>
                 
                 <div class="hero-ctas">
-                    <button class="btn btn-primary" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Quero Meu Primeiro Contrato</button>
-                    <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank">💬 Conversar Agora</a>
+                    <button class="btn btn-primary" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Agendar Diagnóstico Gratuito</button>
+                    <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank">Falar no WhatsApp</a>
                 </div>
 
                 <div class="social-proof">
-                    <div>
-                        <strong>+4 anos atuando</strong>
-                        <p>Dezenas de contratos conquistados</p>
+                    <div style="width: 100%;">
+                        <strong style="font-size: 1.4rem; margin-bottom: 0.75rem; display: block; color: var(--secondary);">+4 anos de experiência em licitações</strong>
+                        <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-light);">Resultados consistentes: dezenas de contratos firmados e centenas de processos conduzidos com sucesso.</p>
+                        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <strong style="color: var(--secondary); font-size: 1rem; display: block; margin-bottom: 0.5rem;">100% em conformidade com a Lei 14.133/2021</strong>
+                            </div>
+                            <div style="flex: 1; min-width: 200px;">
+                                <strong style="color: var(--secondary); font-size: 1rem; display: block; margin-bottom: 0.5rem;">Metodologia própria, validada na prática.</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1145,39 +1195,70 @@
     <!-- DIAGNOSIS SECTION -->
     <section class="section section-alt" id="diagnostico">
         <div class="container">
-            <h2 class="section-title">Por Que Você Ainda Não Vence Licitações</h2>
+            <h2 class="section-title">O que identificamos na sua empresa</h2>
             
             <div class="diagnosis-grid">
                 <div class="diagnosis-card fade-in">
-                    <h3>❌ Problema #1: Falta de Estrutura</h3>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem;">🟩</span>
+                        <h3 style="margin: 0;">Nível de Maturidade</h3>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6;">Avaliação do estágio atual da sua empresa no universo das licitações:</p>
                     <div class="level">
-                        <div class="level-item">Sem processo formal de participação</div>
+                        <div class="level-item"><strong>Nível 0:</strong> Não conhece licitações</div>
+                        <div class="level-item"><strong>Nível 1:</strong> Conhece, mas nunca participou</div>
+                        <div class="level-item"><strong>Nível 2:</strong> Participa, porém sem sucesso</div>
+                        <div class="level-item"><strong>Nível 3:</strong> Ganha, mas sem consistência</div>
+                        <div class="level-item"><strong>Nível 4:</strong> Operação madura, precisa otimizar</div>
+                    </div>
+                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6;">(Podemos posicionar sua empresa com precisão e definir o caminho mais rápido para evolução.)</p>
+                </div>
+
+                <div class="diagnosis-card fade-in">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem;">🟩</span>
+                        <h3 style="margin: 0;">Principais Lacunas</h3>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6;">Pontos críticos que frequentemente limitam o desempenho:</p>
+                    <div class="level">
                         <div class="level-item">Documentação incompleta ou desatualizada</div>
-                        <div class="level-item">Equipe despreparada para licitações</div>
+                        <div class="level-item">Falta de monitoramento qualificado de editais</div>
+                        <div class="level-item">Propostas pouco competitivas</div>
+                        <div class="level-item">Precificação inadequada</div>
+                        <div class="level-item">Equipe despreparada</div>
+                        <div class="level-item">Ausência de processos internos estruturados</div>
                     </div>
+                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6;">(Identificar essas lacunas é o primeiro passo para transformar desempenho em resultado real.)</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
-                    <h3>❌ Problema #2: Invisibilidade</h3>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem;">🟩</span>
+                        <h3 style="margin: 0;">Potencial Financeiro</h3>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--secondary); font-weight: 900; font-size: 1.5rem; text-align: center;">Oportunidades Perdidas</p>
+                    <p style="color: var(--text-light); font-weight: 600; text-align: center; line-height: 1.7; margin-bottom: 1.25rem;">Estimamos que sua empresa pode estar deixando de disputar R$ XXX mil/ano em editais totalmente aderentes ao seu segmento.</p>
+                    <p style="color: var(--accent); font-size: 0.9rem; font-style: italic; line-height: 1.6; text-align: center;">(Mapeamos onde está o dinheiro e como sua empresa pode alcançá-lo.)</p>
+                </div>
+
+                <div class="diagnosis-card fade-in">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem;">🟩</span>
+                        <h3 style="margin: 0;">Nível de Urgência</h3>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6;">Determinação da prioridade estratégica:</p>
                     <div class="level">
-                        <div class="level-item">Não monitora editais compatíveis</div>
-                        <div class="level-item">Perde oportunidades antes de saber</div>
-                        <div class="level-item">Seus concorrentes já estão lá</div>
+                        <div class="level-item" style="background: linear-gradient(90deg, rgba(18, 163, 122, 0.25) 0%, transparent 100%); border-left-color: var(--success);">
+                            <strong style="color: var(--success);">Baixa:</strong> Cenário estável — planejamento estratégico recomendado
+                        </div>
+                        <div class="level-item" style="background: linear-gradient(90deg, rgba(244, 210, 152, 0.3) 0%, transparent 100%); border-left-color: var(--warning);">
+                            <strong style="color: var(--warning);">Média:</strong> Momento ideal para avaliação e reposicionamento
+                        </div>
+                        <div class="level-item" style="background: linear-gradient(90deg, rgba(239, 68, 68, 0.25) 0%, transparent 100%); border-left-color: var(--error);">
+                            <strong style="color: var(--error);">Alta:</strong> Ações imediatas necessárias para evitar perdas
+                        </div>
                     </div>
-                </div>
-
-                <div class="diagnosis-card fade-in">
-                    <h3>💰 Seu Potencial Oculto</h3>
-                    <p style="margin-bottom: 1rem; color: var(--primary); font-weight: 800; font-size: 1.3rem;">R$ Milhões/ano</p>
-                    <p style="color: var(--neutral-text); font-weight: 600;">em contratos que VOCÊ deveria estar disputando AGORA</p>
-                </div>
-
-                <div class="diagnosis-card fade-in">
-                    <h3>⚠️ Urgência: MÁXIMA</h3>
-                    <div class="level">
-                        <div class="level-item"><strong style="color: var(--primary);">CADA DIA</strong> seu concorrente vence um edital que poderia ser seu</div>
-                        <div class="level-item"><strong style="color: var(--primary);">CADA SEMANA</strong> é dinheiro deixado sobre a mesa</div>
-                    </div>
+                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6;">(Essa classificação orienta o tipo de intervenção mais eficiente.)</p>
                 </div>
             </div>
         </div>
@@ -1186,87 +1267,123 @@
     <!-- SERVICES SECTION -->
     <section class="section" id="servicos">
         <div class="container">
-            <h2 class="section-title">Como a Alinhatta Resolve Tudo Isso</h2>
+            <h2 class="section-title">Como podemos ajudar você a vencer</h2>
             
             <div class="grid grid-3" style="gap: 2rem;">
-                <!-- Card 1 -->
+                <!-- Card 1: Mapeamento de Oportunidades -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">🔍</div>
-                    <h3>Mapeamento Estratégico</h3>
-                    <p>Identificamos diariamente os editais certos para seu perfil, com maior chance de vitória e rentabilidade</p>
-                    <div class="service-ideal">✓ Ideal para: Empresas que querem crescer em vendas</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Mapeamento de Oportunidades</h3>
+                    <p>Buscamos diariamente os editais certos para seu perfil, filtrando por segmento, região e potencial de vitória</p>
+                    <div class="service-ideal">✓ Ideal para: Empresas iniciantes em licitações</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal1')">Saiba mais</button>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Card 2: Consultoria Express -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">⚡</div>
-                    <h3>Consultoria Rápida</h3>
-                    <p>Análise completa de um edital em 2 horas: viabilidade, riscos, oportunidades e plano de ação</p>
-                    <div class="service-ideal">✓ Ideal para: Decisões urgentes e imediatas</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Consultoria Express</h3>
+                    <p>Sessão rápida e estratégica (até 2h) para analisar edital específico, avaliar viabilidade e definir plano de ação</p>
+                    <div class="service-ideal">✓ Ideal para: Decisões urgentes</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal2')">Saiba mais</button>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Card 3: Mentoria Individual -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">📚</div>
-                    <h3>Capacitação Profunda</h3>
-                    <p>Transforme sua equipe em especialista em licitações com acompanhamento mensal e autonomia total</p>
-                    <div class="service-ideal">✓ Ideal para: Quem quer aprender e vencer sozinho depois</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Mentoria Individual</h3>
+                    <p>Acompanhamento contínuo para capacitar você e seu analista a dominar licitações com autonomia</p>
+                    <div class="service-ideal">✓ Ideal para: Empresários e analistas em desenvolvimento</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal3')">Saiba mais</button>
                 </div>
 
-                <!-- Card 4 -->
+                <!-- Card 4: Assessoria Completa -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">🎯</div>
-                    <h3>Solução Completa</h3>
-                    <p>A Alinhatta gerencia 100% das suas licitações: desde a busca até a vitória e assinatura do contrato</p>
-                    <div class="service-ideal">✓ Ideal para: Quem quer focar em outras áreas do negócio</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Assessoria Completa</h3>
+                    <p>A Alinhatta assume todo o setor de licitações: mapeamento, documentação, propostas, disputa e recursos</p>
+                    <div class="service-ideal">✓ Ideal para: Empresas sem equipe dedicada</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal4')">Saiba mais</button>
                 </div>
 
-                <!-- Card 5 -->
+                <!-- Card 5: Gestão Documental -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">✅</div>
-                    <h3>Conformidade Garantida</h3>
-                    <p>Mantemos toda documentação sempre pronta e atualizada: NUNCA mais perca um edital por papel fora do prazo</p>
-                    <div class="service-ideal">✓ Ideal para: Empresas que querem segurança total</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Gestão Documental</h3>
+                    <p>Mantemos toda documentação de habilitação organizada, atualizada e monitorada</p>
+                    <div class="service-ideal">✓ Ideal para: Quem perde oportunidades por burocracia</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal5')">Saiba mais</button>
                 </div>
 
-                <!-- Card 6 -->
+                <!-- Card 6: Treinamentos Empresariais -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">🎓</div>
-                    <h3>Treinamento in-Company</h3>
-                    <p>Capacite seu time com conhecimento real: Lei 14.133, pregões, estratégias que funcionam na prática</p>
-                    <div class="service-ideal">✓ Ideal para: Equipes comerciais que precisam de upgrade</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Treinamentos Empresariais</h3>
+                    <p>Treinamento in-company em licitações, Lei 14.133/2021, estratégias de pregão e melhores práticas</p>
+                    <div class="service-ideal">✓ Ideal para: Capacitação de equipes comerciais</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal6')">Saiba mais</button>
                 </div>
 
-                <!-- Card 7 -->
+                <!-- Card 7: Automação / Tech-as-a-Service -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Automação Inteligente</h3>
-                    <p>Sistema inteligente que busca, filtra e alerta sobre editais compatíveis com seu perfil em tempo real</p>
-                    <div class="service-ideal">✓ Ideal para: Empresas em rápido crescimento</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Automação / Tech-as-a-Service</h3>
+                    <p>Implementamos ferramentas para automatizar monitoramento de editais, prazos e processos internos</p>
+                    <div class="service-ideal">✓ Ideal para: Alto volume de participações</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal7')">Saiba mais</button>
                 </div>
 
-                <!-- Card 8 -->
+                <!-- Card 8: Precificação e Análise de Custos -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">💰</div>
-                    <h3>Precificação Estratégica</h3>
-                    <p>Precificar para vencer SEM perder margem: análise de custos que garante lucratividade máxima</p>
-                    <div class="service-ideal">✓ Ideal para: Vencer com responsabilidade financeira</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.38-1.9 1.38-1.66 0-2.52-.83-2.6-2.1h-2.2c.12 2.19 1.76 3.42 3.8 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Precificação e Análise de Custos</h3>
+                    <p>Garantimos que seu preço seja competitivo sem destruir sua margem de lucro</p>
+                    <div class="service-ideal">✓ Ideal para: Garantir lucratividade nos contratos</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal8')">Saiba mais</button>
                 </div>
 
-                <!-- Card 9 -->
+                <!-- Card 9: Elaboração de Propostas -->
                 <div class="service-card fade-in">
-                    <div class="service-icon">🏆</div>
-                    <h3>Propostas Vencedoras</h3>
-                    <p>Documentos técnicos e comerciais impecáveis: 100% alinhados ao edital e com poder de vencer</p>
-                    <div class="service-ideal">✓ Ideal para: Aprovação garantida e vitória</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Elaboração de Propostas</h3>
+                    <p>Criamos propostas técnicas e comerciais claras, completas e alinhadas 100% ao edital</p>
+                    <div class="service-ideal">✓ Ideal para: Padrão de excelência em documentação</div>
                     <button class="btn btn-sm btn-accent" onclick="openModal('modal9')">Saiba mais</button>
                 </div>
             </div>
@@ -1315,28 +1432,49 @@
     <!-- DIFFERENTIALS SECTION -->
     <section class="section" id="diferenciais">
         <div class="container">
-            <h2 class="section-title">Por Que Escolher a Alinhatta?</h2>
+            <h2 class="section-title">Por que escolher a Alinhatta?</h2>
             
             <div class="differentials">
                 <div class="differential-block fade-in">
-                    <h3>🎯 Conformidade Garantida</h3>
-                    <p>✅ 100% alinhada com Lei 14.133/2021</p>
-                    <p>✅ Documentação sempre atualizada</p>
-                    <p>✅ Zero risco de desclassificação por burocracia</p>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 6px 16px rgba(26, 123, 96, 0.2);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3>Experiência Comprovada</h3>
+                    <p><strong style="color: var(--primary); font-size: 1.1rem;">+4 anos no mercado de licitações</strong></p>
+                    <p>Centenas de processos acompanhados e contratos conquistados</p>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary);">
+                        <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Total conformidade com a Lei 14.133/2021</p>
+                    </div>
                 </div>
 
                 <div class="differential-block fade-in">
-                    <h3>📊 Metodologia Proprietária</h3>
-                    <p>✅ Sistema de análise de editais testado</p>
-                    <p>✅ Identificação precisa de oportunidades reais</p>
-                    <p>✅ Maximiza chances de vitória com dados</p>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 6px 16px rgba(26, 123, 96, 0.2);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                        </svg>
+                    </div>
+                    <h3>Acompanhamento Dedicado</h3>
+                    <p><strong style="color: var(--primary); font-size: 1.1rem;">Equipe exclusiva para cada cliente</strong></p>
+                    <p>Atendimento personalizado e próximo</p>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary);">
+                        <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Revisão de editais com metodologia própria</p>
+                    </div>
                 </div>
 
                 <div class="differential-block fade-in">
-                    <h3>👥 Acompanhamento Próximo</h3>
-                    <p>✅ Equipe dedicada apenas ao seu negócio</p>
-                    <p>✅ Suporte direto, sem espera ou transferências</p>
-                    <p>✅ Parceria real, não apenas transação</p>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 6px 16px rgba(26, 123, 96, 0.2);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                        </svg>
+                    </div>
+                    <h3>Desburocratização Total</h3>
+                    <p><strong style="color: var(--primary); font-size: 1.1rem;">Simplificamos cada etapa</strong></p>
+                    <p>Você foca em vender, nós cuidamos do resto</p>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary);">
+                        <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Maximizamos sua chance de vitória com dados e estratégia</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1379,15 +1517,20 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal1')">×</button>
             <h2>Mapeamento de Oportunidades</h2>
-            <p>Este serviço especializado identifica e filtra os editais mais alinhados ao seu perfil de negócio, maximizando suas chances de vitória.</p>
+            <p>Buscamos diariamente os editais certos para seu perfil, filtrando por segmento, região e potencial de vitória.</p>
             <ul>
                 <li>Análise diária de portais governamentais</li>
                 <li>Filtro inteligente por segmento e região</li>
                 <li>Monitoramento contínuo de novas oportunidades</li>
                 <li>Alertas personalizados em tempo real</li>
                 <li>Relatório mensal de oportunidades</li>
+                <li>Análise de viabilidade e potencial de vitória</li>
             </ul>
+            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Empresas iniciantes em licitações</p>
             <p><strong>Investimento:</strong> A partir de R$ 2.000/mês</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Mapeamento%20de%20Oportunidades." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
         </div>
     </div>
 
@@ -1395,15 +1538,20 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal2')">×</button>
             <h2>Consultoria Express</h2>
-            <p>Para decisões urgentes e análises rápidas de editais específicos com recomendações estratégicas imediatas.</p>
+            <p>Sessão rápida e estratégica (até 2h) para analisar edital específico, avaliar viabilidade e definir plano de ação.</p>
             <ul>
                 <li>Sessão presencial ou remota de até 2 horas</li>
                 <li>Análise detalhada do edital</li>
                 <li>Avaliação de viabilidade técnica e financeira</li>
                 <li>Plano de ação prático e executável</li>
                 <li>Suporte pós-sessão de 30 dias</li>
+                <li>Recomendações estratégicas imediatas</li>
             </ul>
+            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Decisões urgentes</p>
             <p><strong>Investimento:</strong> R$ 1.500 a R$ 3.000 por sessão</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Consultoria%20Express." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
         </div>
     </div>
 
@@ -1411,7 +1559,7 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal3')">×</button>
             <h2>Mentoria Individual</h2>
-            <p>Acompanhamento estratégico e contínuo para que você e sua equipe desenvolvam autonomia total em licitações.</p>
+            <p>Acompanhamento contínuo para capacitar você e seu analista a dominar licitações com autonomia.</p>
             <ul>
                 <li>Sessões mensais de 4 horas</li>
                 <li>Capacitação em legislação de licitações</li>
@@ -1419,8 +1567,13 @@
                 <li>Desenvolvimento de processos internos</li>
                 <li>Acesso a templates e modelos prontos</li>
                 <li>Suporte via WhatsApp</li>
+                <li>Desenvolvimento de autonomia total</li>
             </ul>
+            <p style="margin-top: 1.5rem;"><strong>Ideal para:</strong> Empresários e analistas em desenvolvimento</p>
             <p><strong>Investimento:</strong> A partir de R$ 3.000/mês</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Mentoria%20Individual." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
         </div>
     </div>
 
