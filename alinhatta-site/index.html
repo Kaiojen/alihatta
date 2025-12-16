@@ -249,6 +249,23 @@
             letter-spacing: 0.3px;
             min-height: 56px;
             font-weight: 800;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
@@ -259,6 +276,11 @@
 
         .btn-primary:active {
             transform: translateY(0);
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
         }
 
         .btn-secondary {
@@ -721,6 +743,259 @@
         }
 
         /* ========================================
+           PACKAGE CARDS (Destaque)
+           ======================================== */
+        .packages-section {
+            margin-bottom: 4rem;
+        }
+
+        .packages-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+        }
+
+        .packages-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.15) 0%, var(--bg-secondary) 100%);
+            border: 3px solid var(--accent);
+            border-radius: 24px;
+            padding: 3rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(26, 123, 96, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            min-height: 400px;
+        }
+
+        .package-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
+            opacity: 1;
+        }
+
+        .package-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(244, 210, 152, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .package-card:hover {
+            transform: translateY(-16px) scale(1.03);
+            box-shadow: 0 24px 60px rgba(244, 210, 152, 0.4);
+            border-color: var(--secondary);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--neutral-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(244, 210, 152, 0.3);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(244, 210, 152, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 16px rgba(244, 210, 152, 0.5);
+            }
+        }
+
+        .package-card .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 24px rgba(244, 210, 152, 0.3);
+        }
+
+        .package-card .service-icon svg {
+            width: 42px;
+            height: 42px;
+            fill: var(--neutral-dark);
+        }
+
+        .package-card h3 {
+            font-size: 1.75rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .package-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .package-price {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 800;
+            margin-top: auto;
+            margin-bottom: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 2px solid rgba(244, 210, 152, 0.3);
+        }
+
+        /* ========================================
+           STANDALONE SERVICE CARDS (Secundário)
+           ======================================== */
+        .standalone-services-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 2px solid rgba(244, 210, 152, 0.2);
+            position: relative;
+        }
+
+        .standalone-services-section::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        .standalone-services-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .standalone-services-subtitle {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--neutral-text);
+            margin-bottom: 2.5rem;
+        }
+
+        .standalone-service-card {
+            background: var(--bg-secondary);
+            border: 2px solid rgba(244, 210, 152, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.15);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            min-height: 280px;
+        }
+
+        .standalone-service-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .standalone-service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(26, 123, 96, 0.25);
+            border-color: var(--accent);
+        }
+
+        .standalone-service-card .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 14px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 12px rgba(26, 123, 96, 0.2);
+        }
+
+        .standalone-service-card .service-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .standalone-service-card h3 {
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .standalone-service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .standalone-service-card .service-ideal {
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .standalone-price {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================
            METHODOLOGY TIMELINE
            ======================================== */
         .methodology-timeline {
@@ -1017,7 +1292,9 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             animation: fadeIn 0.3s ease-in-out;
         }
 
@@ -1029,9 +1306,30 @@
             padding: 1rem;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
         .modal-content {
             background: var(--bg-secondary);
             padding: 2.5rem;
+            animation: scaleIn 0.3s ease-out;
             border-radius: var(--radius);
             max-width: 600px;
             width: 90%;
@@ -1417,6 +1715,130 @@
                 font-size: 1rem;
             }
 
+            /* PACKAGE CARDS MOBILE */
+            .packages-title {
+                font-size: 1.65rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .packages-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .package-card {
+                padding: 2rem 1.75rem;
+                min-height: 350px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .package-badge {
+                top: 12px;
+                right: 12px;
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .package-card .service-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 1.25rem;
+            }
+
+            .package-card .service-icon svg {
+                width: 38px;
+                height: 38px;
+            }
+
+            .package-card h3 {
+                font-size: 1.45rem;
+                margin-bottom: 0.85rem;
+            }
+
+            .package-card p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .package-card .service-ideal {
+                font-size: 0.875rem;
+                line-height: 1.6;
+            }
+
+            .package-price {
+                font-size: 1.15rem;
+                margin-bottom: 1.25rem;
+                padding-top: 1rem;
+            }
+
+            .package-card .btn {
+                min-height: 52px;
+                font-size: 1rem;
+            }
+
+            /* STANDALONE SERVICES MOBILE */
+            .standalone-services-section {
+                margin-top: 3rem;
+                padding-top: 2.5rem;
+            }
+
+            .standalone-services-title {
+                font-size: 1.35rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .standalone-services-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .standalone-service-card {
+                padding: 1.5rem;
+                min-height: 260px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .standalone-service-card .service-icon {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 1rem;
+            }
+
+            .standalone-service-card .service-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .standalone-service-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.65rem;
+            }
+
+            .standalone-service-card p {
+                font-size: 0.875rem;
+                line-height: 1.6;
+                margin-bottom: 0.85rem;
+            }
+
+            .standalone-service-card .service-ideal {
+                font-size: 0.8rem;
+            }
+
+            .standalone-price {
+                font-size: 0.95rem;
+                margin-bottom: 0.85rem;
+                padding-top: 0.65rem;
+            }
+
+            .standalone-service-card .btn {
+                min-height: 48px;
+                font-size: 0.95rem;
+            }
+
             .diagnosis-card {
                 padding: 1.75rem;
             }
@@ -1787,150 +2209,125 @@
     <section class="section" id="servicos">
         <div class="container">
             <h2 class="section-title">Como podemos ajudar você a vencer</h2>
-            
-            <div class="grid grid-3" style="gap: 2rem;">
-                <!-- Card 1: Mapeamento de Oportunidades -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Mapeamento de Oportunidades</h3>
-                    <p>Descobrimos diariamente os editais ideais para o seu perfil, filtrando por segmento, região, requisitos técnicos e potencial real de vitória.</p>
-                    <div class="service-ideal">✓ Ideal para: Empresas iniciantes ou pouco estruturadas em licitações</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.500/mês</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal1')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
 
-                <!-- Card 2: Consultoria Express -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Consultoria Express</h3>
-                    <p>Análise rápida e estratégica (até 2h) para avaliar um edital específico, identificar riscos, definir estratégia e orientar próximos passos.</p>
-                    <div class="service-ideal">✓ Ideal para: Decisões urgentes e oportunidades pontuais</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: R$ 1.500 a R$ 2.500 por sessão</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal2')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
+            <!-- ========================================
+                 PACOTES - DESTAQUE
+                 ======================================== -->
+            <div class="packages-section">
+                <h3 class="packages-title">Nossos Pacotes</h3>
+                <p class="packages-subtitle">Soluções completas e integradas para empresas que querem resultados consistentes em licitações</p>
 
-                <!-- Card 3: Mentoria Individual -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
-                        </svg>
+                <div class="grid grid-3" style="gap: 2.5rem;">
+                    <!-- PACOTE STARTER -->
+                    <div class="package-card fade-in">
+                        <span class="package-badge">Starter</span>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Pacote Starter</h3>
+                        <p>Primeiros passos nas licitações. Para empresas que nunca participaram ou participam sem sucesso.</p>
+                        <div class="service-ideal">✓ 3 oportunidades/mês<br>✓ Sessão mensal de orientação (45min)<br>✓ Templates básicos</div>
+                        <div class="package-price">R$ 1.800/mês</div>
+                        <button class="btn btn-accent" onclick="openModal('modalPackageStarter')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <h3>Mentoria Individual</h3>
-                    <p>Acompanhamento contínuo para capacitar você ou seu analista a dominar licitações com autonomia total.</p>
-                    <div class="service-ideal">✓ Ideal para: Empresários e analistas em desenvolvimento</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.500/mês + 2% de comissão</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal3')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
 
-                <!-- Card 4: Assessoria Completa -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
-                        </svg>
+                    <!-- PACOTE PRO -->
+                    <div class="package-card fade-in">
+                        <span class="package-badge">Pro</span>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Pacote Pro</h3>
+                        <p>Autonomia com suporte estratégico. Para empresas que querem estruturar setor interno de licitações.</p>
+                        <div class="service-ideal">✓ Até 10 oportunidades/mês<br>✓ 2 sessões de mentoria/mês (2h cada)<br>✓ Revisão de propostas</div>
+                        <div class="package-price">R$ 3.500/mês</div>
+                        <button class="btn btn-accent" onclick="openModal('modalPackagePro')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <h3>Assessoria Completa</h3>
-                    <p>Solução integral onde a Alinhatta assume todo o seu setor de licitações, do mapeamento à vitória.</p>
-                    <div class="service-ideal">✓ Ideal para: Empresas sem equipe dedicada</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: Planos a partir de R$ 3.000/mês + performance</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal4')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
 
-                <!-- Card 5: Gestão Documental -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
-                        </svg>
+                    <!-- PACOTE PREMIUM -->
+                    <div class="package-card fade-in">
+                        <span class="package-badge">Premium</span>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L1 9l11 6 9-4.91V17h2V9L12 2zm-7 9.09V17l7 3.82 7-3.82v-5.91L12 15l-7-3.91z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Pacote Premium</h3>
+                        <p>Terceirize 100% seu setor de licitações. Gestão completa com equipe dedicada exclusiva para sua empresa.</p>
+                        <div class="service-ideal">✓ Gestão 100% terceirizada<br>✓ Elaboração de propostas<br>✓ 3 modalidades disponíveis</div>
+                        <div class="package-price">A partir de R$ 4.500/mês + comissão</div>
+                        <button class="btn btn-accent" onclick="openModal('modalPackagePremium')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <h3>Gestão Documental</h3>
-                    <p>Mantemos toda sua documentação de habilitação organizada, atualizada e pronta para qualquer edital.</p>
-                    <div class="service-ideal">✓ Ideal para: Quem perde oportunidades por burocracia</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 1.500/mês</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal5')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
+            </div>
 
-                <!-- Card 6: Treinamentos Empresariais -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Treinamentos Empresariais</h3>
-                    <p>Capacitação prática e direcionada para equipes comerciais e administrativas.</p>
-                    <div class="service-ideal">✓ Ideal para: Capacitação de equipes comerciais</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: R$ 3.000 a R$ 5.000 (in-company)</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal6')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
+            <!-- ========================================
+                 SERVIÇOS AVULSOS - SECUNDÁRIO
+                 ======================================== -->
+            <div class="standalone-services-section">
+                <h3 class="standalone-services-title">Serviços Avulsos</h3>
+                <p class="standalone-services-subtitle">Contrate serviços específicos conforme sua necessidade pontual</p>
 
-                <!-- Card 7: Automação / Tech-as-a-Service -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
-                        </svg>
+                <div class="grid grid-3" style="gap: 2rem;">
+                    <!-- Consultoria Express -->
+                    <div class="standalone-service-card fade-in">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Consultoria Express</h3>
+                        <p>Análise urgente de 1 edital específico com sessão de 2h e plano de ação executável.</p>
+                        <div class="service-ideal">✓ Decisões urgentes e pontuais</div>
+                        <div class="standalone-price">R$ 1.200 a R$ 2.500/sessão</div>
+                        <button class="btn btn-sm btn-accent" onclick="openModal('modalConsultoriaExpress')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <h3>Automação & Tech-as-a-Service</h3>
-                    <p>Tecnologia para escalar sua operação e eliminar tarefas manuais.</p>
-                    <div class="service-ideal">✓ Ideal para: Alto volume de participações</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.000/mês</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal7')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
 
-                <!-- Card 8: Precificação e Análise de Custos -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.38-1.9 1.38-1.66 0-2.52-.83-2.6-2.1h-2.2c.12 2.19 1.76 3.42 3.8 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="currentColor"/>
-                        </svg>
+                    <!-- Elaboração de Proposta Avulsa -->
+                    <div class="standalone-service-card fade-in">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Elaboração de Proposta</h3>
+                        <p>Proposta técnica + comercial completa para 1 edital com redação profissional e revisão jurídica.</p>
+                        <div class="service-ideal">✓ Propostas vencedoras sob demanda</div>
+                        <div class="standalone-price">R$ 2.500 a R$ 5.000+</div>
+                        <button class="btn btn-sm btn-accent" onclick="openModal('modalElaboracaoProposta')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <h3>Precificação e Análise de Custos</h3>
-                    <p>Garantimos uma formação de preço competitiva sem comprometer sua margem.</p>
-                    <div class="service-ideal">✓ Ideal para: Garantir lucratividade nos contratos</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 2.500</strong>
-                    </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal8')" style="margin-top: 1.25rem;">Saiba mais</button>
-                </div>
 
-                <!-- Card 9: Elaboração de Propostas -->
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
-                        </svg>
+                    <!-- Treinamento In-Company -->
+                    <div class="standalone-service-card fade-in">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Treinamento In-Company</h3>
+                        <p>Capacitação presencial de 8h para sua equipe com material didático e certificado.</p>
+                        <div class="service-ideal">✓ Capacitação de equipes comerciais</div>
+                        <div class="standalone-price">R$ 4.000 a R$ 6.000</div>
+                        <button class="btn btn-sm btn-accent" onclick="openModal('modalTreinamento')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <h3>Elaboração de Propostas</h3>
-                    <p>Propostas técnicas e comerciais impecáveis, claras, completas e vencedoras.</p>
-                    <div class="service-ideal">✓ Ideal para: Padrão de excelência em documentação</div>
-                    <div style="margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: var(--accent); font-size: 1.1rem;">Investimento: A partir de R$ 3.000 por edital</strong>
+
+                    <!-- Gestão Documental Avulsa -->
+                    <div class="standalone-service-card fade-in">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Gestão Documental</h3>
+                        <p>Organização completa do acervo documental com regularização fiscal e jurídica.</p>
+                        <div class="service-ideal">✓ Quem perde oportunidades por burocracia</div>
+                        <div class="standalone-price">R$ 1.500 setup + R$ 500/mês</div>
+                        <button class="btn btn-sm btn-accent" onclick="openModal('modalGestaoDocumental')" style="width: 100%;">Saiba mais</button>
                     </div>
-                    <button class="btn btn-sm btn-accent" onclick="openModal('modal9')" style="margin-top: 1.25rem;">Saiba mais</button>
                 </div>
             </div>
         </div>
@@ -2251,6 +2648,257 @@
     </div>
 
     <!-- ========================================
+         MODALS - SERVIÇOS AVULSOS
+         ======================================== -->
+    <div id="modalConsultoriaExpress" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalConsultoriaExpress')">×</button>
+            <h2>⚡ Consultoria Express</h2>
+            <p>Análise urgente de 1 edital específico</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que inclui:</strong></p>
+            <ul>
+                <li>✔ Sessão de 2h (presencial ou online)</li>
+                <li>✔ Análise de viabilidade técnica/financeira</li>
+                <li>✔ Plano de ação executável</li>
+                <li>✔ Suporte pós-sessão por 15 dias</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong></p>
+            <ul>
+                <li>Simples: R$ 1.200</li>
+                <li>Moderado: R$ 1.800</li>
+                <li>Complexo: R$ 2.500</li>
+            </ul>
+
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">Prazo: Agendamento em até 48h</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Consultoria%20Express." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalElaboracaoProposta" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalElaboracaoProposta')">×</button>
+            <h2>📝 Elaboração de Proposta Avulsa</h2>
+            <p>Proposta técnica + comercial para 1 edital</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que inclui:</strong></p>
+            <ul>
+                <li>✔ Análise completa do edital</li>
+                <li>✔ Redação técnica profissional</li>
+                <li>✔ Precificação estratégica</li>
+                <li>✔ Revisão jurídica</li>
+                <li>✔ Formatação conforme exigências</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong></p>
+            <ul>
+                <li>Simples (até 20 páginas): R$ 2.500</li>
+                <li>Moderado (20-50 páginas): R$ 3.500</li>
+                <li>Complexo (50+ páginas ou multicritério): R$ 5.000+</li>
+            </ul>
+
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">Prazo: 5-10 dias úteis (conforme complexidade)</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Elaboração%20de%20Proposta." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalTreinamento" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalTreinamento')">×</button>
+            <h2>🎓 Treinamento In-Company</h2>
+            <p>Capacitação presencial da sua equipe</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que inclui:</strong></p>
+            <ul>
+                <li>✔ 8h de treinamento prático</li>
+                <li>✔ Material didático completo</li>
+                <li>✔ Certificado de participação</li>
+                <li>✔ 30 dias de suporte pós-treinamento</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Módulos disponíveis:</strong></p>
+            <ul>
+                <li>• Fundamentos de Licitações (Lei 14.133/2021)</li>
+                <li>• Estratégias de Pregão Eletrônico</li>
+                <li>• Elaboração de Propostas Vencedoras</li>
+                <li>• Customizado por segmento</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong></p>
+            <ul>
+                <li>Até 10 pessoas: R$ 4.000</li>
+                <li>Até 20 pessoas: R$ 6.000</li>
+                <li>Acima de 20: sob consulta</li>
+            </ul>
+
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">Prazo: Agendamento com 15 dias de antecedência</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Treinamento%20In-Company." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalGestaoDocumental" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalGestaoDocumental')">×</button>
+            <h2>📁 Gestão Documental Avulsa</h2>
+            <p>Organização completa do acervo documental</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que inclui:</strong></p>
+            <ul>
+                <li>✔ Levantamento de toda documentação necessária</li>
+                <li>✔ Regularização fiscal/jurídica</li>
+                <li>✔ Organização em pasta digital</li>
+                <li>✔ Cronograma de renovações</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong></p>
+            <ul>
+                <li><strong>Setup único:</strong> R$ 1.500</li>
+                <li><strong>Manutenção mensal (opcional):</strong> R$ 500/mês</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-light);">A manutenção mensal inclui: atualização contínua de certidões, monitoramento de validades, alertas automáticos de renovação e relatórios de conformidade.</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20Gestão%20Documental." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este serviço</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         MODALS - PACOTES
+         ======================================== -->
+    <div id="modalPackageStarter" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalPackageStarter')">×</button>
+            <h2>🚀 Pacote Starter</h2>
+            <p><strong>"Primeiros Passos nas Licitações"</strong></p>
+            <p>Para empresas que nunca participaram ou participam sem sucesso.</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que está incluído:</strong></p>
+            <ul>
+                <li>✔ Diagnóstico inicial completo (documentação, viabilidade, gaps)</li>
+                <li>✔ Mapeamento de 3 oportunidades/mês (editais viáveis para seu perfil)</li>
+                <li>✔ 1 sessão mensal de orientação estratégica (45 min)</li>
+                <li>✔ Checklist de habilitação personalizado</li>
+                <li>✔ Acesso a templates básicos (proposta comercial, documentação)</li>
+                <li>✔ Suporte via WhatsApp (horário comercial, resposta em até 24h)</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>O que NÃO inclui:</strong></p>
+            <ul>
+                <li>❌ Elaboração de propostas</li>
+                <li>❌ Gestão completa de processos</li>
+                <li>❌ Participação ativa nos pregões</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Perfil ideal:</strong> MEI, ME com faturamento até R$ 360k/ano</p>
+
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> R$ 1.800/mês</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Duração mínima: 3 meses | Pagamento: À vista ou 3x sem juros (via cartão)</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Starter." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este pacote</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalPackagePro" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalPackagePro')">×</button>
+            <h2>💼 Pacote Pro</h2>
+            <p><strong>"Autonomia com Suporte Estratégico"</strong></p>
+            <p>Para empresas que querem estruturar setor interno de licitações.</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que está incluído:</strong></p>
+            <ul>
+                <li>✔ <strong>Tudo do Pacote Starter +</strong></li>
+                <li>✔ Mapeamento de até 10 oportunidades/mês</li>
+                <li>✔ 2 sessões mensais de mentoria (2h cada)</li>
+                <li>✔ Análise de viabilidade de até 5 editais/mês</li>
+                <li>✔ Revisão de até 2 propostas/mês (técnica + comercial)</li>
+                <li>✔ Treinamento da equipe interna (4h/mês)</li>
+                <li>✔ Acesso a biblioteca de templates avançados</li>
+                <li>✔ Gestão documental básica (alertas de vencimento)</li>
+                <li>✔ Suporte prioritário via WhatsApp</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>O que NÃO inclui:</strong></p>
+            <ul>
+                <li>❌ Elaboração completa de propostas do zero</li>
+                <li>❌ Participação ativa em pregões eletrônicos</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Perfil ideal:</strong> ME/EPP com faturamento R$ 360k-4,8M/ano</p>
+
+            <p style="margin-top: 1.5rem;"><strong>Investimento:</strong> R$ 3.500/mês</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Duração mínima: 6 meses | Pagamento: À vista (5% desconto) ou até 6x com juros</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--accent);"><strong>BÔNUS:</strong> Após 6 meses, 1 treinamento in-company gratuito</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Pro." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este pacote</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalPackagePremium" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalPackagePremium')">×</button>
+            <h2>👑 Pacote Premium</h2>
+            <p><strong>"Terceirize seu Setor de Licitações"</strong></p>
+            <p>Para empresas que querem resultados sem se preocupar com operação.</p>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>O que está incluído:</strong></p>
+            <ul>
+                <li>✔ Gestão 100% terceirizada do setor de licitações</li>
+                <li>✔ Mapeamento ilimitado de oportunidades</li>
+                <li>✔ Análise de viabilidade de todos os editais encontrados</li>
+                <li>✔ Elaboração completa de propostas (técnica + comercial)</li>
+                <li>✔ Preparação de toda documentação de habilitação</li>
+                <li>✔ Participação ativa em pregões eletrônicos (lances)</li>
+                <li>✔ Gestão de recursos, impugnações e esclarecimentos</li>
+                <li>✔ Relatório mensal de performance (KPIs + ROI)</li>
+                <li>✔ Equipe dedicada exclusiva</li>
+                <li>✔ Suporte 24/7 em períodos críticos</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>3 Modalidades disponíveis:</strong></p>
+            <div style="background: rgba(26, 123, 96, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); margin-bottom: 1rem;">
+                <strong style="color: var(--accent);">Premium Essencial</strong><br>
+                • Até 5 participações ativas/mês<br>
+                • <strong>R$ 4.500/mês + 2% sobre contratos homologados</strong>
+            </div>
+            <div style="background: rgba(26, 123, 96, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); margin-bottom: 1rem;">
+                <strong style="color: var(--accent);">Premium Profissional</strong><br>
+                • Até 15 participações ativas/mês<br>
+                • <strong>R$ 6.500/mês + 1,5% sobre contratos homologados</strong>
+            </div>
+            <div style="background: rgba(26, 123, 96, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent);">
+                <strong style="color: var(--accent);">Premium Elite</strong><br>
+                • Volume ilimitado + gestor dedicado<br>
+                • <strong>R$ 9.000/mês + 1% sobre contratos homologados</strong>
+            </div>
+
+            <p style="margin-top: 1.5rem;"><strong>Perfil ideal:</strong> EPP/Médio porte com faturamento acima de R$ 1M/ano</p>
+
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-light);">Duração mínima: 12 meses | Mensalidade via boleto/PIX até dia 5 | Comissão paga após homologação (30 dias)</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Premium." class="btn btn-primary" target="_blank" style="width: 100%; text-align: center;">Quero este pacote</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
          FOOTER
          ======================================== -->
     <footer>
@@ -2426,7 +3074,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in, .service-card, .diagnosis-card, .timeline-item, .differential-block').forEach(el => {
+        document.querySelectorAll('.fade-in, .service-card, .package-card, .standalone-service-card, .diagnosis-card, .timeline-item, .differential-block').forEach(el => {
             if (!el.classList.contains('fade-in')) {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
