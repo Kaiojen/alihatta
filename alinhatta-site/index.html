@@ -23,8 +23,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ALINHATTA - Consultoria em Licitações | Vença Editais Públicos</title>
-    <meta name="description" content="Consultoria especializada em licitações. Transformamos empresas comuns em competidoras vitoriosas em editais públicos. +4 anos de experiência.">
+    <title>ALINHATTA | Consultoria em Licitações Públicas – Lei 14.133/2021</title>
+    <meta name="description" content="Consultoria especializada em licitações públicas. Preparamos empresas brasileiras para competir no mercado governamental com estratégia, conformidade e metodologia própria. +4 anos de experiência.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2062,6 +2062,352 @@
                 transform: scale(0.98);
             }
         }
+
+        /* ========================================
+           HERO BADGE
+           ======================================== */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(244, 210, 152, 0.4);
+            background: rgba(244, 210, 152, 0.06);
+            margin-bottom: 1.75rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ========================================
+           QUEM SOMOS SECTION
+           ======================================== */
+        .quem-somos-section {
+            padding: var(--section-padding) 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(26, 123, 96, 0.2);
+        }
+        .quem-somos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .quem-somos-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        .quem-somos-visual {
+            background: linear-gradient(135deg, rgba(26, 123, 96, 0.15) 0%, rgba(18, 163, 122, 0.08) 100%);
+            border: 1px solid rgba(26, 123, 96, 0.25);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+        .quem-somos-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 24px rgba(18, 163, 122, 0.3);
+        }
+        .quem-somos-stat {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .quem-somos-stat-item {
+            text-align: center;
+        }
+        .quem-somos-stat-item strong {
+            display: block;
+            font-size: 1.75rem;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            color: var(--secondary);
+        }
+        .quem-somos-stat-item span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .quem-somos-content h2 {
+            font-size: var(--size-h2);
+            font-family: var(--font-heading);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        .quem-somos-content h2 span {
+            color: var(--accent);
+        }
+        .quem-somos-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        .quem-somos-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+        .quem-somos-tag {
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(18, 163, 122, 0.4);
+            background: rgba(18, 163, 122, 0.08);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* ========================================
+           TESTIMONIALS SECTION
+           ======================================== */
+        .testimonials-section {
+            padding: var(--section-padding) 0;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+            margin-top: 3rem;
+        }
+        .testimonial-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(26, 123, 96, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(18, 163, 122, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(18, 163, 122, 0.12);
+        }
+        .testimonial-quote {
+            font-size: 2.5rem;
+            line-height: 1;
+            color: var(--secondary);
+            opacity: 0.4;
+            margin-bottom: 1rem;
+            font-family: Georgia, serif;
+        }
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding-top: 1.25rem;
+        }
+        .testimonial-author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .testimonial-author-info strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+        .testimonial-author-info span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ========================================
+           FAQ SECTION
+           ======================================== */
+        .faq-section {
+            padding: var(--section-padding) 0;
+            background: var(--bg-secondary);
+        }
+        .faq-grid {
+            max-width: 860px;
+            margin: 3rem auto 0;
+        }
+        .faq-item {
+            border: 1px solid rgba(26, 123, 96, 0.2);
+            border-radius: 14px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .faq-item.active {
+            border-color: rgba(18, 163, 122, 0.5);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            text-align: left;
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            transition: background 0.2s ease;
+        }
+        .faq-question:hover {
+            background: rgba(18, 163, 122, 0.05);
+        }
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid rgba(18, 163, 122, 0.4);
+            background: rgba(18, 163, 122, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--secondary);
+            flex-shrink: 0;
+            transition: transform 0.3s ease, background 0.2s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: var(--secondary);
+            color: white;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.2s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+        }
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.93rem;
+            line-height: 1.75;
+        }
+
+        /* ========================================
+           WHATSAPP TOOLTIP
+           ======================================== */
+        .whatsapp-wrapper {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        @media (max-width: 768px) {
+            .whatsapp-wrapper {
+                bottom: 16px;
+                right: 14px;
+            }
+        }
+        .whatsapp-tooltip {
+            background: rgba(10,10,10,0.92);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 10px;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(8px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+        }
+        .whatsapp-wrapper:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .whatsapp-wrapper .whatsapp-float {
+            position: static;
+        }
+
+        /* ========================================
+           FORM SUCCESS MESSAGE
+           ======================================== */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(18, 163, 122, 0.1);
+            border: 1px solid rgba(18, 163, 122, 0.4);
+            border-radius: 16px;
+            margin-top: 1.5rem;
+        }
+        .form-success.visible {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .form-success-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .form-success h4 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+        .form-success p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -2082,7 +2428,8 @@
                     <a href="#diagnostico">Diagnóstico</a>
                     <a href="#servicos">Serviços</a>
                     <a href="#metodologia">Metodologia</a>
-                    <a href="#diferenciais">Diferenciais</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#faq">FAQ</a>
                     <a href="#contato">Contato</a>
                     <button class="btn btn-primary btn-sm" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})" style="margin-left: 0;">Agendar</button>
                 </nav>
@@ -2102,10 +2449,14 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>ALINHATTA – Consultoria em Licitações</h1>
-                <p class="subtitle">Alinhamos sua empresa para vender ao governo com segurança e resultado</p>
-                <p>Especialistas em transformar empresas comuns em competidoras vitoriosas em licitações públicas</p>
-                
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Consultoria Especializada · Lei 14.133/2021
+                </div>
+                <h1>Sua empresa pronta para competir no mercado governamental</h1>
+                <p class="subtitle">Alinhamos sua empresa para vender ao governo com segurança e estratégia</p>
+                <p>Especialistas em preparar empresas para competir em licitações públicas com método, conformidade e dedicação exclusiva.</p>
+
                 <div class="hero-ctas">
                     <button class="btn btn-primary" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Agendar Diagnóstico Gratuito</button>
                     <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank">Falar no WhatsApp</a>
@@ -2113,14 +2464,16 @@
 
                 <div class="social-proof">
                     <div style="width: 100%;">
-                        <strong style="font-size: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.75rem; display: block; color: var(--secondary); padding-top: 0.5rem; border-top: 1px solid rgba(18, 163, 122, 0.3);">+4 anos de experiência em licitações</strong>
-                        <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-light);">Resultados consistentes: dezenas de contratos firmados e centenas de processos conduzidos com sucesso.</p>
+                        <strong style="font-size: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.75rem; display: block; color: var(--secondary); padding-top: 0.5rem; border-top: 1px solid rgba(18, 163, 122, 0.3);">Consultoria fundada por especialistas com mais de 4 anos dedicados ao mercado de licitações</strong>
+                        <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-light);">Dezenas de contratos acompanhados e centenas de processos conduzidos até a fase final.</p>
                         <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                             <div style="flex: 1; min-width: 200px;">
                                 <strong style="color: var(--secondary); font-size: 1rem; display: block; margin-bottom: 0.5rem;">100% em conformidade com a Lei 14.133/2021</strong>
+                                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Todas as nossas práticas seguem rigorosamente a Nova Lei de Licitações.</span>
                             </div>
                             <div style="flex: 1; min-width: 200px;">
-                                <strong style="color: var(--secondary); font-size: 1rem; display: block; margin-bottom: 0.5rem;">Metodologia própria, validada na prática.</strong>
+                                <strong style="color: var(--secondary); font-size: 1rem; display: block; margin-bottom: 0.5rem;">Metodologia própria, validada na prática</strong>
+                                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Processos estruturados e refinados com dezenas de clientes ativos.</span>
                             </div>
                         </div>
                     </div>
@@ -2150,7 +2503,6 @@
                         <div class="level-item"><strong>Nível 3:</strong> Ganha, mas sem consistência</div>
                         <div class="level-item"><strong>Nível 4:</strong> Operação madura, precisa otimizar</div>
                     </div>
-                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6; padding-bottom: 0.5rem;">(Podemos posicionar sua empresa com precisão e definir o caminho mais rápido para evolução.)</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
@@ -2167,7 +2519,6 @@
                         <div class="level-item">Equipe despreparada</div>
                         <div class="level-item">Ausência de processos internos estruturados</div>
                     </div>
-                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6; padding-bottom: 0.5rem;">(Identificar essas lacunas é o primeiro passo para transformar desempenho em resultado real.)</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
@@ -2176,8 +2527,8 @@
                         <h3 style="margin: 0;">Potencial Financeiro</h3>
                     </div>
                     <p style="margin-bottom: 1.5rem; color: var(--accent); font-weight: 900; font-size: 1.5rem; text-align: center;">Oportunidades Perdidas</p>
-                    <p style="color: var(--text-light); font-weight: 600; text-align: center; line-height: 1.7; margin-bottom: 1.25rem;">Estimamos que sua empresa pode estar deixando de disputar R$ XXX mil/ano em editais totalmente aderentes ao seu segmento.</p>
-                    <p style="color: var(--accent); font-size: 0.9rem; font-style: italic; line-height: 1.6; text-align: center; padding-bottom: 0.5rem;">(Mapeamos onde está o dinheiro e como sua empresa pode alcançá-lo.)</p>
+                    <p style="color: var(--text-light); font-weight: 600; text-align: center; line-height: 1.7; margin-bottom: 1.25rem;">Muitas empresas deixam de disputar centenas de milhares de reais por ano em editais totalmente aderentes ao seu segmento — por falta de estrutura ou monitoramento.</p>
+                    <p style="color: rgba(255,255,255,0.55); font-size: 0.88rem; text-align: center; line-height: 1.6; padding-bottom: 0.5rem;">Identificamos onde estão as oportunidades e como se posicionar para disputá-las.</p>
                 </div>
 
                 <div class="diagnosis-card fade-in">
@@ -2197,7 +2548,6 @@
                             <strong style="color: var(--error);">Alta:</strong> Ações imediatas necessárias para evitar perdas
                         </div>
                     </div>
-                    <p style="color: var(--accent); margin-top: 1.25rem; font-size: 0.9rem; font-style: italic; line-height: 1.6; padding-bottom: 0.5rem;">(Essa classificação orienta o tipo de intervenção mais eficiente.)</p>
                 </div>
             </div>
         </div>
@@ -2208,7 +2558,7 @@
          ======================================== -->
     <section class="section" id="servicos">
         <div class="container">
-            <h2 class="section-title">Como podemos ajudar você a vencer</h2>
+            <h2 class="section-title">Como estruturamos sua empresa para o mercado público</h2>
 
             <!-- ========================================
                  PACOTES - DESTAQUE
@@ -2244,6 +2594,7 @@
                         <h3>Pacote Pro</h3>
                         <p>Autonomia com suporte estratégico. Para empresas que querem estruturar setor interno de licitações.</p>
                         <div class="service-ideal">✓ Até 10 oportunidades/mês<br>✓ 2 sessões de mentoria/mês (2h cada)<br>✓ Revisão de propostas</div>
+                        <div style="margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: rgba(244,210,152,0.1); border-left: 3px solid var(--accent); border-radius: 6px; font-size: 0.82rem; color: var(--accent); font-weight: 700;">🎁 BÔNUS: Após 6 meses, 1 treinamento in-company gratuito</div>
                         <div class="package-price">R$ 3.500/mês</div>
                         <button class="btn btn-accent" onclick="openModal('modalPackagePro')" style="width: 100%;">Saiba mais</button>
                     </div>
@@ -2296,7 +2647,7 @@
                         </div>
                         <h3>Elaboração de Proposta</h3>
                         <p>Proposta técnica + comercial completa para 1 edital com redação profissional e revisão jurídica.</p>
-                        <div class="service-ideal">✓ Propostas vencedoras sob demanda</div>
+                        <div class="service-ideal">✓ Propostas técnicas e comerciais completas, sob demanda</div>
                         <div class="standalone-price">R$ 2.500 a R$ 5.000+</div>
                         <button class="btn btn-sm btn-accent" onclick="openModal('modalElaboracaoProposta')" style="width: 100%;">Saiba mais</button>
                     </div>
@@ -2338,7 +2689,7 @@
          ======================================== -->
     <section class="section section-alt" id="metodologia">
         <div class="container">
-            <h2 class="section-title">Como trabalhamos: 5 etapas para sua vitória</h2>
+            <h2 class="section-title">Como trabalhamos: nossa metodologia em 5 etapas</h2>
             
             <div class="methodology-timeline">
                 <div class="timeline-item fade-in">
@@ -2362,13 +2713,13 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-number">4</div>
                     <h4>Proposta</h4>
-                    <p>Montamos propostas técnicas e comerciais vencedoras</p>
+                    <p>Montamos propostas técnicas e comerciais completas e competitivas</p>
                 </div>
 
                 <div class="timeline-item fade-in">
                     <div class="timeline-number">5</div>
                     <h4>Acompanhamento</h4>
-                    <p>Seguimos com você nas disputas, ajustes e conquista de resultados</p>
+                    <p>Seguimos com você nas disputas, ajustes e busca por resultados</p>
                 </div>
             </div>
         </div>
@@ -2390,7 +2741,7 @@
                     </div>
                     <h3>Experiência Comprovada</h3>
                     <p><strong style="color: var(--primary); font-size: 1.1rem;">+4 anos no mercado de licitações</strong></p>
-                    <p>Centenas de processos acompanhados e contratos conquistados</p>
+                    <p>Centenas de processos acompanhados até a fase final, contratos firmados</p>
                     <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary);">
                         <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Total conformidade com a Lei 14.133/2021</p>
                     </div>
@@ -2418,9 +2769,9 @@
                     </div>
                     <h3>Desburocratização Total</h3>
                     <p><strong style="color: var(--primary); font-size: 1.1rem;">Simplificamos cada etapa</strong></p>
-                    <p>Você foca em vender, nós cuidamos do resto</p>
+                    <p>Cuidamos de toda a parte documental e processual para que você concentre energia onde gera receita</p>
                     <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(18, 163, 122, 0.1); border-radius: 8px; border-left: 4px solid var(--secondary); text-align: center;">
-                        <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Maximizamos sua chance de vitória com dados e estratégia</p>
+                        <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Aumentamos sua competitividade com dados e estratégia</p>
                     </div>
                 </div>
             </div>
@@ -2433,7 +2784,7 @@
     <section class="section" id="contato">
         <div class="container">
             <div class="final-cta">
-                <h2>Pronto para começar a vencer licitações?</h2>
+                <h2>Pronto para competir no mercado governamental?</h2>
                 <p class="subtitle">Agende um diagnóstico gratuito ou fale conosco agora</p>
 
                 <form id="contactForm" class="final-cta-form" onsubmit="handleSubmit(event)">
@@ -2449,6 +2800,12 @@
                     <div class="cta-buttons">
                         <button type="submit" class="btn btn-accent" style="flex-grow: 1; min-width: 180px;">Agendar Diagnóstico</button>
                         <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank" style="flex-grow: 1; min-width: 180px; text-align: center;">📱 WhatsApp</a>
+                    </div>
+
+                    <div class="form-success" id="formSuccess">
+                        <div class="form-success-icon">✅</div>
+                        <h4>Mensagem enviada com sucesso!</h4>
+                        <p>Nossa equipe irá entrar em contato com você em breve pelo WhatsApp ou e-mail informado.</p>
                     </div>
 
                     <p style="text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
@@ -2468,7 +2825,7 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal1')">×</button>
             <h2>📍 Mapeamento de Oportunidades</h2>
-            <p>Descobrimos diariamente os editais ideais para o seu perfil, filtrando por segmento, região, requisitos técnicos e potencial real de vitória.</p>
+            <p>Descobrimos diariamente os editais ideais para o seu perfil, filtrando por segmento, região, requisitos técnicos e potencial real de competitividade.</p>
             <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
                 <li>✔ Análise diária dos principais portais governamentais</li>
@@ -2537,7 +2894,7 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal4')">×</button>
             <h2>🏛 Assessoria Completa</h2>
-            <p>Solução integral onde a Alinhatta assume todo o seu setor de licitações, do mapeamento à vitória.</p>
+            <p>Solução integral onde a Alinhatta assume todo o seu setor de licitações, do mapeamento à contratação.</p>
             <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
                 <li>✔ Gestão completa das licitações</li>
@@ -2583,7 +2940,7 @@
                 <li>✔ Fundamentos de licitações públicas</li>
                 <li>✔ Lei 14.133/2021 em profundidade</li>
                 <li>✔ Estratégias de pregão eletrônico</li>
-                <li>✔ Elaboração de propostas vencedoras</li>
+                <li>✔ Elaboração de propostas técnicas e comerciais</li>
                 <li>✔ Melhores práticas do mercado</li>
                 <li>✔ Módulo customizado por segmento</li>
             </ul>
@@ -2632,7 +2989,7 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal9')">×</button>
             <h2>📝 Elaboração de Propostas</h2>
-            <p>Propostas técnicas e comerciais impecáveis, claras, completas e vencedoras.</p>
+            <p>Propostas técnicas e comerciais impecáveis, claras e completas.</p>
             <p style="margin-top: 1rem; margin-bottom: 1rem;"><strong>Inclui:</strong></p>
             <ul>
                 <li>✔ Análise minuciosa do edital</li>
@@ -2727,7 +3084,7 @@
             <ul>
                 <li>• Fundamentos de Licitações (Lei 14.133/2021)</li>
                 <li>• Estratégias de Pregão Eletrônico</li>
-                <li>• Elaboração de Propostas Vencedoras</li>
+                <li>• Elaboração de Propostas Profissionais</li>
                 <li>• Customizado por segmento</li>
             </ul>
 
@@ -2899,6 +3256,179 @@
     </div>
 
     <!-- ========================================
+         QUEM SOMOS SECTION
+         ======================================== -->
+    <section class="quem-somos-section" id="sobre">
+        <div class="container">
+            <div class="quem-somos-grid">
+                <div class="quem-somos-visual fade-in">
+                    <div class="quem-somos-avatar">🧭</div>
+                    <h3 style="color: var(--white); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Alinhatta Consultoria</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">Especialistas em Licitações Públicas</p>
+                    <div style="background: rgba(18,163,122,0.1); border-radius: 12px; padding: 1rem; border: 1px solid rgba(18,163,122,0.2); text-align: left; margin-bottom: 1.5rem;">
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.7; margin: 0;">"Nossa missão é ser a bússola que orienta empresas brasileiras a navegar com segurança e estratégia no mercado de compras públicas."</p>
+                    </div>
+                    <div class="quem-somos-stat">
+                        <div class="quem-somos-stat-item">
+                            <strong>+4</strong>
+                            <span>anos de atuação</span>
+                        </div>
+                        <div class="quem-somos-stat-item">
+                            <strong>100%</strong>
+                            <span>conformidade legal</span>
+                        </div>
+                        <div class="quem-somos-stat-item">
+                            <strong>Nacional</strong>
+                            <span>atendimento remoto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quem-somos-content fade-in">
+                    <h2>Uma consultoria <span>fundada para</span> quem quer resultado real</h2>
+                    <p>A Alinhatta nasceu da percepção de que o mercado de licitações públicas era inacessível para a maioria das empresas brasileiras — não por falta de capacidade, mas por falta de orientação.</p>
+                    <p>Somos uma consultoria especializada exclusivamente em licitações públicas. Atuamos com base na Nova Lei de Licitações (14.133/2021) e desenvolvemos uma metodologia própria que combina inteligência de mercado, rigor documental e acompanhamento estratégico.</p>
+                    <p>Nosso compromisso é preparar sua empresa para competir — com segurança jurídica, propostas bem estruturadas e presença qualificada em cada etapa do processo.</p>
+                    <div class="quem-somos-tags">
+                        <span class="quem-somos-tag">Lei 14.133/2021</span>
+                        <span class="quem-somos-tag">Pregão Eletrônico</span>
+                        <span class="quem-somos-tag">Gestão Documental</span>
+                        <span class="quem-somos-tag">Conformidade</span>
+                        <span class="quem-somos-tag">Atendimento Nacional</span>
+                        <span class="quem-somos-tag">Metodologia Própria</span>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="#contato" class="btn btn-primary">Conheça nossa metodologia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TESTIMONIALS SECTION
+         ======================================== -->
+    <section class="testimonials-section" id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.55); max-width: 600px; margin: 0 auto; font-size: 0.95rem; line-height: 1.7;">Empresas que estruturaram sua operação com a Alinhatta e passaram a competir com confiança no mercado público.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Antes não sabíamos nem por onde começar. A Alinhatta organizou toda a nossa documentação, nos apresentou aos portais certos e estruturou a primeira proposta do zero. Hoje participamos com segurança e já firmamos contratos.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-avatar">R.S</div>
+                        <div class="testimonial-author-info">
+                            <strong>R.S.</strong>
+                            <span>Diretor Comercial · Empresa de TI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Participávamos de licitações sem sucesso há dois anos. Com a consultoria, descobrimos que nossos erros eram documentais e de precificação. Com o suporte da Alinhatta, corrigimos o curso e melhoramos muito nossos resultados.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-avatar">M.F</div>
+                        <div class="testimonial-author-info">
+                            <strong>M.F.</strong>
+                            <span>Sócia · Distribuidora de Materiais</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">O Pacote Premium valeu cada real investido. A equipe cuida de tudo — mapeamento, proposta, participação no pregão. Consigo focar 100% na operação da empresa enquanto eles gerenciam o setor de licitações.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-avatar">A.L</div>
+                        <div class="testimonial-author-info">
+                            <strong>A.L.</strong>
+                            <span>CEO · Prestadora de Serviços</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FAQ SECTION
+         ======================================== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.55); max-width: 600px; margin: 0 auto; font-size: 0.95rem; line-height: 1.7;">Respostas objetivas para as dúvidas mais comuns de quem está iniciando no mercado de licitações.</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        É legal terceirizar a gestão de licitações?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sim, é totalmente legal. A representação por meio de consultoria especializada é uma prática comum e reconhecida no mercado. A empresa permanece como titular da proposta e do contrato — a consultoria atua como suporte técnico e estratégico. Toda a nossa atuação segue rigorosamente a Lei 14.133/2021.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Quanto tempo leva para participar do primeiro edital?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Depende do nível de maturidade documental da empresa. Para empresas com documentação básica em ordem (CNPJ ativo, certidões regulares), o processo de qualificação pode ser concluído em 2 a 4 semanas. Empresas que precisam de regularização podem levar entre 30 e 60 dias. Realizamos um diagnóstico gratuito para estimar com precisão.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        A consultoria funciona para MEI e microempresas?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sim. MEIs, MEs e EPPs têm benefícios garantidos em lei nas licitações públicas — como preferência de contratação e regime diferenciado. O Pacote Starter foi desenvolvido especialmente para esse perfil, com custo acessível e foco nos primeiros passos. Trabalhamos com empresas de todos os portes.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Quais segmentos atendem? Só obras ou também serviços e produtos?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Atendemos empresas de serviços, fornecimento de produtos, tecnologia e consultoria. Não atuamos com obras de engenharia civil. Nosso foco são licitações de pregão eletrônico — o modelo mais comum no governo federal, estadual e municipal.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Como funciona o pagamento e o contrato com a Alinhatta?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Trabalhamos com contratos mensais com duração mínima por pacote (3 meses para Starter, 6 para Pro, 12 para Premium). O pagamento é via PIX, boleto ou cartão de crédito. Nos pacotes Premium há também uma comissão de performance sobre contratos homologados, paga 30 dias após a assinatura do contrato público.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        O atendimento é presencial ou online?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">100% remoto, com atendimento nacional. Todas as sessões de mentoria, análise de editais e acompanhamentos acontecem via videochamada. Isso permite que empresas de qualquer estado do Brasil sejam atendidas com o mesmo nível de qualidade.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
          FOOTER
          ======================================== -->
     <footer>
@@ -2927,18 +3457,21 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2024/2025 Alinhatta - Todos os direitos reservados</p>
+            <p>© 2026 Alinhatta - Todos os direitos reservados</p>
         </div>
     </footer>
 
     <!-- ========================================
          FLOATING WHATSAPP BUTTON
          ======================================== -->
-    <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="whatsapp-float" target="_blank" title="Falar com Alinhatta no WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.99 1.513 9.866 9.866 0 001.477 19.05 9.867 9.867 0 009.49-7.56 9.87 9.87 0 00-5.973-13.003z" fill="white"/>
-        </svg>
-    </a>
+    <div class="whatsapp-wrapper">
+        <span class="whatsapp-tooltip">Fale conosco</span>
+        <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="whatsapp-float" target="_blank" title="Falar com Alinhatta no WhatsApp">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.99 1.513 9.866 9.866 0 001.477 19.05 9.867 9.867 0 009.49-7.56 9.87 9.87 0 00-5.973-13.003z" fill="white"/>
+            </svg>
+        </a>
+    </div>
 
     <script>
         /* ========================================
@@ -3159,14 +3692,23 @@
             const phone = form.querySelector('input[type="tel"]').value;
             const message = form.querySelector('textarea').value;
 
-            // Create WhatsApp message with form data
             const whatsappMessage = `Olá Alinhatta!\n\nFiz uma solicitação de diagnóstico:\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${phone}\n\nMensagem:\n${message}`;
 
-            // Open WhatsApp with pre-filled message
             openWhatsApp(whatsappMessage);
-
-            // Reset form
             form.reset();
+
+            const successEl = document.getElementById('formSuccess');
+            if (successEl) {
+                successEl.classList.add('visible');
+                setTimeout(() => successEl.classList.remove('visible'), 8000);
+            }
+        }
+
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item.active').forEach(el => el.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
         }
 
         // Update all WhatsApp links to use native app
