@@ -150,7 +150,26 @@
 
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .anim{animation:slideUp .7s ease-out forwards;opacity:0}
+
+    /* Pkg cards */
+    .pkg-card{background:#0d0d0d;border:1px solid rgba(255,255,255,.07);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;transition:all .3s ease;position:relative}
+    .pkg-card:hover{background:#141414;transform:translateY(-4px)}
+    .pkg-badge{display:inline-block;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .75rem;border-radius:999px;margin-bottom:1rem}
+    .pkg-badge-teal{background:rgba(18,163,122,.12);color:#12a37a;border:1px solid rgba(18,163,122,.25)}
+    .pkg-badge-gold{background:rgba(244,210,152,.08);color:#f4d298;border:1px solid rgba(244,210,152,.2)}
+    .pkg-divider{height:1px;background:rgba(255,255,255,.06);margin:1rem 0 1.5rem}
+
+    /* Method visual */
+    .method-visual{min-height:380px;border-radius:24px;background:rgba(8,8,8,.9);border:1px solid rgba(255,255,255,.06);overflow:hidden}
+
+    /* Marquee social proof */
+    .marquee-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+    .marquee-track{display:flex;gap:1rem;width:max-content;animation:scrollX 55s linear infinite}
+    .marquee-track:hover{animation-play-state:paused}
+    .testi-mini{background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:1.4rem 1.6rem;width:310px;flex-shrink:0;transition:border-color .3s}
+    .testi-mini:hover{border-color:rgba(18,163,122,.25)}
 
     @media(max-width:768px){
       .hide-mob{display:none!important}
@@ -602,49 +621,6 @@
       </div>
     </div>
 
-    <!-- Serviços Avulsos -->
-    <div class="mt-4">
-      <div class="text-center mb-8">
-        <span class="section-label">Serviços avulsos</span>
-        <h3 class="font-display font-bold text-white text-2xl">Contrate conforme sua necessidade</h3>
-        <p class="text-brand-muted text-sm mt-1">Sem compromisso de mensalidade. Serviços pontuais para necessidades específicas.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <!-- Consultoria Express -->
-        <div class="card p-5">
-          <div class="w-10 h-10 rounded-xl bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal text-xl mb-4">
-            <iconify-icon icon="lucide:clock"></iconify-icon>
-          </div>
-          <h4 class="font-display font-bold text-white text-base mb-1.5">Consultoria Express</h4>
-          <p class="text-brand-muted text-[.8rem] leading-relaxed mb-3">Análise urgente de 1 edital com sessão de 2h e plano de ação executável.</p>
-          <p class="text-brand-gold font-display font-bold text-lg mb-4">R$ 1.200 a R$ 2.500<span class="text-sm font-normal text-brand-muted/60">/sessão</span></p>
-          <button onclick="openModal('modalExpress')" class="btn btn-outline btn-sm w-full text-center">Saiba mais</button>
-        </div>
-
-        <!-- Treinamento -->
-        <div class="card p-5">
-          <div class="w-10 h-10 rounded-xl bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal text-xl mb-4">
-            <iconify-icon icon="lucide:graduation-cap"></iconify-icon>
-          </div>
-          <h4 class="font-display font-bold text-white text-base mb-1.5">Treinamento In-Company</h4>
-          <p class="text-brand-muted text-[.8rem] leading-relaxed mb-3">Capacitação presencial de 8h para sua equipe com material didático e certificado.</p>
-          <p class="text-brand-gold font-display font-bold text-lg mb-4">R$ 4.000 a R$ 6.000</p>
-          <button onclick="openModal('modalTreinamento')" class="btn btn-outline btn-sm w-full text-center">Saiba mais</button>
-        </div>
-
-        <!-- Gestão Documental -->
-        <div class="card p-5">
-          <div class="w-10 h-10 rounded-xl bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal text-xl mb-4">
-            <iconify-icon icon="lucide:folder-open"></iconify-icon>
-          </div>
-          <h4 class="font-display font-bold text-white text-base mb-1.5">Gestão Documental</h4>
-          <p class="text-brand-muted text-[.8rem] leading-relaxed mb-3">Organização completa do acervo documental com regularização fiscal e jurídica.</p>
-          <p class="text-brand-gold font-display font-bold text-lg mb-4">R$ 1.500 setup <span class="text-sm font-normal">+ R$ 500/mês</span></p>
-          <button onclick="openModal('modalDocumental')" class="btn btn-outline btn-sm w-full text-center">Saiba mais</button>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -782,51 +758,191 @@
 </section>
 
 <!-- ═══════════════════════════════════════
-     DEPOIMENTOS
+     DEPOIMENTOS — MARQUEE
      ═══════════════════════════════════════ -->
-<section id="depoimentos" class="py-24 px-5">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="section-label">Prova social</span>
-      <h2 class="section-heading">O que nossos clientes dizem</h2>
-      <p class="section-sub mx-auto text-center mt-2">Empresas que estruturaram sua operação com a Alinhatta e passaram a competir com confiança.</p>
+<section id="depoimentos" class="py-20 overflow-hidden">
+  <div class="text-center mb-10 px-5">
+    <span class="section-label">Prova social</span>
+    <h2 class="section-heading">O que nossos clientes dizem</h2>
+    <p class="section-sub mx-auto text-center mt-2">Empresas que estruturaram sua operação com a Alinhatta.</p>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <!-- Card 1 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Antes não sabíamos nem por onde começar. A Alinhatta organizou toda a documentação e estruturou a primeira proposta do zero. Hoje participamos com segurança."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">RS</div>
+          <div><p class="text-white text-xs font-semibold">R.S.</p><p class="text-brand-muted text-[.68rem]">Diretor Comercial · Empresa de TI</p></div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Participávamos de licitações sem resultado há dois anos. Descobrimos que os erros eram documentais e de precificação. Corrigimos o curso e o resultado foi imediato."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">MF</div>
+          <div><p class="text-white text-xs font-semibold">M.F.</p><p class="text-brand-muted text-[.68rem]">Sócia · Distribuidora de Materiais</p></div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"O Pacote Premium valeu cada real. A equipe cuida de tudo — mapeamento, proposta, pregão. Consigo focar 100% na operação enquanto eles gerenciam o setor."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">AL</div>
+          <div><p class="text-white text-xs font-semibold">A.L.</p><p class="text-brand-muted text-[.68rem]">CEO · Prestadora de Serviços</p></div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Em menos de 60 dias com a Alinhatta já tínhamos nossa primeira proposta aprovada. A organização documental que eles fizeram foi o divisor de águas para o nosso negócio."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">CB</div>
+          <div><p class="text-white text-xs font-semibold">C.B.</p><p class="text-brand-muted text-[.68rem]">Gerente · Empresa de Limpeza</p></div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"A metodologia deles é diferente. Não é só 'enviar proposta e torcer'. Eles analisam viabilidade, margem e risco antes de entrar em qualquer edital. Isso faz toda a diferença."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">PR</div>
+          <div><p class="text-white text-xs font-semibold">P.R.</p><p class="text-brand-muted text-[.68rem]">Sócio · Consultoria de RH</p></div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Tentamos entrar no mercado público sozinhos e foi um desastre. Com a Alinhatta entendemos o processo de verdade. O suporte via WhatsApp é ágil e os consultores dominam o assunto."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">TM</div>
+          <div><p class="text-white text-xs font-semibold">T.M.</p><p class="text-brand-muted text-[.68rem]">Diretora · Empresa de Alimentação</p></div>
+        </div>
+      </div>
+      <!-- Card 7 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Nossa startup de software nunca imaginou vender ao governo. A Alinhatta identificou pregões aderentes ao nosso SaaS e nos guiou em cada etapa. O mercado público abriu portas incríveis."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">JS</div>
+          <div><p class="text-white text-xs font-semibold">J.S.</p><p class="text-brand-muted text-[.68rem]">Fundador · Startup de Software</p></div>
+        </div>
+      </div>
+      <!-- Card 8 -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"A conformidade com a Lei 14.133 sempre me preocupou. A equipe da Alinhatta cuida de cada detalhe legal. Consigo participar de pregões sabendo que estou 100% dentro das normas."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">RL</div>
+          <div><p class="text-white text-xs font-semibold">R.L.</p><p class="text-brand-muted text-[.68rem]">Gerente Comercial · Equipamentos Médicos</p></div>
+        </div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Antes não sabíamos nem por onde começar. A Alinhatta organizou toda a documentação e estruturou a primeira proposta do zero. Hoje participamos com segurança."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">RS</div>
+          <div><p class="text-white text-xs font-semibold">R.S.</p><p class="text-brand-muted text-[.68rem]">Diretor Comercial · Empresa de TI</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Participávamos de licitações sem resultado há dois anos. Descobrimos que os erros eram documentais e de precificação. Corrigimos o curso e o resultado foi imediato."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">MF</div>
+          <div><p class="text-white text-xs font-semibold">M.F.</p><p class="text-brand-muted text-[.68rem]">Sócia · Distribuidora de Materiais</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"O Pacote Premium valeu cada real. A equipe cuida de tudo — mapeamento, proposta, pregão. Consigo focar 100% na operação enquanto eles gerenciam o setor."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">AL</div>
+          <div><p class="text-white text-xs font-semibold">A.L.</p><p class="text-brand-muted text-[.68rem]">CEO · Prestadora de Serviços</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Em menos de 60 dias com a Alinhatta já tínhamos nossa primeira proposta aprovada. A organização documental que eles fizeram foi o divisor de águas para o nosso negócio."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">CB</div>
+          <div><p class="text-white text-xs font-semibold">C.B.</p><p class="text-brand-muted text-[.68rem]">Gerente · Empresa de Limpeza</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"A metodologia deles é diferente. Não é só 'enviar proposta e torcer'. Eles analisam viabilidade, margem e risco antes de entrar em qualquer edital. Isso faz toda a diferença."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">PR</div>
+          <div><p class="text-white text-xs font-semibold">P.R.</p><p class="text-brand-muted text-[.68rem]">Sócio · Consultoria de RH</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Tentamos entrar no mercado público sozinhos e foi um desastre. Com a Alinhatta entendemos o processo de verdade. O suporte via WhatsApp é ágil e os consultores dominam o assunto."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">TM</div>
+          <div><p class="text-white text-xs font-semibold">T.M.</p><p class="text-brand-muted text-[.68rem]">Diretora · Empresa de Alimentação</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"Nossa startup de software nunca imaginou vender ao governo. A Alinhatta identificou pregões aderentes ao nosso SaaS e nos guiou em cada etapa. O mercado público abriu portas incríveis."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">JS</div>
+          <div><p class="text-white text-xs font-semibold">J.S.</p><p class="text-brand-muted text-[.68rem]">Fundador · Startup de Software</p></div>
+        </div>
+      </div>
+      <div class="testi-mini">
+        <div class="text-brand-gold text-xs mb-2">★★★★★</div>
+        <p class="text-brand-muted text-[.82rem] leading-relaxed italic mb-4">"A conformidade com a Lei 14.133 sempre me preocupou. A equipe da Alinhatta cuida de cada detalhe legal. Consigo participar de pregões sabendo que estou 100% dentro das normas."</p>
+        <div class="flex items-center gap-2.5 border-t border-white/[.06] pt-3">
+          <div class="w-8 h-8 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-xs flex-shrink-0">RL</div>
+          <div><p class="text-white text-xs font-semibold">R.L.</p><p class="text-brand-muted text-[.68rem]">Gerente Comercial · Equipamentos Médicos</p></div>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div class="testi">
-        <div class="text-brand-teal/30 text-4xl font-serif mb-2">"</div>
-        <div class="text-brand-gold text-sm mb-3">★★★★★</div>
-        <p class="text-brand-muted text-[.85rem] leading-relaxed italic mb-5">Antes não sabíamos nem por onde começar. A Alinhatta organizou toda a documentação, nos apresentou aos portais certos e estruturou a primeira proposta do zero. Hoje participamos com segurança.</p>
-        <div class="border-t border-white/[.06] pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-sm flex-shrink-0">RS</div>
-          <div>
-            <p class="text-white text-sm font-semibold">R.S.</p>
-            <p class="text-brand-muted text-[.72rem]">Diretor Comercial · Empresa de TI</p>
-          </div>
-        </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVIÇOS AVULSOS
+     ═══════════════════════════════════════ -->
+<section class="py-16 px-5 border-y border-white/[.04] bg-brand-surface/20">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="section-label">Serviços avulsos</span>
+        <h3 class="font-display font-bold text-white text-2xl">Contrate conforme sua necessidade</h3>
       </div>
-      <div class="testi">
-        <div class="text-brand-teal/30 text-4xl font-serif mb-2">"</div>
-        <div class="text-brand-gold text-sm mb-3">★★★★★</div>
-        <p class="text-brand-muted text-[.85rem] leading-relaxed italic mb-5">Participávamos de licitações sem resultado há dois anos. Com a consultoria, descobrimos que nossos erros eram documentais e de precificação. Corrigimos o curso e melhoramos muito.</p>
-        <div class="border-t border-white/[.06] pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-sm flex-shrink-0">MF</div>
-          <div>
-            <p class="text-white text-sm font-semibold">M.F.</p>
-            <p class="text-brand-muted text-[.72rem]">Sócia · Distribuidora de Materiais</p>
-          </div>
-        </div>
+      <p class="text-brand-muted text-sm max-w-xs">Sem mensalidade. Serviços pontuais para necessidades específicas.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="card p-5">
+        <div class="w-10 h-10 rounded-xl bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal text-xl mb-4"><iconify-icon icon="lucide:clock"></iconify-icon></div>
+        <h4 class="font-display font-bold text-white text-base mb-1.5">Consultoria Express</h4>
+        <p class="text-brand-muted text-[.8rem] leading-relaxed mb-3">Análise urgente de 1 edital com sessão de 2h e plano de ação executável.</p>
+        <p class="text-brand-gold font-display font-bold text-lg mb-4">R$ 1.200 a R$ 2.500<span class="text-sm font-normal text-brand-muted/60">/sessão</span></p>
+        <button onclick="openModal('modalExpress')" class="btn btn-outline btn-sm w-full text-center">Saiba mais</button>
       </div>
-      <div class="testi">
-        <div class="text-brand-teal/30 text-4xl font-serif mb-2">"</div>
-        <div class="text-brand-gold text-sm mb-3">★★★★★</div>
-        <p class="text-brand-muted text-[.85rem] leading-relaxed italic mb-5">O Pacote Premium valeu cada real. A equipe cuida de tudo — mapeamento, proposta, participação no pregão. Consigo focar 100% na operação enquanto eles gerenciam o setor de licitações.</p>
-        <div class="border-t border-white/[.06] pt-4 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-brand-teal/15 flex items-center justify-center text-brand-teal font-black text-sm flex-shrink-0">AL</div>
-          <div>
-            <p class="text-white text-sm font-semibold">A.L.</p>
-            <p class="text-brand-muted text-[.72rem]">CEO · Prestadora de Serviços</p>
-          </div>
-        </div>
+      <div class="card p-5">
+        <div class="w-10 h-10 rounded-xl bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal text-xl mb-4"><iconify-icon icon="lucide:graduation-cap"></iconify-icon></div>
+        <h4 class="font-display font-bold text-white text-base mb-1.5">Treinamento In-Company</h4>
+        <p class="text-brand-muted text-[.8rem] leading-relaxed mb-3">Capacitação presencial de 8h para sua equipe com material didático e certificado.</p>
+        <p class="text-brand-gold font-display font-bold text-lg mb-4">R$ 4.000 a R$ 6.000</p>
+        <button onclick="openModal('modalTreinamento')" class="btn btn-outline btn-sm w-full text-center">Saiba mais</button>
+      </div>
+      <div class="card p-5">
+        <div class="w-10 h-10 rounded-xl bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center text-brand-teal text-xl mb-4"><iconify-icon icon="lucide:folder-open"></iconify-icon></div>
+        <h4 class="font-display font-bold text-white text-base mb-1.5">Gestão Documental</h4>
+        <p class="text-brand-muted text-[.8rem] leading-relaxed mb-3">Organização completa do acervo documental com regularização fiscal e jurídica.</p>
+        <p class="text-brand-gold font-display font-bold text-lg mb-4">R$ 1.500 setup <span class="text-sm font-normal">+ R$ 500/mês</span></p>
+        <button onclick="openModal('modalDocumental')" class="btn btn-outline btn-sm w-full text-center">Saiba mais</button>
       </div>
     </div>
   </div>
