@@ -29,6 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900,700,500&display=swap" rel="stylesheet">
     
     <style>
         /* ========================================
@@ -52,7 +53,7 @@
             --bg-secondary: #1a1a1a;
             --text-light: #e0e0e0;
             
-            --font-heading: 'Montserrat', sans-serif;
+            --font-heading: 'Cabinet Grotesk', 'Montserrat', sans-serif;
             --font-body: 'Open Sans', 'Inter', sans-serif;
             
             --size-h1: clamp(2.8rem, 5.5vw, 3.5rem);
@@ -2064,6 +2065,343 @@
         }
 
         /* ========================================
+           GRID BACKGROUND (superdesign)
+           ======================================== */
+        body {
+            background-image:
+                linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 44px 44px;
+        }
+
+        /* ========================================
+           TRUST METRICS BAR
+           ======================================== */
+        .trust-bar {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(13,13,13,0.7);
+            backdrop-filter: blur(8px);
+        }
+        .trust-bar-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+        @media (max-width: 768px) {
+            .trust-bar-inner {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+        }
+        .trust-bar-item {
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+        .trust-bar-item:first-child { padding-left: 0; }
+        .trust-bar-item:last-child { border-right: none; }
+        @media (max-width: 768px) {
+            .trust-bar-item { border-right: none; padding: 0; }
+        }
+        .trust-bar-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(18,163,122,0.1);
+            border: 1px solid rgba(18,163,122,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .trust-bar-icon svg { width: 24px; height: 24px; fill: var(--secondary); }
+        .trust-bar-text strong {
+            display: block;
+            font-size: 1.15rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+        .trust-bar-text span {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           LOW TICKET FUNNEL
+           ======================================== */
+        .funnel-section {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+        .funnel-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(18,163,122,0.2), transparent);
+            pointer-events: none;
+        }
+        .funnel-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(244,210,152,0.08);
+            border: 1px solid rgba(244,210,152,0.25);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+        .funnel-steps {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin-top: 2.5rem;
+            position: relative;
+        }
+        @media (max-width: 900px) {
+            .funnel-steps { flex-direction: column; }
+        }
+        .funnel-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        @media (max-width: 900px) {
+            .funnel-arrow { transform: rotate(90deg); padding: 0.5rem 0; }
+        }
+        .funnel-card {
+            flex: 1;
+            border-radius: 20px;
+            padding: 2rem 1.75rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .funnel-card:hover {
+            transform: translateY(-6px);
+        }
+        .funnel-card-low {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+        .funnel-card-mid {
+            background: linear-gradient(135deg, rgba(26,123,96,0.15) 0%, rgba(18,163,122,0.08) 100%);
+            border: 1px solid rgba(18,163,122,0.3);
+        }
+        .funnel-card-high {
+            background: linear-gradient(135deg, rgba(244,210,152,0.12) 0%, rgba(18,163,122,0.08) 100%);
+            border: 1px solid rgba(244,210,152,0.3);
+        }
+        .funnel-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.65rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+        .funnel-tag-low { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
+        .funnel-tag-mid { background: rgba(18,163,122,0.15); color: var(--secondary); }
+        .funnel-tag-high { background: rgba(244,210,152,0.15); color: var(--accent); }
+        .funnel-card h4 {
+            font-size: 1.25rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .funnel-card p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+        .funnel-price {
+            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+        .funnel-price-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1.25rem;
+        }
+        .funnel-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+        .funnel-list li {
+            font-size: 0.83rem;
+            color: rgba(255,255,255,0.65);
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            line-height: 1.5;
+        }
+        .funnel-list li::before { content: '✓'; color: var(--secondary); font-weight: 700; flex-shrink: 0; }
+
+        /* ========================================
+           METHODOLOGY 2-COL (superdesign)
+           ======================================== */
+        .methodology-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 900px) {
+            .methodology-2col { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+        .methodology-visual {
+            aspect-ratio: 4/3;
+            border-radius: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.07);
+            overflow: hidden;
+            position: relative;
+        }
+        .methodology-visual-glow {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(18,163,122,0.1), transparent 60%);
+        }
+        .methodology-chart-wrap {
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 75%; height: 75%;
+            background: rgba(21,21,21,0.9);
+            border-top-left-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            gap: 0.5rem;
+        }
+        .chart-bar {
+            flex: 1;
+            border-radius: 4px 4px 0 0;
+            transition: height 0.3s ease;
+        }
+        .methodology-badge {
+            position: absolute;
+            top: 1.5rem; left: 1.5rem;
+            background: rgba(10,10,10,0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 0.85rem 1.25rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+        .methodology-badge-icon {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: rgba(244,210,152,0.1);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .methodology-badge-icon svg { width: 20px; height: 20px; fill: var(--accent); }
+        .methodology-badge p { margin: 0; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+        .methodology-badge strong { display: block; color: var(--white); font-size: 1rem; font-weight: 800; }
+        .methodology-steps { display: flex; flex-direction: column; gap: 1.75rem; }
+        .methodology-step { display: flex; gap: 1.25rem; }
+        .methodology-step-line { display: flex; flex-direction: column; align-items: center; }
+        .methodology-step-num {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 1px solid rgba(18,163,122,0.4);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--secondary);
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .methodology-step-num.active {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+            box-shadow: 0 0 12px rgba(18,163,122,0.4);
+        }
+        .methodology-step-connector {
+            width: 1px;
+            flex: 1;
+            background: linear-gradient(to bottom, rgba(18,163,122,0.4), transparent);
+            margin: 6px 0;
+        }
+        .methodology-step-body { padding-bottom: 0.5rem; }
+        .methodology-step-body h4 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; font-family: var(--font-heading); }
+        .methodology-step-body p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
+
+        /* ========================================
+           FOOTER 4-COL (superdesign)
+           ======================================== */
+        .footer-4col {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        @media (max-width: 900px) {
+            .footer-4col { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+        @media (max-width: 540px) {
+            .footer-4col { grid-template-columns: 1fr; }
+        }
+        .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.5rem; }
+        .footer-socials { display: flex; gap: 0.75rem; }
+        .footer-social-btn {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.07);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.5);
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .footer-social-btn:hover { color: var(--secondary); border-color: rgba(18,163,122,0.4); }
+        .footer-social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: 0.02em; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 0.65rem; }
+        .footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: var(--secondary); }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 0.65rem; margin-bottom: 0.85rem; }
+        .footer-contact-item svg { width: 16px; height: 16px; fill: var(--secondary); flex-shrink: 0; margin-top: 2px; }
+        .footer-contact-item a, .footer-contact-item span { font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 1.5; transition: color 0.2s; }
+        .footer-contact-item a:hover { color: var(--white); }
+
+        /* ========================================
            HERO BADGE
            ======================================== */
         .hero-badge {
@@ -2425,10 +2763,10 @@
             
             <div class="nav-wrapper">
                 <nav class="links" id="navLinks">
-                    <a href="#diagnostico">Diagnóstico</a>
-                    <a href="#servicos">Serviços</a>
-                    <a href="#metodologia">Metodologia</a>
                     <a href="#sobre">Sobre</a>
+                    <a href="#comece">Começar</a>
+                    <a href="#pacotes">Pacotes</a>
+                    <a href="#metodologia">Metodologia</a>
                     <a href="#faq">FAQ</a>
                     <a href="#contato">Contato</a>
                     <button class="btn btn-primary btn-sm" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})" style="margin-left: 0;">Agendar</button>
@@ -2476,6 +2814,81 @@
                                 <span style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Processos estruturados e refinados com dezenas de clientes ativos.</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TRUST METRICS BAR
+         ======================================== -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-bar-item">
+                <div class="trust-bar-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <div class="trust-bar-text">
+                    <strong>+4 Anos de Experiência</strong>
+                    <span>Consultoria dedicada exclusivamente ao mercado de licitações</span>
+                </div>
+            </div>
+            <div class="trust-bar-item">
+                <div class="trust-bar-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                </div>
+                <div class="trust-bar-text">
+                    <strong>100% Conformidade Legal</strong>
+                    <span>Rigorosamente alinhada à Nova Lei de Licitações (14.133/2021)</span>
+                </div>
+            </div>
+            <div class="trust-bar-item">
+                <div class="trust-bar-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </div>
+                <div class="trust-bar-text">
+                    <strong>Metodologia Própria</strong>
+                    <span>Processos refinados com dezenas de clientes em todo o Brasil</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         QUEM SOMOS SECTION
+         ======================================== -->
+    <section class="quem-somos-section" id="sobre">
+        <div class="container">
+            <div class="quem-somos-grid">
+                <div class="quem-somos-visual fade-in">
+                    <div class="quem-somos-avatar">🧭</div>
+                    <h3 style="color: var(--white); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Alinhatta Consultoria</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">Especialistas em Licitações Públicas</p>
+                    <div style="background: rgba(18,163,122,0.1); border-radius: 12px; padding: 1rem; border: 1px solid rgba(18,163,122,0.2); text-align: left; margin-bottom: 1.5rem;">
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.7; margin: 0;">"Nossa missão é ser a bússola que orienta empresas brasileiras a navegar com segurança e estratégia no mercado de compras públicas."</p>
+                    </div>
+                    <div class="quem-somos-stat">
+                        <div class="quem-somos-stat-item"><strong>+4</strong><span>anos de atuação</span></div>
+                        <div class="quem-somos-stat-item"><strong>100%</strong><span>conformidade legal</span></div>
+                        <div class="quem-somos-stat-item"><strong>Nacional</strong><span>atendimento remoto</span></div>
+                    </div>
+                </div>
+                <div class="quem-somos-content fade-in">
+                    <h2>Uma consultoria <span>fundada para</span> quem quer resultado real</h2>
+                    <p>A Alinhatta nasceu da percepção de que o mercado de licitações públicas era inacessível para a maioria das empresas brasileiras — não por falta de capacidade, mas por falta de orientação.</p>
+                    <p>Somos especializados exclusivamente em licitações públicas. Atuamos com base na Nova Lei de Licitações (14.133/2021) e desenvolvemos uma metodologia própria que combina inteligência de mercado, rigor documental e acompanhamento estratégico.</p>
+                    <p>Nosso compromisso é preparar sua empresa para competir — com segurança jurídica, propostas bem estruturadas e presença qualificada em cada etapa do processo.</p>
+                    <div class="quem-somos-tags">
+                        <span class="quem-somos-tag">Lei 14.133/2021</span>
+                        <span class="quem-somos-tag">Pregão Eletrônico</span>
+                        <span class="quem-somos-tag">Gestão Documental</span>
+                        <span class="quem-somos-tag">Conformidade</span>
+                        <span class="quem-somos-tag">Atendimento Nacional</span>
+                        <span class="quem-somos-tag">Metodologia Própria</span>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="#servicos" class="btn btn-primary">Ver nossos serviços</a>
                     </div>
                 </div>
             </div>
@@ -2561,9 +2974,77 @@
             <h2 class="section-title">Como estruturamos sua empresa para o mercado público</h2>
 
             <!-- ========================================
+                 FUNIL DE ENTRADA — LOW TICKET
+                 ======================================== -->
+            <div class="funnel-section" id="comece">
+                <div style="margin-bottom: 2rem;">
+                    <span class="funnel-label">Encontre o ponto de entrada certo para sua empresa</span>
+                    <h3 class="packages-title" style="margin-bottom: 0.5rem;">Escolha por onde começar</h3>
+                    <p class="packages-subtitle">Não importa onde você está agora — temos o caminho certo para o seu momento.</p>
+                </div>
+
+                <div class="funnel-steps">
+                    <!-- STEP 1: R$67 -->
+                    <div class="funnel-card funnel-card-low fade-in">
+                        <span class="funnel-tag funnel-tag-low">Passo 1 · Conhecimento</span>
+                        <h4>Kit Licitações do Zero</h4>
+                        <p>Material digital completo para quem quer entender o mercado de licitações antes de investir. Guia passo a passo + templates prontos + checklist de habilitação.</p>
+                        <div class="funnel-price">R$ 67</div>
+                        <div class="funnel-price-sub">Acesso imediato · Pagamento único</div>
+                        <ul class="funnel-list">
+                            <li>Guia completo: do zero ao primeiro pregão</li>
+                            <li>Templates de proposta comercial</li>
+                            <li>Checklist de documentos obrigatórios</li>
+                            <li>Glossário da Lei 14.133/2021</li>
+                            <li>Bônus: acesso ao grupo de suporte</li>
+                        </ul>
+                        <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Tenho%20interesse%20no%20Kit%20Licitações%20do%20Zero%20(R$67)." class="btn btn-secondary" target="_blank" style="text-align:center;">Quero o Kit — R$ 67</a>
+                    </div>
+
+                    <div class="funnel-arrow">→</div>
+
+                    <!-- STEP 2: R$350 -->
+                    <div class="funnel-card funnel-card-mid fade-in">
+                        <span class="funnel-tag funnel-tag-mid">Passo 2 · Diagnóstico</span>
+                        <h4>Diagnóstico de Viabilidade</h4>
+                        <p>Sessão 1h com especialista + relatório personalizado. Descubra exatamente quais editais sua empresa pode disputar hoje e o que falta para participar.</p>
+                        <div class="funnel-price">R$ 350</div>
+                        <div class="funnel-price-sub">Sessão online + relatório em PDF</div>
+                        <ul class="funnel-list">
+                            <li>1h de consulta individual ao vivo</li>
+                            <li>Análise do perfil da empresa (segmento, porte, região)</li>
+                            <li>Mapeamento de 3 editais disponíveis agora</li>
+                            <li>Relatório de gaps documentais</li>
+                            <li>Plano de ação personalizado</li>
+                        </ul>
+                        <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Tenho%20interesse%20no%20Diagnóstico%20de%20Viabilidade%20(R$350)." class="btn btn-primary" target="_blank" style="text-align:center;">Agendar Diagnóstico — R$ 350</a>
+                    </div>
+
+                    <div class="funnel-arrow">→</div>
+
+                    <!-- STEP 3: Pacotes -->
+                    <div class="funnel-card funnel-card-high fade-in">
+                        <span class="funnel-tag funnel-tag-high">Passo 3 · Gestão Completa</span>
+                        <h4>Pacotes de Consultoria</h4>
+                        <p>Suporte contínuo para quem quer estruturar ou terceirizar o setor de licitações. Escolha o plano certo para o seu momento e faturamento.</p>
+                        <div class="funnel-price">R$ 1.800<span style="font-size:1rem;font-weight:400;color:rgba(255,255,255,0.4)">/mês</span></div>
+                        <div class="funnel-price-sub">Planos Starter, Pro e Premium disponíveis</div>
+                        <ul class="funnel-list">
+                            <li>Mapeamento contínuo de oportunidades</li>
+                            <li>Gestão documental completa</li>
+                            <li>Mentoria e revisão de propostas</li>
+                            <li>Participação em pregões (Pacote Premium)</li>
+                            <li>Equipe dedicada exclusiva</li>
+                        </ul>
+                        <a href="#pacotes" onclick="document.getElementById('pacotes').scrollIntoView({behavior:'smooth'})" class="btn btn-accent" style="text-align:center;">Ver todos os pacotes ↓</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================
                  PACOTES - DESTAQUE
                  ======================================== -->
-            <div class="packages-section">
+            <div class="packages-section" id="pacotes">
                 <h3 class="packages-title">Nossos Pacotes</h3>
                 <p class="packages-subtitle">Soluções completas e integradas para empresas que querem resultados consistentes em licitações</p>
 
@@ -2638,20 +3119,6 @@
                         <button class="btn btn-sm btn-accent" onclick="openModal('modalConsultoriaExpress')" style="width: 100%;">Saiba mais</button>
                     </div>
 
-                    <!-- Elaboração de Proposta Avulsa -->
-                    <div class="standalone-service-card fade-in">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h3>Elaboração de Proposta</h3>
-                        <p>Proposta técnica + comercial completa para 1 edital com redação profissional e revisão jurídica.</p>
-                        <div class="service-ideal">✓ Propostas técnicas e comerciais completas, sob demanda</div>
-                        <div class="standalone-price">R$ 2.500 a R$ 5.000+</div>
-                        <button class="btn btn-sm btn-accent" onclick="openModal('modalElaboracaoProposta')" style="width: 100%;">Saiba mais</button>
-                    </div>
-
                     <!-- Treinamento In-Company -->
                     <div class="standalone-service-card fade-in">
                         <div class="service-icon">
@@ -2689,37 +3156,83 @@
          ======================================== -->
     <section class="section section-alt" id="metodologia">
         <div class="container">
-            <h2 class="section-title">Como trabalhamos: nossa metodologia em 5 etapas</h2>
-            
-            <div class="methodology-timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-number">1</div>
-                    <h4>Diagnóstico</h4>
-                    <p>Avaliamos sua situação atual, maturidade e potencial nas licitações</p>
+            <h2 class="section-title">Não é apenas participar — é competir com método</h2>
+            <p style="text-align:center;color:rgba(255,255,255,0.5);max-width:580px;margin:0 auto 3.5rem;font-size:0.95rem;line-height:1.7;">O mercado de compras públicas é burocrático e implacável com erros. Nossa metodologia blinda sua empresa e aumenta sua competitividade em cada etapa.</p>
+
+            <div class="methodology-2col">
+                <!-- Visual / chart -->
+                <div class="methodology-visual fade-in">
+                    <div class="methodology-visual-glow"></div>
+                    <div class="methodology-chart-wrap">
+                        <div class="chart-bar" style="height:20%;background:rgba(255,255,255,0.06);"></div>
+                        <div class="chart-bar" style="height:38%;background:rgba(255,255,255,0.06);"></div>
+                        <div class="chart-bar" style="height:28%;background:rgba(255,255,255,0.06);"></div>
+                        <div class="chart-bar" style="height:60%;background:rgba(18,163,122,0.35);"></div>
+                        <div class="chart-bar" style="height:78%;background:rgba(18,163,122,0.6);"></div>
+                        <div class="chart-bar" style="height:100%;background:var(--secondary);box-shadow:0 0 16px rgba(18,163,122,0.5);"></div>
+                    </div>
+                    <div class="methodology-badge">
+                        <div class="methodology-badge-icon">
+                            <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                        </div>
+                        <div>
+                            <p>Desempenho médio</p>
+                            <strong>Alto crescimento</strong>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="timeline-number">2</div>
-                    <h4>Mapeamento</h4>
-                    <p>Identificamos editais alinhados com seu perfil e capacidade técnica</p>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-number">3</div>
-                    <h4>Capacitação</h4>
-                    <p>Preparamos você e sua equipe para competir com segurança e conhecimento</p>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-number">4</div>
-                    <h4>Proposta</h4>
-                    <p>Montamos propostas técnicas e comerciais completas e competitivas</p>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-number">5</div>
-                    <h4>Acompanhamento</h4>
-                    <p>Seguimos com você nas disputas, ajustes e busca por resultados</p>
+                <!-- Steps -->
+                <div class="methodology-steps fade-in">
+                    <div class="methodology-step">
+                        <div class="methodology-step-line">
+                            <div class="methodology-step-num">1</div>
+                            <div class="methodology-step-connector"></div>
+                        </div>
+                        <div class="methodology-step-body">
+                            <h4>Diagnóstico</h4>
+                            <p>Avaliamos sua situação atual, maturidade, documentação e potencial de participação em licitações.</p>
+                        </div>
+                    </div>
+                    <div class="methodology-step">
+                        <div class="methodology-step-line">
+                            <div class="methodology-step-num">2</div>
+                            <div class="methodology-step-connector"></div>
+                        </div>
+                        <div class="methodology-step-body">
+                            <h4>Inteligência de Mercado</h4>
+                            <p>Não atiramos para todos os lados. Selecionamos editais onde sua empresa tem maior vantagem competitiva e margem.</p>
+                        </div>
+                    </div>
+                    <div class="methodology-step">
+                        <div class="methodology-step-line">
+                            <div class="methodology-step-num">3</div>
+                            <div class="methodology-step-connector"></div>
+                        </div>
+                        <div class="methodology-step-body">
+                            <h4>Blindagem Documental</h4>
+                            <p>Um documento vencido custa um contrato. Mantemos 100% do seu acervo auditado e pronto para qualquer edital.</p>
+                        </div>
+                    </div>
+                    <div class="methodology-step">
+                        <div class="methodology-step-line">
+                            <div class="methodology-step-num">4</div>
+                            <div class="methodology-step-connector"></div>
+                        </div>
+                        <div class="methodology-step-body">
+                            <h4>Proposta Técnica</h4>
+                            <p>Elaboramos propostas técnicas e comerciais completas, claras e dentro das exigências de cada edital.</p>
+                        </div>
+                    </div>
+                    <div class="methodology-step">
+                        <div class="methodology-step-line">
+                            <div class="methodology-step-num active">5</div>
+                        </div>
+                        <div class="methodology-step-body">
+                            <h4>Acompanhamento Contínuo</h4>
+                            <p>Seguimos com você nas disputas, ajustes, recursos e busca por resultados — do início ao fim do processo.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2774,46 +3287,6 @@
                         <p style="margin: 0; color: var(--secondary); font-weight: 700; font-size: 0.95rem;">✓ Aumentamos sua competitividade com dados e estratégia</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================
-         FINAL CTA SECTION & CONTACT FORM
-         ======================================== -->
-    <section class="section" id="contato">
-        <div class="container">
-            <div class="final-cta">
-                <h2>Pronto para competir no mercado governamental?</h2>
-                <p class="subtitle">Agende um diagnóstico gratuito ou fale conosco agora</p>
-
-                <form id="contactForm" class="final-cta-form" onsubmit="handleSubmit(event)">
-                    <div class="form-group">
-                        <input type="text" placeholder="Seu nome completo" required>
-                        <input type="email" placeholder="Seu melhor e-mail" required>
-                        <input type="tel" placeholder="Seu telefone (WhatsApp)" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Conte-nos um pouco sobre sua empresa e objetivo..." required></textarea>
-                    </div>
-
-                    <div class="cta-buttons">
-                        <button type="submit" class="btn btn-accent" style="flex-grow: 1; min-width: 180px;">Agendar Diagnóstico</button>
-                        <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank" style="flex-grow: 1; min-width: 180px; text-align: center;">📱 WhatsApp</a>
-                    </div>
-
-                    <div class="form-success" id="formSuccess">
-                        <div class="form-success-icon">✅</div>
-                        <h4>Mensagem enviada com sucesso!</h4>
-                        <p>Nossa equipe irá entrar em contato com você em breve pelo WhatsApp ou e-mail informado.</p>
-                    </div>
-
-                    <p style="text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
-                        Email: <strong>consultoria@alinhatta.com</strong><br>
-                        Telefone: <strong>(21) 98650-5733</strong><br>
-                        Site: <strong>www.alinhatta.com</strong>
-                    </p>
-                </form>
             </div>
         </div>
     </section>
@@ -3256,56 +3729,6 @@
     </div>
 
     <!-- ========================================
-         QUEM SOMOS SECTION
-         ======================================== -->
-    <section class="quem-somos-section" id="sobre">
-        <div class="container">
-            <div class="quem-somos-grid">
-                <div class="quem-somos-visual fade-in">
-                    <div class="quem-somos-avatar">🧭</div>
-                    <h3 style="color: var(--white); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Alinhatta Consultoria</h3>
-                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">Especialistas em Licitações Públicas</p>
-                    <div style="background: rgba(18,163,122,0.1); border-radius: 12px; padding: 1rem; border: 1px solid rgba(18,163,122,0.2); text-align: left; margin-bottom: 1.5rem;">
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.7; margin: 0;">"Nossa missão é ser a bússola que orienta empresas brasileiras a navegar com segurança e estratégia no mercado de compras públicas."</p>
-                    </div>
-                    <div class="quem-somos-stat">
-                        <div class="quem-somos-stat-item">
-                            <strong>+4</strong>
-                            <span>anos de atuação</span>
-                        </div>
-                        <div class="quem-somos-stat-item">
-                            <strong>100%</strong>
-                            <span>conformidade legal</span>
-                        </div>
-                        <div class="quem-somos-stat-item">
-                            <strong>Nacional</strong>
-                            <span>atendimento remoto</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quem-somos-content fade-in">
-                    <h2>Uma consultoria <span>fundada para</span> quem quer resultado real</h2>
-                    <p>A Alinhatta nasceu da percepção de que o mercado de licitações públicas era inacessível para a maioria das empresas brasileiras — não por falta de capacidade, mas por falta de orientação.</p>
-                    <p>Somos uma consultoria especializada exclusivamente em licitações públicas. Atuamos com base na Nova Lei de Licitações (14.133/2021) e desenvolvemos uma metodologia própria que combina inteligência de mercado, rigor documental e acompanhamento estratégico.</p>
-                    <p>Nosso compromisso é preparar sua empresa para competir — com segurança jurídica, propostas bem estruturadas e presença qualificada em cada etapa do processo.</p>
-                    <div class="quem-somos-tags">
-                        <span class="quem-somos-tag">Lei 14.133/2021</span>
-                        <span class="quem-somos-tag">Pregão Eletrônico</span>
-                        <span class="quem-somos-tag">Gestão Documental</span>
-                        <span class="quem-somos-tag">Conformidade</span>
-                        <span class="quem-somos-tag">Atendimento Nacional</span>
-                        <span class="quem-somos-tag">Metodologia Própria</span>
-                    </div>
-                    <div style="margin-top: 2rem;">
-                        <a href="#contato" class="btn btn-primary">Conheça nossa metodologia</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================
          TESTIMONIALS SECTION
          ======================================== -->
     <section class="testimonials-section" id="depoimentos">
@@ -3429,35 +3852,119 @@
     </section>
 
     <!-- ========================================
-         FOOTER
+         FINAL CTA SECTION & CONTACT FORM
          ======================================== -->
-    <footer>
+    <section class="section" id="contato">
         <div class="container">
-            <div class="footer-section">
-                <h4>ALINHATTA</h4>
-                <p>Sua bússola no mercado governamental</p>
-                <p>Consultoria especializada em licitações públicas</p>
-            </div>
+            <div class="final-cta">
+                <h2>Pronto para competir no mercado governamental?</h2>
+                <p class="subtitle">Agende um diagnóstico gratuito ou fale conosco agora</p>
 
-            <div class="footer-section">
-                <h4>Links Rápidos</h4>
-                <a href="#diagnostico">Diagnóstico</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#metodologia">Metodologia</a>
-                <a href="#diferenciais">Diferenciais</a>
-                <a href="#contato">Contato</a>
-            </div>
+                <form id="contactForm" class="final-cta-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Seu nome completo" required>
+                        <input type="email" placeholder="Seu melhor e-mail" required>
+                        <input type="tel" placeholder="Seu telefone (WhatsApp)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Conte-nos um pouco sobre sua empresa e objetivo..." required></textarea>
+                    </div>
 
-            <div class="footer-section">
-                <h4>Contato</h4>
-                <p>📧 consultoria@alinhatta.com</p>
-                <p>📱 (21) 98650-5733</p>
-                <p>🌐 www.alinhatta.com</p>
+                    <div class="cta-buttons">
+                        <button type="submit" class="btn btn-accent" style="flex-grow: 1; min-width: 180px;">Agendar Diagnóstico</button>
+                        <a href="https://wa.me/5521986505733?text=Olá%20Alinhatta!%20Gostaria%20de%20saber%20mais%20sobre%20consultoria%20em%20licitações." class="btn btn-secondary" target="_blank" style="flex-grow: 1; min-width: 180px; text-align: center;">📱 WhatsApp</a>
+                    </div>
+
+                    <div class="form-success" id="formSuccess">
+                        <div class="form-success-icon">✅</div>
+                        <h4>Mensagem enviada com sucesso!</h4>
+                        <p>Nossa equipe irá entrar em contato com você em breve pelo WhatsApp ou e-mail informado.</p>
+                    </div>
+
+                    <p style="text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
+                        Email: <strong>consultoria@alinhatta.com</strong><br>
+                        Telefone: <strong>(21) 98650-5733</strong><br>
+                        Site: <strong>www.alinhatta.com</strong>
+                    </p>
+                </form>
             </div>
         </div>
+    </section>
 
-        <div class="footer-bottom">
-            <p>© 2026 Alinhatta - Todos os direitos reservados</p>
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer style="background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.06);padding:4rem 2rem 2rem;">
+        <div style="max-width:1400px;margin:0 auto;">
+            <div class="footer-4col">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;">
+                        <div style="width:32px;height:32px;border-radius:8px;background:var(--secondary);display:flex;align-items:center;justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <span style="font-family:var(--font-heading);font-weight:900;font-size:1.15rem;letter-spacing:0.05em;color:var(--white);">ALINHATTA</span>
+                    </div>
+                    <p>Consultoria especializada em licitações públicas. Preparamos empresas brasileiras para competir no mercado governamental com estratégia e conformidade.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-btn" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Soluções -->
+                <div class="footer-col">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="#comece">Kit Licitações do Zero</a></li>
+                        <li><a href="#comece">Diagnóstico de Viabilidade</a></li>
+                        <li><a href="#pacotes">Pacote Starter</a></li>
+                        <li><a href="#pacotes">Pacote Pro</a></li>
+                        <li><a href="#pacotes">Pacote Premium</a></li>
+                    </ul>
+                </div>
+
+                <!-- Empresa -->
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#sobre">Quem somos</a></li>
+                        <li><a href="#metodologia">Metodologia</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div class="footer-col">
+                    <h4>Fale Conosco</h4>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:consultoria@alinhatta.com">consultoria@alinhatta.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <a href="https://wa.me/5521986505733" target="_blank">(21) 98650-5733</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span>Atendimento Nacional<br>Sede Digital</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+                <p style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin:0;">© 2026 ALINHATTA Consultoria em Licitações. Todos os direitos reservados.</p>
+                <div style="display:flex;gap:1.5rem;">
+                    <a href="#" style="font-size:0.8rem;color:rgba(255,255,255,0.35);text-decoration:none;">Termos de Uso</a>
+                    <a href="#" style="font-size:0.8rem;color:rgba(255,255,255,0.35);text-decoration:none;">Privacidade</a>
+                </div>
+            </div>
         </div>
     </footer>
 
