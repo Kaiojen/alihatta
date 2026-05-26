@@ -1,170 +1,228 @@
 # Estudo de Precificação — Alinhatta
 
-> Documento para enviar ao assessor (e ao chat de análise) revisar a estrutura atual de preços do site `www.alinhatta.com.br` e validar a hipótese de redução de valores nos pacotes **Starter** e **Pro**, além da retirada de comissões dos planos que não envolvem operação de licitação.
+> Documento de referência da **nova arquitetura comercial** da Alinhatta, conforme aprovado em 26/05/2026. Substitui completamente a estrutura anterior (Starter/Pro/Premium) e serve como spec para atualizar site, CRM, scripts, propostas comerciais e contratos.
 
-**Fonte:** `alinhatta-site/index.html` (site institucional em produção).
-**Data do levantamento:** 25/05/2026.
-
----
-
-## 1. Visão geral da escada de produtos
-
-O site hoje apresenta a oferta em **3 camadas**, numa lógica de "funil + escada de valor":
-
-| Camada | Produto | Preço | Objetivo na jornada |
-|---|---|---|---|
-| 1 · Entrada (Kit Digital) | Diagnóstico de Licitações | **R$ 67** (de R$ 297) | Captura de leads / qualificação |
-| 2 · Diagnóstico ao vivo | Diagnóstico Pessoal | **R$ 450** | Conversão para mensalidade |
-| 3 · Gestão Completa | Pacotes Starter / Pro / Premium | **A partir de R$ 1.800/mês** | Recorrência |
-| Avulsos | Express · Treinamento · Doc. | R$ 500 a R$ 6.000 | Receita pontual |
+**Status:** Aprovado e aplicado no site institucional (`alinhatta-site/index.html`).
+**Última atualização:** 26/05/2026.
 
 ---
 
-## 2. Pacotes mensais (recorrentes) — situação atual no site
+## 1. Posicionamento estratégico
 
-### 2.1. Pacote Starter — "Primeiros Passos"
-- **Preço:** R$ 1.800/mês
-- **Mínimo de contrato:** 3 meses · à vista ou 3x sem juros
+A Alinhatta é uma **boutique consultiva em licitações**, com entrada acessível e planos de acompanhamento estratégico para empresas que querem vender ao governo com mais método, segurança e competitividade.
+
+A escada comercial funciona assim:
+
+1. Produtos baratos educam e qualificam.
+2. Diagnóstico pago filtra interessados reais.
+3. Planos mensais geram recorrência.
+4. Planos operacionais concentram margem e maior responsabilidade.
+
+**Frase-âncora interna:**
+
+> **Direção orienta. Estrutura organiza. Operação executa. Operação Plus escala.**
+
+---
+
+## 2. Escada de produtos (estrutura nova)
+
+| Etapa | Produto | Função |
+|---|---|---|
+| Entrada | Kit Diagnóstico de Licitações | Educação e qualificação inicial |
+| Diagnóstico | Diagnóstico Estratégico | Análise personalizada e conversão |
+| Plano 1 | Plano Direção | Orientação e clareza estratégica |
+| Plano 2 | Plano Estrutura | Estruturação interna com suporte técnico |
+| Plano 3 | Plano Operação | Terceirização da operação licitatória |
+| Plano 4 | Operação Plus | Atendimento customizado para alto volume |
+| Avulso | Análise Urgente de Edital | Avaliação pontual de edital |
+| Avulso | Proposta Avulsa | Elaboração de proposta específica |
+| Avulso | Gestão Documental | Organização documental |
+| Avulso | Treinamento In-Company | Capacitação presencial da equipe |
+| Avulso | Workshop Online | Capacitação online em formato workshop |
+
+---
+
+## 3. Planos mensais recorrentes
+
+### 3.1. Plano Direção — "Orientação Estratégica"
+- **Preço:** R$ 1.497/mês
+- **Mínimo:** 3 meses · à vista ou 3x sem juros
 - **Comissão:** ❌ Não tem
-- **Perfil-alvo:** MEI / ME com faturamento até R$ 360k/ano
-- **O que inclui:**
-  - Diagnóstico inicial completo (documentação, viabilidade, gaps)
-  - Mapeamento de **3 oportunidades/mês**
-  - **1 sessão mensal** de orientação estratégica (45 min)
+- **Perfil:** MEI, ME ou pequena empresa com faturamento entre R$ 200k e R$ 800k/ano
+- **Inclui:**
+  - Diagnóstico inicial completo
+  - Mapeamento de **até 5 oportunidades/mês**
+  - 1 sessão mensal de orientação estratégica
   - Checklist de habilitação personalizado
-  - Acesso a templates básicos (proposta comercial, documentação)
-  - Suporte via WhatsApp (horário comercial, resposta em até 24h)
-- **O que NÃO inclui** (marcado com "x" no site):
-  - ❌ Elaboração de propostas
-  - ❌ Participação ativa em pregões
+  - Acesso a templates básicos
+  - Suporte via WhatsApp (horário comercial)
+  - Indicação de gaps documentais e operacionais
+- **Não inclui:** elaboração completa de propostas, participação ativa em pregões, recursos/impugnações complexos.
 
-### 2.2. Pacote Pro — "Autonomia Estratégica" *(rotulado "Mais popular")*
-- **Preço:** R$ 3.500/mês
-- **Mínimo de contrato:** 6 meses · à vista (5% desconto) ou até 6x
-- **Comissão:** ❌ Não tem (no site)
+### 3.2. Plano Estrutura — "Estruturação Interna"
+- **Preço:** R$ 2.997/mês
+- **Mínimo:** 4 meses · à vista (5% desconto) ou até 6x
+- **Comissão:** ❌ Não tem
 - **Bônus:** Após 6 meses, 1 treinamento in-company gratuito
-- **Perfil-alvo:** ME/EPP com faturamento R$ 360k – 4,8M/ano
-- **O que inclui (Starter +):**
-  - Mapeamento de **até 10 oportunidades/mês**
-  - **2 sessões mensais** de mentoria (2h cada)
-  - Análise de viabilidade de **até 5 editais/mês**
-  - **Revisão** de até 2 propostas/mês (técnica + comercial)
+- **Perfil:** ME/EPP com faturamento entre R$ 800k e R$ 3M/ano que tem alguém interno para executar com orientação
+- **Inclui (Direção +):**
+  - Mapeamento de **até 15 oportunidades/mês**
+  - 2 sessões mensais de mentoria (2h cada)
+  - Análise de viabilidade de até 5 editais/mês
+  - Revisão de até 2 propostas/mês
+  - Orientação de precificação
   - Treinamento da equipe interna (4h/mês)
   - Biblioteca de templates avançados
-  - Gestão documental básica (alertas de vencimento)
+  - Gestão documental básica com alertas
   - Suporte prioritário via WhatsApp
-- **O que NÃO inclui:**
-  - ❌ Participação ativa em pregões
-  - ❌ Elaboração completa de propostas (apenas **revisão**)
+- **Não inclui:** participação ativa em pregões, elaboração ilimitada de propostas, atuação como setor terceirizado, comissão.
 
-### 2.3. Pacote Premium — "Terceirize seu Setor"
-- **Mínimo de contrato:** 12 meses · comissão paga 30 dias após homologação
-- **Perfil-alvo:** EPP/Médio porte, faturamento acima de R$ 1M/ano
-- **3 modalidades:**
+### 3.3. Plano Operação — "Terceirize sua Operação"
+- **Preço:** a partir de **R$ 5.000/mês + 5%** sobre contratos homologados
+- **Mínimo:** 12 meses · comissão paga 30 dias após homologação
+- **Perfil:** EPP/Médio porte com faturamento acima de R$ 1M/ano, sem equipe interna suficiente
+- **Inclui:**
+  - Mapeamento contínuo de oportunidades
+  - Análise de viabilidade de todos os editais relevantes
+  - Elaboração completa de propostas (técnica + comercial)
+  - Preparação documental de habilitação
+  - Acompanhamento de prazos
+  - **Participação ativa em pregões (lances)**, quando aplicável
+  - Apoio em esclarecimentos, impugnações e recursos dentro do limite contratual
+  - Relatório mensal de performance
+  - Reunião mensal de alinhamento
+  - Equipe dedicada · suporte prioritário em períodos críticos
+- **Não inclui (salvo contratação específica):** atuação jurídica contenciosa, assinatura de documentos pela empresa, **garantia de vitória/homologação/adjudicação**, responsabilidade por documentação incompleta do cliente, custos externos (taxas, certidões, autenticações, plataformas, deslocamentos).
 
-| Modalidade | Mensalidade | Comissão | Volume |
-|---|---|---|---|
-| Premium Essencial | R$ 4.500/mês | + 2% | até 5 participações/mês |
-| Premium Profissional | R$ 6.500/mês | + 1,5% | até 15/mês |
-| Premium Elite | R$ 9.000/mês | + 1% | volume ilimitado |
-
-- **O que inclui:**
-  - Gestão **100% terceirizada** do setor
-  - Mapeamento **ilimitado** de oportunidades
-  - Análise de viabilidade de todos os editais
-  - **Elaboração completa** de propostas (técnica + comercial)
-  - Preparação de toda documentação de habilitação
-  - **Participação ativa em pregões eletrônicos (lances)** ← o "core" operacional
-  - Gestão de recursos, impugnações e esclarecimentos
-  - Relatório mensal de performance (KPIs + ROI)
-  - Equipe dedicada exclusiva · suporte 24/7
+### 3.4. Operação Plus — "Atendimento Customizado"
+- **Preço:** Sob proposta · referência R$ 8.000 a R$ 15.000/mês + 3% a 5%
+- **Comissão:** ✅ Sim (reduzida em razão do maior fixo)
+- **Perfil:** empresas com alto volume, várias unidades ou faturamento acima de R$ 5M/ano
+- **Inclui (customizável):** gestor de conta dedicado, maior volume de editais analisados, reuniões semanais, relatórios gerenciais customizados, dashboard de oportunidades, priorização de prazos críticos, rotina de performance mensal.
 
 ---
 
-## 3. Serviços avulsos (sem mensalidade)
+## 4. Produtos de entrada e diagnóstico
+
+| Produto | Preço | Observações |
+|---|---|---|
+| Kit Diagnóstico de Licitações | R$ 67 | Captura de leads, mantém o nome |
+| Diagnóstico Estratégico | R$ 350 | **100% abatível** em qualquer plano mensal contratado em até 30 dias |
+
+---
+
+## 5. Serviços avulsos
 
 | Serviço | Preço |
 |---|---|
-| Consultoria Express — Simples | R$ 1.200/sessão |
-| Consultoria Express — Moderado | R$ 1.800/sessão |
-| Consultoria Express — Complexo | R$ 2.500/sessão |
+| Análise Urgente de Edital — Simples | R$ 900 |
+| Análise Urgente de Edital — Moderado | R$ 1.500 |
+| Análise Urgente de Edital — Complexo | R$ 2.500 |
+| Proposta Avulsa — Simples | R$ 2.500 |
+| Proposta Avulsa — Moderada | R$ 3.500 |
+| Proposta Avulsa — Complexa | R$ 5.000+ |
+| Gestão Documental — setup único | R$ 1.500 |
+| Gestão Documental — manutenção mensal opcional | R$ 500/mês |
 | Treinamento In-Company — até 10 pessoas | R$ 4.000 |
 | Treinamento In-Company — até 20 pessoas | R$ 6.000 |
 | Treinamento In-Company — acima de 20 | sob consulta |
-| Gestão Documental — setup único | R$ 1.500 |
-| Gestão Documental — manutenção mensal opcional | R$ 500/mês |
+| Workshop Online | R$ 1.500 |
 
 ---
 
-## 4. Diagnóstico atual — leitura crítica
+## 6. Regras comerciais obrigatórias
 
-### 4.1. O problema central observado pela proprietária
+### 6.1. Comissão
 
-> "Estou achando o **Pro caro pelo que ele oferece**. Na licitação dos clientes do Starter e do Pro, a Alinhatta **não faz a parte prática/operacional** — só acompanha, estipula metas, cobra a empresa e corrige documentação. A parte de **fato operar a licitação** só acontece no Premium."
+Comissão **só existe quando a Alinhatta opera diretamente o processo licitatório.**
 
-Isso é coerente com o que está escrito no próprio site:
+| Produto | Comissão? |
+|---|---|
+| Kit Diagnóstico | ❌ |
+| Diagnóstico Estratégico | ❌ |
+| Plano Direção | ❌ |
+| Plano Estrutura | ❌ |
+| Plano Operação | ✅ 5% sobre contratos homologados |
+| Operação Plus | ✅ 3% a 5%, negociável |
+| Serviços avulsos | ❌ (salvo negociação específica) |
 
-- **Starter** → ❌ elaboração de propostas · ❌ participação em pregões
-- **Pro** → ❌ participação em pregões · ⚠️ propostas só **revisadas**, não elaboradas
-- **Premium** → ✅ executa tudo (única camada operacional de fato)
+### 6.2. Linguagem proibida
 
-**Conclusão:** Starter e Pro são essencialmente camadas **de orientação, acompanhamento e revisão**. O cliente continua operando sozinho.
+- ❌ "Vamos fazer sua empresa ganhar licitações"
+- ❌ "ROI esperado de X vezes"
+- ❌ "Garantia de vitória/homologação/adjudicação"
 
-### 4.2. Tensão de percepção de valor no Pacote Pro
+### 6.3. Linguagem recomendada
 
-O salto de R$ 1.800 → R$ 3.500 (quase **2x**) entre Starter e Pro entrega, em essência:
+- ✅ "Vamos aumentar sua maturidade, reduzir riscos e melhorar sua capacidade de competir em licitações."
+- ✅ "Potencial de oportunidades mapeadas"
+- ✅ "Estimativa de mercado disponível"
+- ✅ "Cenário de retorno possível, sem garantia de contratação pública"
 
-- 7 oportunidades a mais (de 3 → 10)
-- 1 sessão a mais por mês (de 1 → 2)
-- Revisão de até 2 propostas
-- 4h/mês de treinamento
-- Alertas documentais
+### 6.4. Cláusula contratual conceitual
 
-Para uma ME/EPP com faturamento entre R$ 360k e R$ 4,8M, **R$ 3.500/mês = R$ 42.000/ano** sem nenhuma operação de pregão entregue. Isso pode ser percebido como caro, especialmente quando comparado ao Premium Essencial (R$ 4.500 — apenas R$ 1.000 a mais, mas que **executa**).
-
-### 4.3. Sobre comissões
-
-- **Hoje no site, comissão SÓ existe no Premium** (2% / 1,5% / 1%).
-- **Starter e Pro não têm comissão.**
-- A intenção declarada de "tirar comissão pelo menos do Pro" é coerente com a regra implícita: **só cobra comissão quem opera o pregão**. Se o Pro não opera, não há justificativa para comissão.
-- ⚠️ Importante validar com o assessor: existe alguma comissão sendo cobrada hoje **fora do site** (em contratos no Pro/Starter)? Se sim, o site e a prática estão desalinhados — e a recomendação é alinhar pela ausência de comissão nesses planos.
-
----
-
-## 5. Hipótese de reestruturação a debater com o assessor
-
-A proprietária está propondo:
-
-1. **Reduzir o preço de Starter e Pro** (especialmente o Pro, que entrega menos do que cobra).
-2. **Remover qualquer comissão de Pro/Starter** (nada de cobrar % em cima de operação que não fazemos).
-3. **Aumentar a quantidade de entregáveis** desses planos (mais oportunidades/mês, mais sessões, mais documentos por exemplo) — pendente de análise dos projetos atuais.
-4. Reposicionar a comunicação: Starter e Pro = **assessoria + acompanhamento**; Premium = **terceirização operacional**.
-
-### 5.1. Eixos para o assessor analisar
-
-Pedimos ao assessor uma leitura sobre:
-
-- [ ] **Preço justo do Pacote Pro** dada a entrega real (acompanhamento, sem operação). Faixa sugerida para discutir: R$ 1.800 a R$ 2.500/mês?
-- [ ] **Preço justo do Pacote Starter** dada a entrega (3 oportunidades + 1 sessão + checklist). Faixa sugerida para discutir: R$ 800 a R$ 1.200/mês?
-- [ ] **Risco de canibalização**: se o Pro cair muito, ele canibaliza o Premium? Ou amplia a base de entrada?
-- [ ] **Quantidade ideal de entregáveis** nos planos reduzidos (quantas oportunidades, sessões, revisões) sem comprometer margem.
-- [ ] **Política de comissão**: confirmar que ela permanece **exclusiva do Premium**, dado que é o único pacote que opera o pregão.
-- [ ] **Mensagem de marketing**: como reforçar no site que Starter/Pro são **acompanhamento estratégico**, não terceirização — para não gerar expectativa equivocada de "a Alinhatta vai dar lance pra mim".
-- [ ] **Tempo mínimo de contrato**: manter 3 e 6 meses ou flexibilizar para baixar fricção de entrada?
-
-### 5.2. Premissas que precisamos confirmar internamente antes de fechar preço
-
-- Custo real (horas/consultor) por cliente nos planos Starter e Pro.
-- Ticket médio atual e churn por plano.
-- Quantos clientes Pro hoje exigiram a operação na prática (estouro de escopo).
-- Margem mínima aceitável por plano.
+> A CONTRATADA não garante vitória, homologação, adjudicação ou contratação pública, atuando como consultoria técnica e/ou operacional para aumentar a organização, a competitividade e a segurança da CONTRATANTE em processos licitatórios.
 
 ---
 
-## 6. Resumo executivo (para o assessor)
+## 7. Regra de escopo por plano
 
-> O Pacote Pro hoje custa **R$ 3.500/mês** e entrega **acompanhamento, mentoria, análise e revisão**, mas **não operacionaliza a licitação** — só o Premium faz isso. A proprietária acredita que o valor está **descalibrado pra cima** em relação ao que é entregue, e propõe baixar Starter e Pro, aumentar entregáveis e manter comissão apenas no Premium. Pedimos uma leitura externa sobre faixa de preço justa, risco de canibalização do Premium e como recomunicar a proposta de valor dos dois planos sem operação.
+| Plano | Vende | Não vende |
+|---|---|---|
+| Direção | Clareza, rota e orientação | Execução |
+| Estrutura | Estruturação interna com suporte técnico | Terceirização completa |
+| Operação | Terceirização da operação licitatória | Garantia de vitória |
+| Operação Plus | Operação customizada para alto volume | Serviço padronizado de baixo ticket |
 
 ---
 
-*Documento gerado para discussão. Os preços referenciados são os exibidos publicamente em `www.alinhatta.com.br` na data do levantamento.*
+## 8. Mapeamento de qualificação (SDR)
+
+| Perfil do lead | Oferta recomendada |
+|---|---|
+| Curioso/iniciante | Kit Diagnóstico |
+| Interessado, mas inseguro | Diagnóstico Estratégico |
+| Pequena empresa sem método | Plano Direção |
+| Empresa com alguém interno | Plano Estrutura |
+| Empresa com urgência e sem equipe | Plano Operação |
+| Empresa grande / alto volume | Operação Plus |
+
+---
+
+## 9. De/Para — nomenclatura antiga → nova
+
+| Antes | Agora |
+|---|---|
+| Pacote Starter — R$ 1.800/mês | Plano Direção — R$ 1.497/mês |
+| Pacote Pro — R$ 3.500/mês | Plano Estrutura — R$ 2.997/mês |
+| Premium Essencial — R$ 4.500/mês + 2% | Plano Operação — a partir de R$ 5.000/mês + 5% |
+| Premium Profissional — R$ 6.500/mês + 1,5% | (consolidado em Plano Operação) |
+| Premium Elite — R$ 9.000/mês + 1% | Operação Plus — sob proposta |
+| Diagnóstico Pessoal — R$ 450 | Diagnóstico Estratégico — R$ 350 (abatível) |
+| Consultoria Express — R$ 1.200/1.800/2.500 | Análise Urgente de Edital — R$ 900/1.500/2.500 |
+| (não existia) | Proposta Avulsa — R$ 2.500/3.500/5.000+ |
+| (não existia) | Workshop Online — R$ 1.500 |
+
+---
+
+## 10. Status de implementação
+
+- [x] **Site (`alinhatta-site/index.html`)** — aplicado em 26/05/2026 nesta branch
+  - Cards dos planos (Direção, Estrutura, Operação, Operação Plus)
+  - Modais detalhados de cada plano e cada avulso
+  - Diagnóstico Estratégico no funil (passo 2)
+  - Card de entrada "Planos de Consultoria" atualizado
+  - Serviços avulsos (Análise Urgente, Proposta Avulsa, Gestão Documental, Treinamento, Workshop Online)
+  - FAQ atualizada (prazos mínimos + regra de comissão)
+  - Footer com novos nomes de plano
+  - Depoimentos com referência atualizada para Plano Operação
+  - Linguagem de ROI removida do escopo dos planos
+- [ ] **CRM** — atualizar campos de interesse e status de oportunidade
+- [ ] **Scripts de SDR** — substituir nomenclatura e ajustar perguntas de qualificação
+- [ ] **Templates de proposta comercial** — refletir novos nomes, escopo "inclui/não inclui" e linguagem sem garantia
+- [ ] **Contratos** — atualizar nome do plano, escopo, regra de comissão, obrigações do cliente e cláusula de ausência de garantia
+- [ ] **Playbook interno** — adotar a frase "Direção orienta. Estrutura organiza. Operação executa. Operação Plus escala."
+
+---
+
+*Documento mantido junto ao código do site para servir de fonte única de verdade da arquitetura comercial.*
